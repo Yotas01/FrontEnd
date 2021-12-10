@@ -1,4 +1,15 @@
+<body>
 <h1>RAES</h1>
 <h2 *ngFor="let rae of raes">
-    {{ "RAE " + rae.id + ": " + rae.description + " AssessmentTools: " + rae.assessmentTools}}
+    {{ "RAE " + rae.id+ ": "}}
+    <h3>
+        {{rae.description}}
+        <h4>
+            {{'AssessmentTools: '}}
+            <h5>
+                {{rae.assessmentTools}}
+            </h5>
+        </h4>
+    </h3>
 </h2>
+</body>
