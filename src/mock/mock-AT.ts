@@ -1,57 +1,61 @@
 import { AssessmentTool } from "src/model/AssessmentTool";
-import * as PI from "./mock-PI";
+import { PERFORMANCE_INDICATORS } from "./mock-PI";
 
-export const RAE1: AssessmentTool[] = [
+export const ASSESSMENT_TOOLS: AssessmentTool[] = [
     {
+        rae:1,
+        id: 1,
         description: "First Exam",
         value: 5,
         totalStudents: 29,
-        performanceIndicators: PI.RAE1AT1
-    }
-]
-export const RAE2: AssessmentTool[] = [
+        performanceIndicators: PERFORMANCE_INDICATORS.filter(data => data.rae==1 && data.assessmentTool==1)
+    },
     {
+        rae:2,
+        id: 1,
         description: "First Exam",
         value: 20,
         totalStudents: 29,
-        performanceIndicators: PI.RAE2AT1
+        performanceIndicators: PERFORMANCE_INDICATORS.filter(data => data.rae==2 && data.assessmentTool==1)
     },
     {
+        rae:2,
+        id:2,
         description: "Second Exam",
         value: 20,
         totalStudents: 29,
-        performanceIndicators: PI.RAE2AT2
-    }
-]
-export const RAE3: AssessmentTool[] = [
+        performanceIndicators: PERFORMANCE_INDICATORS.filter(data => data.rae==2 && data.assessmentTool==2)
+    },
     {
+        rae:3,
+        id:1,
         description: "Second Partial Evaluation",
         value: 20,
         totalStudents: 29,
-        performanceIndicators: PI.RAE3AT1
-    }
-]
-export const RAE4: AssessmentTool[] = [
+        performanceIndicators: PERFORMANCE_INDICATORS.filter(data => data.rae==3 && data.assessmentTool==1)
+    },
     {
+        rae:4,
+        id:1,
         description: "Final Project",
         value: 20,
         totalStudents: 29,
-        performanceIndicators: PI.RAE4AT1
-    }
-]
-export const RAE5: AssessmentTool[] = [
+        performanceIndicators: PERFORMANCE_INDICATORS.filter(data => data.rae==4 && data.assessmentTool==1)
+    },
     {
+        rae:5,
+        id:1,
         description: "Final Project",
         value: 20,
         totalStudents: 29,
-        performanceIndicators: PI.RAE5AT1
-    }
-]
-export const RAE6: AssessmentTool[] = [
+        performanceIndicators: PERFORMANCE_INDICATORS.filter(data => data.rae==5 && data.assessmentTool==1)
+    },
     {
+        rae:6,
+        id:1,
         description: "Practical exercise (workshop) and quizzes",
         value: 20,
         totalStudents: 29,
-        performanceIndicators: PI.RAE4AT1
+        performanceIndicators: PERFORMANCE_INDICATORS.filter(data => data.rae==6 && data.assessmentTool==1)
     }
 ]

@@ -1,11 +1,15 @@
 import { PerformanceIndicator } from "./PerformanceIndicator";
 
 export class AssessmentTool {
+    rae: number;
+    id:number;
     description: string;
     value: number;
     totalStudents: number;
     performanceIndicators: PerformanceIndicator[];
-    constructor(description: string, value: number, totalStudents: number, performanceIndicators?: PerformanceIndicator[]) {
+    constructor(rae:number, id: number, description: string, value: number, totalStudents: number, performanceIndicators?: PerformanceIndicator[]) {
+        this.rae = rae;
+        this.id = id;
         this.description = description;
         this.value = value;
         this.totalStudents = totalStudents;

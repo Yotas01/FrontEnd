@@ -1,11 +1,15 @@
 export class PerformanceIndicator{
+    rae: number;
+    assessmentTool: number;
     description: string;
     percentage: number;
     exemplary: number;
     competent: number;
     below: number;
 
-    constructor(description: string, percentage: number, exemplary = 0, competent = 0, below = 0){
+    constructor(rae:number, assessmentTool:number, description: string, percentage: number, exemplary = 0, competent = 0, below = 0){
+        this.rae = rae;
+        this.assessmentTool = assessmentTool;
         this.description = description;
         this.percentage = percentage;
         this.exemplary = exemplary;
