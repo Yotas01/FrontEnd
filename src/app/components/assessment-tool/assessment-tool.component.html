@@ -3,7 +3,7 @@
 <h3 *ngFor="let a of assessmentTools">
     <p id="assessDescription">{{ a.description }}</p>
     <form >
-        <label for="value">Value </label>
+        <label for="value">Value (%)</label>
         <input type="number" min="0">
         <label for="totalStudents">Students who presented the assessment </label>
         <input type="number" onkeypress="return event.charCode >= 48" min="1" >

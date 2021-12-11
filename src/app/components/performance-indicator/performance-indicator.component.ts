@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PerformanceIndicator } from 'src/model/PerformanceIndicator';
-import {RAES} from 'src/mock/mock-RAE';
 import { ASSESSMENT_TOOLS } from 'src/mock/mock-AT';
 
 @Component({

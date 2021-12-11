@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { PerformanceIndicatorComponent } from './components/performance-indicator/performance-indicator.component';
 import { AssessmentToolComponent } from './components/assessment-tool/assessment-tool.component';
 import { RaeComponent } from './components/rae/rae.component';
+import { CourseComponent } from './components/course/course.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PerformanceIndicatorComponent,
     AssessmentToolComponent,
-    RaeComponent
+    RaeComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
