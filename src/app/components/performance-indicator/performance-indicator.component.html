@@ -1,13 +1,28 @@
 <h5 *ngFor="let pi of performanceIndicators"> 
-    {{pi.description}} 
+    <p id="piDescription">{{pi.description}}</p> 
+    <!--
     <form>
-        <label for="percentage">Percentage</label>
-        <input type="number">
-        <label for="exemplary">Exemplary</label>
-        <input type="number">
-        <label for="competent">Competent</label>
-        <input type="number">
-        <label for="below">Below</label>
-        <input type="number">
-    </form>
+        <label for="percentage"> Percentage </label>
+        <input type="number" min="0">
+        <label for="exemplary"> Exemplary </label>
+        <input type="number" onkeypress="return event.charCode >= 48" min="1" >
+        <label for="competent"> Competent </label>
+        <input type="number" onkeypress="return event.charCode >= 48" min="1" >
+        <label for="below"> Below </label>
+        <input type="number" onkeypress="return event.charCode >= 48" min="1" >
+    </form>-->
+    <table id="prueba">
+        <tr>
+            <th>Percentage</th>
+            <th>Exemplary</th>
+            <th>Competent</th>
+            <th>Below</th>
+        </tr>
+        <tr>
+            <td><input type="number" min="0"></td>
+            <td><input type="number" onkeypress="return event.charCode >= 48" min="1" ></td>
+            <td><input type="number" onkeypress="return event.charCode >= 48" min="1" ></td>
+            <td><input type="number" onkeypress="return event.charCode >= 48" min="1" ></td>
+        </tr>
+    </table>
 </h5>

@@ -1,12 +1,12 @@
 <h3>AssessmentTools</h3>
 
 <h3 *ngFor="let a of assessmentTools">
-    {{ a.description }}
+    <p id="assessDescription">{{ a.description }}</p>
     <form >
-        <label for="value">Value</label>
-        <input type="number">
-        <label for="totalStudents">Students who presented the assess</label>
-        <input type="number">
+        <label for="value">Value </label>
+        <input type="number" min="0">
+        <label for="totalStudents">Students who presented the assessment </label>
+        <input type="number" onkeypress="return event.charCode >= 48" min="1" >
         <app-performance-indicator [rae]=a.rae [at]=a.id></app-performance-indicator>
     </form>
 </h3>

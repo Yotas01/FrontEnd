@@ -1,0 +1,48 @@
+h5{
+    position: relative;
+    left: 10px;
+}
+
+form{
+    font-weight: lighter;
+    position: relative;
+    left: 50px;
+}
+
+#piDescription{
+    color:rgb(39, 86, 124);
+}
+
+#prueba,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;    
+}
+
+#prueba{
+    position: relative;
+    left: 50px;
+}
+
+th,td{
+    padding: 5px;
+}
+
+input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+/*Quita las flechas para aumentar o disminuir el numero en los input*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
