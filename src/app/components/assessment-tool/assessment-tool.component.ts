@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AssessmentTool } from 'src/model/AssessmentTool';
 import { RAES } from 'src/mock/mock-RAE';
-import { ASSESSMENT_TOOLS } from 'src/mock/mock-AT';
-import { PERFORMANCE_INDICATORS } from 'src/mock/mock-PI';
-import { PerformanceIndicator } from 'src/model/PerformanceIndicator';
 
 @Component({
   selector: 'app-assessment-tool',

@@ -1,0 +1,28 @@
+body {
+    background: rgba(255, 255, 255, 0.8);/*el ultimo parametro es la opacidad del fondo y los cambios que se hacen en body afectan a todos los demas*/
+}
+
+h1 {
+    font-style: italic;
+    font-family:monospace;
+    font-weight: bolder;
+    text-align: center;
+}
+
+h2 {
+    font-weight: bolder;
+    border: #123456;
+}
+
+h3{
+    font-weight: lighter;
+}
+
+h4{
+    white-space: pre-wrap;
+}
+
+h5{
+    position:relative;
+    left: 200px;
+}
