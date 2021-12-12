@@ -2,11 +2,13 @@
     Course: {{course.id + " - " + course.name}}
 </h1>
 <h2>
-    Professor: {{ course.professor + " Students: " + course.students + " Semester: "}}
+    Professor:<label id="prof"> {{ course.professor }} </label><br><br>
+    Students:<label id="students">  {{ course.students}}</label><br><br>
+    <label id="semester">Semester: 
     <select id="semester">
         <option value="2000">2000</option>
         <option value="2030">2030</option>
         <option value="2110">2110</option>
         <option value="2130">2130</option>
-    </select>
+    </select></label>
 </h2>
