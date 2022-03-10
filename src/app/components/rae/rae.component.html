@@ -1,6 +1,6 @@
 <body>
     <h2 *ngFor="let rae of raes">
-        <p id = "rae">{{ "RAE " + rae.id + ": " + rae.description}}</p>
+        <div class="rae" id = "rae">{{ "RAE " + rae.id + ": " + rae.description}}</div>
         <app-assessment-tool [rae]=rae.id></app-assessment-tool>
     </h2>
 </body>

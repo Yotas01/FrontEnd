@@ -1,9 +1,6 @@
-body {
-    background: rgba(255, 255, 255, 0.8);/*el ultimo parametro es la opacidad del fondo y los cambios que se hacen en body afectan a todos los demas*/
+.rae{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: normal;
+    text-align: center;
+    border-bottom: 1px solid black;
 }
-
-#rae {
-    font-weight: bolder;
-    border: #123456;
-}
-

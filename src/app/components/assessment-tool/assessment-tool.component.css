@@ -1,16 +1,15 @@
-h3{
-    position: relative;
-    left: 10px;
+.assessment-tool{
+  margin-top: 10px;
+  font-size: xx-large;
 }
-
-label::before{
-    content: "\00a0"
+.assessment-description{
+  margin: -20px 0 10px 10px;
+  font-size: x-large;
+  font-weight: normal;
 }
-
 form{
     font-weight: lighter;
     position: relative;
-    left: 10px;
 }
 
 input{

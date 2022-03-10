@@ -1,3 +1,6 @@
+body{
+    overflow: visible;
+}
 button {
     background: #3498db;
     font-family: Georgia;
@@ -12,4 +15,15 @@ button {
 button:hover {
     background: #3cb0fd;
     text-decoration: none;
+}
+group:before,
+group:after{
+    content: "";
+    display: table;
+}
+.group:after{
+    clear: both;
+}
+.group{
+    zoom: 1;
 }
