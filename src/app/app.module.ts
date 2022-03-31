@@ -7,6 +7,9 @@ import { PerformanceIndicatorComponent } from './components/performance-indicato
 import { AssessmentToolComponent } from './components/assessment-tool/assessment-tool.component';
 import { RaeComponent } from './components/rae/rae.component';
 import { CourseComponent } from './components/course/course.component';
+import { DataInputComponent } from './components/data-input/data-input.component';
+import { SearchCourseComponent } from './components/search-course/search-course.component';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { CourseComponent } from './components/course/course.component';
     PerformanceIndicatorComponent,
     AssessmentToolComponent,
     RaeComponent,
-    CourseComponent
+    CourseComponent,
+    DataInputComponent,
+    SearchCourseComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
