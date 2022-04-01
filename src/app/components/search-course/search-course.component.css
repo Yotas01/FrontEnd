@@ -12,6 +12,12 @@ label{
     margin-right: 10px;
     margin-left: 400px;
 }
+#semester{
+    margin-left: 465px;
+}
+#semesterSel{
+    margin-left: 10px;
+}
 button{
     position:relative;
     left: -20px;
@@ -42,6 +48,9 @@ input::-webkit-inner-spin-button{
     -webkit-appearance: none;
     margin: 0;
 }
-input, label {
+input, label, select {
     float:left;
+}
+select{
+    text-align: center;
 }

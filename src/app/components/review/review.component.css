@@ -1,0 +1,30 @@
+h1{
+    left: 500px;
+}
+
+h2{
+    text-align: center;
+}
+
+#prueba,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;    
+}
+
+th,td{
+    padding: 5px;
+    width: 500px;
+    text-align: center;
+}
+
+input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+label{
+    font-weight: lighter;
+    font-size: x-large;
+}

@@ -2,10 +2,15 @@
     <h1>
         <label for="course">Curso</label>
         <input id="course"type="number"min=0><br>
-        <label for="section">Seccion</label>
+        <label for="section">Sección</label>
         <input id="section"type="number"min=0><br>
-        <label for="semester">Semestre</label>
-        <input id="semester"type="number"min=0><br>
+        <label id="semester">Semestre  
+            <select id="semesterSel">
+                <option value="2010">2010</option>
+                <option value="2030">2030</option>
+                <option value="2110">2110</option>
+                <option value="2130">2130</option>
+            </select></label><br>
         <button><a routerLink="/tables" routerLinkActive="active">Buscar</a></button>
         <button id = "report"><a routerLink="/report" routerLinkActive="active">Reportes</a></button>
     </h1>
