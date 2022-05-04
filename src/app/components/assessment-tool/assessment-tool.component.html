@@ -2,9 +2,9 @@
 
 <h3 *ngFor="let a of assessmentTools">
     <div class="assessment-description" id="assessDescription">{{ a.description }}</div>
-    <form >
+    <form (ngSubmit)="onSubmit()" #assessToolForm="ngForm">
         <label for="value">Value </label>
-        <input id="value" type="number" min="0">
+        <input id="value" type="number" min="0" required >
         <label for="totalStudents"> Students who presented the assessment </label>
         <input type="number" onkeypress="return event.charCode >= 48" min="1" >
         <app-performance-indicator [rae]=a.rae [at]=a.id></app-performance-indicator>

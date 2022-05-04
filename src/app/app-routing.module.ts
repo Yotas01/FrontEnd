@@ -9,10 +9,8 @@ import { ReviewComponent } from './components/review/review.component';
 const routes: Routes = [
   {path: 'search',component:SearchCourseComponent},
   {path: 'tables',component:DataInputComponent},
-  {path: 'report',component:ReportComponent,
-    children:[
-      {path:'review',component:ReviewComponent}
-    ]},
+  {path: 'report',component:ReportComponent},
+  {path: 'review',component:ReviewComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'}];
 
 @NgModule({

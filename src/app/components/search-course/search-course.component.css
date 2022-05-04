@@ -54,3 +54,11 @@ input, label, select {
 select{
     text-align: center;
 }
+.ng-valid[required],
+.ng-valid.required {
+  border: 1px solid #42a948;
+}
+
+.ng-invalid:not(form) {
+  border: 1px solid #a94442;
+}

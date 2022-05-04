@@ -23,4 +23,8 @@ export class AssessmentToolComponent implements OnInit {
     }
   }
 
+  onSubmit(){
+      
+  }
+
 }

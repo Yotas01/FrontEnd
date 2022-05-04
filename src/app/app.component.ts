@@ -1,3 +1,4 @@
+import { SearchedCourse } from 'src/app/searchedCourse';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  prueba = new SearchedCourse('asdas','asdsad','asdasd')
   title = 'Reportes ABET';
 }

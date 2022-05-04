@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SearchedCourse } from 'src/app/searchedCourse';
 
 @Component({
   selector: 'app-search-course',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-course.component.css']
 })
 export class SearchCourseComponent implements OnInit {
+  @Input()
+  searchedCourse:SearchedCourse = new SearchedCourse('','','');
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSubmit(){
+      
+  }
 }

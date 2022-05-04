@@ -11,6 +11,7 @@ import { DataInputComponent } from './components/data-input/data-input.component
 import { SearchCourseComponent } from './components/search-course/search-course.component';
 import { ReportComponent } from './components/report/report.component';
 import { ReviewComponent } from './components/review/review.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReviewComponent } from './components/review/review.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
