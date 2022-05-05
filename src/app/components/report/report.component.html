@@ -4,34 +4,55 @@
     </div>
 </div><br><br>
 <div class="report-chooser">
-    <label id="outcome">Outcome  
-        <select id="outcomeSel">
-            <option value="2010">2010</option>
-            <option value="2030">2030</option>
-            <option value="2110">2110</option>
-            <option value="2130">2130</option>
-    </select></label><br>
-    <label id="cdio">CDIO  
-        <select id="cdioSel">
-            <option value="1">1</option>
-            <option value="2.1">2.1</option>
-            <option value="2.2">2.2</option>
-            <option value="2.4">2.4</option>
-            <option value="3.1">3.1</option>
-            <option value="3.2">3.2</option>
-            <option value="4.1">4.1</option>
-    </select></label><br>
-    <label id="curso">Curso  
-        <select id="cursoSel">
-            <option value="1344">1344</option>
-            <option value="2133">2133</option>
-            <option value="2252">2252</option>
-            <option value="2340">2340</option>
-            <option value="3001">3001</option>
-            <option value="3023">3023</option>
-            <option value="4511">4511</option>
-    </select></label><br>
-    <button id = "report"><a routerLink="/review" routerLinkActive="active">Generar reporte</a></button><br>
-    <button><a routerLink="/search" routerLinkActive="active">Regresar</a></button>
+
+    <form (ngSubmit)="onSubmit()" #reportForm="ngForm">
+        <div class="form-group">
+            <label id="outcome">Outcome  
+                <select id="outcomeSel" required
+                    [(ngModel)]="searchedReport.outcome" name="outcome">
+                    <option [ngValue]="2010">2010</option>
+                    <option [ngValue]="2030">2030</option>
+                    <option [ngValue]="2110">2110</option>
+                    <option [ngValue]="2130">2130</option>
+                </select>
+            </label>
+        </div><br>
+
+        <div class="form-group">
+            <label id="cdio">CDIO  
+                <select id="cdioSel" required
+                [(ngModel)]="searchedReport.cdio" name="cdio">
+
+                    <option [ngValue]="1">1</option>
+                    <option [ngValue]="2.1">2.1</option>
+                    <option [ngValue]="2.2">2.2</option>
+                    <option [ngValue]="2.4">2.4</option>
+                    <option [ngValue]="3.1">3.1</option>
+                    <option [ngValue]="3.2">3.2</option>
+                    <option [ngValue]="4.1">4.1</option>
+                </select>
+            </label>
+        </div><br>
+
+        <div class="form-group">
+            <label id="curso">Curso  
+                <select id="cursoSel" required
+                [(ngModel)]="searchedReport.curso" name="curso">
+                    <option [ngValue]="1344">1344</option>
+                    <option [ngValue]="2133">2133</option>
+                    <option [ngValue]="2252">2252</option>
+                    <option [ngValue]="2340">2340</option>
+                    <option [ngValue]="3001">3001</option>
+                    <option [ngValue]="3023">3023</option>
+                    <option [ngValue]="4511">4511</option>
+                </select>
+            </label>
+        </div><br>
+        <button id = "report"><a routerLink="/review" routerLinkActive="active">Generar reporte</a></button><br>
+        <button><a routerLink="/search" routerLinkActive="active">Regresar</a></button>
+    </form>
+
+
+    
     <router-outlet></router-outlet>  
 </div>
