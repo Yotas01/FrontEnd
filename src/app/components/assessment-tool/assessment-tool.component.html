@@ -7,6 +7,10 @@
         <input id="value" type="number" min="0" required >
         <label for="totalStudents"> Students who presented the assessment </label>
         <input type="number" onkeypress="return event.charCode >= 48" min="1" >
+
+        
         <app-performance-indicator [rae]=a.rae [at]=a.id></app-performance-indicator>
+        <app-performance-indicator (coso)="addItem($event)"></app-performance-indicator>
+
     </form>
 </h3>

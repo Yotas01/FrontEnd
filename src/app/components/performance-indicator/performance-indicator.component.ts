@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { PerformanceIndicator } from 'src/model/PerformanceIndicator';
 import { ASSESSMENT_TOOLS } from 'src/mock/mock-AT';
+import { MensajePI } from 'src/app/model/mensajePI/mensajePI';
 
 @Component({
   selector: 'app-performance-indicator',
@@ -12,6 +13,9 @@ export class PerformanceIndicatorComponent implements OnInit {
   @Input() rae: number = 0;
   @Input() at: number = 0;
   performanceIndicators: PerformanceIndicator[] = [];
+  @Output() coso = new EventEmitter();
+  
+  @Input() mensaje: MensajePI = new MensajePI(0,0,0,0);
 
   constructor() {}
 
@@ -26,4 +30,7 @@ export class PerformanceIndicatorComponent implements OnInit {
     }
   }
 
+  addNewItem(){
+    this.coso.emit( this.mensaje );
+  } 
 }

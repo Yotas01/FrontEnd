@@ -1,17 +1,23 @@
+
+
 <h5 *ngFor="let pi of performanceIndicators"> 
     <p id="piDescription">{{pi.description}}</p> 
-    <table id="prueba">
-        <tr>
-            <th>Percentage</th>
-            <th>Exemplary</th>
-            <th>Competent</th>
-            <th>Below</th>
-        </tr>
-        <tr>
-            <td><input type="number" min="0"></td>
-            <td><input type="number" onkeypress="return event.charCode >= 48" min="1" ></td>
-            <td><input type="number" onkeypress="return event.charCode >= 48" min="1" ></td>
-            <td><input type="number" onkeypress="return event.charCode >= 48" min="1" ></td>
-        </tr>
-    </table>
+    <form>
+        <table id="prueba">
+            <tr>
+                <th>Percentage</th>
+                <th>Exemplary</th>
+                <th>Competent</th>
+                <th>Below</th>
+            </tr>
+            <tr>
+                <td><input type="number" min="0" [(ngModel)]="mensaje.porcentaje" name = "porcentaje"></td>
+                <td><input type="number" onkeypress="return event.charCode >= 48" min="1" [(ngModel)]="mensaje.ejemplar" name = "ejemplar"></td>
+                <td><input type="number" onkeypress="return event.charCode >= 48" min="1" [(ngModel)]="mensaje.estandar" name = "estandar"></td>
+                <td><input type="number" onkeypress="return event.charCode >= 48" min="1" [(ngModel)]="mensaje.debajo" name = "debajo"></td>
+            </tr>
+        </table>
+    </form>
+    {{mensaje | json}}
+
 </h5>

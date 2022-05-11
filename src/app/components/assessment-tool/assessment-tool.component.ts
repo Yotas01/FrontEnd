@@ -8,6 +8,7 @@ import { RAES } from 'src/mock/mock-RAE';
   styleUrls: ['./assessment-tool.component.css']
 })
 export class AssessmentToolComponent implements OnInit {
+  items : number[] = [];
 
   @Input() rae: number = 0;
   assessmentTools: AssessmentTool[] = [];
@@ -27,4 +28,7 @@ export class AssessmentToolComponent implements OnInit {
       
   }
 
+  addItem(newItem: number) {
+    this.items.push(newItem);
+  }
 }
