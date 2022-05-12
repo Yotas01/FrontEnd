@@ -1,14 +1,10 @@
 export class PerformanceIndicator {
-    PerformanceIndicatorId:number;
-    description:string;
-    percentage:number;
-    assessmentTool:number;
 
-  constructor(PerformanceIndicatorId: number, description: string, percentage: number, assessmentTool: number) {
-    this.PerformanceIndicatorId = PerformanceIndicatorId
+  constructor(public performanceIndicatorId: number, public description: string, public percentage: number,
+    public assessmentTool: number) {
+    this.performanceIndicatorId = performanceIndicatorId
     this.description = description
     this.percentage = percentage
     this.assessmentTool = assessmentTool
   }
-
 }

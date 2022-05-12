@@ -1,14 +1,10 @@
-import { AssessmentTool } from "src/model/AssessmentTool";
+import { AssessmentTool } from "../assessmentTool/assessment-tool";
 
 export class RAE {
-    RAEId:number;
-    description:string;
-    courseId:number;
-    assessmentTools:AssessmentTool[];
-    cdioList:number[];
 
-  constructor(RAEId: number, description: string, courseId: number, assessmentTools: AssessmentTool[], cdioList: number[]) {
-    this.RAEId = RAEId
+  constructor(public raeid: number, public description: string, public courseId: number, 
+    public assessmentTools: AssessmentTool[], public cdioList: number[]) {
+    this.raeid = raeid
     this.description = description
     this.courseId = courseId
     this.assessmentTools = assessmentTools

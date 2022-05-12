@@ -1,16 +1,12 @@
 import { SectionAssessmentTool } from "./section-assessment-tool";
 
 export class SectionReview {
-    courseNumber:number;
-    sectionNumber:number;
-    semester:number;
-    sectionAssessmentTools:SectionAssessmentTool[];
 
-  constructor(courseNumber: number, sectionNumber: number, semester: number, sectionAssessmentTools: SectionAssessmentTool[]) {
+  constructor(public courseNumber: number, public sectionNumber: number, public semester: number,
+    public sectionAssessmentTools: SectionAssessmentTool[]) {
     this.courseNumber = courseNumber
     this.sectionNumber = sectionNumber
     this.semester = semester
     this.sectionAssessmentTools = sectionAssessmentTools
   }
-
 }

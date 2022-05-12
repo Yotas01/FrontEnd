@@ -1,26 +1,17 @@
 import { SectionPerformanceIndicator } from "./section-performance-indicator";
 
 export class SectionAssessmentTool {
-    id:number;
-    courseNumber:number;
-    sectionNumber:number;
-    raeId:number;
-    assessmentToolId:number;
-    totalStudents:number;
-    semester:number;
-    draft:boolean;
-    sectionPerformanceIndicators:SectionPerformanceIndicator[];
 
   constructor(
-    id: number, 
-    courseNumber: number, 
-    sectionNumber: number, 
-    raeId: number, 
-    assessmentToolId: number, 
-    totalStudents: number, 
-    semester: number, 
-    draft: boolean, 
-    sectionPerformanceIndicators: SectionPerformanceIndicator[]
+    public id: number, 
+    public courseNumber: number, 
+    public sectionNumber: number, 
+    public raeId: number, 
+    public assessmentToolId: number, 
+    public totalStudents: number, 
+    public semester: number, 
+    public draft: boolean, 
+    public sectionPerformanceIndicators: SectionPerformanceIndicator[]
 ) {
     this.id = id
     this.courseNumber = courseNumber

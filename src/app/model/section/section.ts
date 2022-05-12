@@ -1,12 +1,7 @@
 export class Section {
-    SectionId:number;
-    number:number;
-    professor:string;
-    totalStudents:number;
-    semester:number;
-    course:Map<number,string>;
 
-  constructor(SectionId: number, number: number, professor: string, totalStudents: number, semester: number, course: Map<number,string>) {
+  constructor(public SectionId: number, public number: number, public professor: string,
+    public totalStudents: number, public semester: number, public course: Map<number,string>) {
     this.SectionId = SectionId
     this.number = number
     this.professor = professor

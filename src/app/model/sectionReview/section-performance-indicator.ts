@@ -1,17 +1,7 @@
 export class SectionPerformanceIndicator {
-    id:number;
-    sectionAssessmentToolId:number;
-    performanceIndicatorId:number;
-    exemplary:number;
-    competent:number;
-    below:number;
-    draft:boolean;
 
-
-  constructor(id: number, sectionAssessmentToolId: number, performanceIndicatorId: number, exemplary: number, competent: number, 
-    below: number, 
-    draft: boolean
-) {
+  constructor(public id: number, public sectionAssessmentToolId: number, public performanceIndicatorId: number,
+      public exemplary: number, public competent: number, public below: number, public draft: boolean) {
     this.id = id
     this.sectionAssessmentToolId = sectionAssessmentToolId
     this.performanceIndicatorId = performanceIndicatorId

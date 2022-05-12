@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CourseReview } from 'src/app/model/courseReview/course-review';
-import { Section } from 'src/app/model/section/section';
+import { Router } from '@angular/router';
 import { SearchCourseService } from 'src/app/services/search/search-course.service';
 
 @Component({
@@ -11,23 +9,26 @@ import { SearchCourseService } from 'src/app/services/search/search-course.servi
 })
 export class SearchCourseComponent implements OnInit {
 
-  courseNumber:number = 0;
-  semester:number = 0;
-  section:number = 0;
-  course:CourseReview = new CourseReview(1,1,"",new Section(1,1,"",1,1,new Map),[],[]);
+  courseNumber:number = 33698;
+  semester:number = 2110;
+  section:number = 1;
+  response_has_error: boolean = true;
+  error_response: string = "";
 
-  constructor(private searchService:SearchCourseService) { }
+  constructor(private searchService:SearchCourseService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    console.log("course: " + this.course.toString());
     this.searchService.getCourseForReview(this.courseNumber,this.section,this.semester)
-    .subscribe(foundCourse => {{
-      console.log("Found :" + foundCourse);
-      this.course.set(foundCourse);
-    }});
+    .subscribe({
+      next: (course) => {
+        console.log(course)
+        this.router.navigate(['/tables',this.courseNumber, this.section, this.semester]);
+      },
+      error: (e) => this.error_response = "Error " + e.status + " " + e.error
+    }); 
   }
 
 }

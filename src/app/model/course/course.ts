@@ -1,12 +1,6 @@
 export class Course {
-    CourseId:number;
-    number:number;
-    name:string;
-    sections:Map<number,string>;
-    RAEs:Map<number,string>;
-    cdioList:number[];
-
-    constructor(CourseId:number, number:number,name:string,sections:Map<number,string>,RAEs:Map<number,string>,cdioList:number[],){
+    constructor(public CourseId:number, public number:number, public name:string,
+        public sections:Map<number,string>, public RAEs:Map<number,string>, public cdioList:number[]){
         this.CourseId=CourseId;
         this.number = number;
         this.name = name;
