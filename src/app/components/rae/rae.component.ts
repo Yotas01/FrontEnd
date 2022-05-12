@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RAE } from 'src/model/RAE';
-import { RAES } from 'src/mock/mock-RAE';
-import { AssessmentTool } from 'src/model/AssessmentTool';
-import { PerformanceIndicator } from 'src/model/PerformanceIndicator';
+import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { AssessmentTool } from 'src/app/model/assessmentTool/assessment-tool';
+import { RAE } from 'src/app/model/rae/RAE';
 
 @Component({
   selector: 'app-rae',
@@ -11,10 +9,7 @@ import { PerformanceIndicator } from 'src/model/PerformanceIndicator';
 })
 export class RaeComponent implements OnInit {
 
-
-  raes: RAE[] = RAES.map(data => new RAE(data.id,data.description,data.assessmentTools
-    .map(data => new AssessmentTool(data.rae,data.id,data.description,data.value,data.totalStudents,data.performanceIndicators
-      .map(data => new PerformanceIndicator(data.rae,data.assessmentTool,data.description,data.percentage,data.exemplary,data.competent,data.below))))));
+  @Input() raes: RAE[] = [];
 
   constructor() { }
 

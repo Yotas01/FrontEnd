@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PerformanceIndicator } from 'src/model/PerformanceIndicator';
-import { ASSESSMENT_TOOLS } from 'src/mock/mock-AT';
+import { PerformanceIndicator } from 'src/app/model/performanceIndicator/performance-indicator';
 
 @Component({
   selector: 'app-performance-indicator',
@@ -9,21 +8,11 @@ import { ASSESSMENT_TOOLS } from 'src/mock/mock-AT';
 })
 export class PerformanceIndicatorComponent implements OnInit {
 
-  @Input() rae: number = 0;
-  @Input() at: number = 0;
-  performanceIndicators: PerformanceIndicator[] = [];
+  @Input() performanceIndicators: PerformanceIndicator[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    if(this.at != 0 && this.rae != 0){
-      const temp: PerformanceIndicator[] | undefined = ASSESSMENT_TOOLS.
-      find(data => data.rae == this.rae && data.id == this.at)?.performanceIndicators
-      .map(data => new PerformanceIndicator(data.rae,data.assessmentTool,data.description,data.percentage));
-      if(temp !== undefined){
-        this.performanceIndicators = temp as PerformanceIndicator[];
-      }
-    }
   }
 
 }

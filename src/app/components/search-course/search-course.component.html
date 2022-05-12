@@ -3,31 +3,31 @@
         <h1>
             <form (ngSubmit)="onSubmit()" #cursoForm="ngForm">
                 <div class="form-group">
-                    <label for="course">Curso</label>
+                    <label for="course">Id del Curso</label>
                     <input 
                         id="course"
                         type="number"
                         min=0
                         required
-                        [(ngModel)]="searchedCourse.curso"
+                        [(ngModel)]="courseNumber"
                         name="curso"            
                     />
                 </div><br>
                 <div class="form-group">
-                    <label for="section">Sección</label>
+                    <label for="section">Número de clase</label>
                     <input 
                         id="section"
                         type="number"
                         min=0
                         required
-                        [(ngModel)]="searchedCourse.seccion"
+                        [(ngModel)]="section"
                         name="seccion"            
                     />
                 </div><br>
                 <div class="form-group">
                     <label for="section">Semestre</label>
                         <select id="semesterSel" required 
-                            [(ngModel)]="searchedCourse.semestre" name="semestre">
+                            [(ngModel)]="semester" name="semestre">
                             <option [ngValue]="'2010'">2010</option>
                             <option [ngValue]="'2030'">2030</option>
                             <option [ngValue]="'2110'">2110</option>
@@ -38,12 +38,10 @@
                     type="submit"
                     class="btn"
                     [disabled]="!cursoForm.form.valid"
-                >
-                <a routerLink="/tables" routerLinkActive="active">
-                    Buscar</a>
-                </button>
+                >Buscar</button>
                 <button id = "report"><a routerLink="/report" routerLinkActive="active">Reportes</a></button>
-            </form>            
+            </form>
         </h1>
+        <h1>{{ error_response }}</h1>
     </html>
 </div>

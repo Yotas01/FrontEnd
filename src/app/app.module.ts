@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { PerformanceIndicatorComponent } from './components/performance-indicator/performance-indicator.component';
 import { AssessmentToolComponent } from './components/assessment-tool/assessment-tool.component';
 import { RaeComponent } from './components/rae/rae.component';
-import { CourseComponent } from './components/course/course.component';
-import { DataInputComponent } from './components/data-input/data-input.component';
 import { SearchCourseComponent } from './components/search-course/search-course.component';
 import { ReportComponent } from './components/report/report.component';
 import { ReviewComponent } from './components/review/review.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CourseReviewComponent } from './components/course-review/course-review.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +19,16 @@ import { FormsModule } from '@angular/forms';
     PerformanceIndicatorComponent,
     AssessmentToolComponent,
     RaeComponent,
-    CourseComponent,
-    DataInputComponent,
     SearchCourseComponent,
     ReportComponent,
-    ReviewComponent
+    ReviewComponent,
+    CourseReviewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
