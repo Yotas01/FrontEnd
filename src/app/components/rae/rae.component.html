@@ -1,6 +1,6 @@
 <body>
     <h2 *ngFor="let rae of raes; let i = index">
         <div class="rae" id = "rae">{{ "RAE " + i + ": " + rae.description}}</div>
-        <app-assessment-tool [assessmentTools]= rae.assessmentTools></app-assessment-tool>
+        <app-assessment-tool [assessmentTools]= rae.assessmentTools [sectionReview]=sectionReview></app-assessment-tool>
     </h2>
 </body>

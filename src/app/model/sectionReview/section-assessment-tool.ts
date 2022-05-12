@@ -3,7 +3,6 @@ import { SectionPerformanceIndicator } from "./section-performance-indicator";
 export class SectionAssessmentTool {
 
   constructor(
-    public id: number, 
     public courseNumber: number, 
     public sectionNumber: number, 
     public raeId: number, 
@@ -11,7 +10,8 @@ export class SectionAssessmentTool {
     public totalStudents: number, 
     public semester: number, 
     public draft: boolean, 
-    public sectionPerformanceIndicators: SectionPerformanceIndicator[]
+    public sectionPerformanceIndicators: SectionPerformanceIndicator[],
+    public id?: number
 ) {
     this.id = id
     this.courseNumber = courseNumber

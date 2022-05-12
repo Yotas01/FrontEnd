@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { AssessmentTool } from 'src/app/model/assessmentTool/assessment-tool';
 import { RAE } from 'src/app/model/rae/RAE';
+import { SectionReview } from 'src/app/model/sectionReview/section-review';
 
 @Component({
   selector: 'app-rae',
@@ -10,6 +11,7 @@ import { RAE } from 'src/app/model/rae/RAE';
 export class RaeComponent implements OnInit {
 
   @Input() raes: RAE[] = [];
+  @Input() sectionReview!: SectionReview;
 
   constructor() { }
 

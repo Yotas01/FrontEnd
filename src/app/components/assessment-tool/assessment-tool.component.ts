@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AssessmentTool } from 'src/app/model/assessmentTool/assessment-tool';
+import { SectionReview } from 'src/app/model/sectionReview/section-review';
 
 @Component({
   selector: 'app-assessment-tool',
@@ -9,6 +10,7 @@ import { AssessmentTool } from 'src/app/model/assessmentTool/assessment-tool';
 export class AssessmentToolComponent implements OnInit {
 
   @Input() assessmentTools: AssessmentTool[] = [];
+  @Input() sectionReview!: SectionReview;
 
   constructor() { }
 
