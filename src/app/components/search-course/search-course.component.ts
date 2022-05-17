@@ -24,7 +24,6 @@ export class SearchCourseComponent implements OnInit {
     this.searchService.getCourseForReview(this.courseNumber,this.section,this.semester)
     .subscribe({
       next: (course) => {
-        console.log(course)
         this.router.navigate(['/tables',this.courseNumber, this.section, this.semester]);
       },
       error: (e) => this.error_response = "Error " + e.status + " " + e.error

@@ -11,28 +11,4 @@ export class Constants{
     public static baseUrl:string = "http://localhost:8080";
     public static sectionBase = new Section(1,1,"",1,1,new Map);
     public static courseReviewBase = new CourseReview(1,1,"",this.sectionBase,[],[]);
-
-    public static createFromCourseReview(courseReview: CourseReview) : SectionReview{
-        var sectionReview = new SectionReview(0,0,0,[]);
-        sectionReview.courseNumber = courseReview.number;
-        sectionReview.sectionNumber = courseReview.section.number;
-        sectionReview.semester = courseReview.section.semester;
-        let sectionAssessmentTools : SectionAssessmentTool[] = [];
-    
-        for(var i = 0; i < courseReview.raes.length; i++){
-          var rae: RAE = courseReview.raes[i];
-          for(var j = 0; j < rae.assessmentTools.length; j++){
-            var at: AssessmentTool = rae.assessmentTools[j];
-            var sectionPIs: SectionPerformanceIndicator[] = [];
-            for(var k = 0; k < at.performanceIndicators.length; k++){
-              var pi: PerformanceIndicator = at.performanceIndicators[k];
-              sectionPIs.push(new SectionPerformanceIndicator(pi.performanceIndicatorId,0,0,0,true,undefined,undefined));
-            }
-            sectionAssessmentTools
-            .push(new SectionAssessmentTool(sectionReview.courseNumber,sectionReview.sectionNumber,rae.raeid,at.assessmentToolId,0,sectionReview.semester,true,sectionPIs,undefined));
-          }
-        }
-        sectionReview.sectionAssessmentTools = sectionAssessmentTools;
-        return sectionReview;
-      }
 }

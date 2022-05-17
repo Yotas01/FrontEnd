@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PerformanceIndicator } from 'src/app/model/performanceIndicator/performance-indicator';
+import { SectionPerformanceIndicator } from 'src/app/model/sectionReview/section-performance-indicator';
 
 @Component({
   selector: 'app-performance-indicator',
@@ -8,7 +9,8 @@ import { PerformanceIndicator } from 'src/app/model/performanceIndicator/perform
 })
 export class PerformanceIndicatorComponent implements OnInit {
 
-  @Input() performanceIndicators: PerformanceIndicator[] = [];
+  @Input() performanceIndicator!: PerformanceIndicator;
+  @Input() sectionPI!: SectionPerformanceIndicator;
 
   constructor() {}
 

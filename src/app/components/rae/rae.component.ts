@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { AssessmentTool } from 'src/app/model/assessmentTool/assessment-tool';
 import { RAE } from 'src/app/model/rae/RAE';
+import { SectionAssessmentTool } from 'src/app/model/sectionReview/section-assessment-tool';
 import { SectionReview } from 'src/app/model/sectionReview/section-review';
 
 @Component({
@@ -10,12 +11,16 @@ import { SectionReview } from 'src/app/model/sectionReview/section-review';
 })
 export class RaeComponent implements OnInit {
 
-  @Input() raes: RAE[] = [];
+  @Input() rae!: RAE;
   @Input() sectionReview!: SectionReview;
+  sectionAssessmentTools!: SectionAssessmentTool[];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.sectionAssessmentTools = 
+    this.sectionReview.sectionAssessmentTools
+    .filter(at => at.raeId == this.rae.raeid);
   }
 
 }

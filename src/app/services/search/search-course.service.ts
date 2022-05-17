@@ -15,6 +15,6 @@ export class SearchCourseService {
 
   getCourseForReview(course:number,section:number,semester:number):Observable<HttpResponse<CourseReview>>{
     return this.http.get<CourseReview>
-    (this.baseUrl+"/course/"+course+"/section/"+section+"/semester/"+semester,{ observe : 'response'});
+    (this.baseUrl+`/course/${course}/section/${section}/semester/${semester}`,{ observe : 'response'});
   }
 }

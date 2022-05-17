@@ -16,8 +16,16 @@
             <div class="course-semester">
             </div>
         </div>
-        <app-rae [raes]= "raes" [sectionReview]="sectionReview"></app-rae>
+        <h2>Resultados de Aprendizaje Esperados (RAEs)</h2>
+        <p>{{ sectionReview | json}}</p>
+        <form (ngSubmit)="onSubmit()" #assessToolForm="ngForm">
+            <div *ngFor="let rae of courseReview.raes">
+                <app-rae [rae]="rae" [sectionReview]="sectionReview"></app-rae>
+            </div>
+            <input type="submit" value="Enviar">
+        </form>
         <button><a routerLink="/search" routerLinkActive="active">Regresar</a></button>
-        <button><a routerLink="/search" routerLinkActive="active">Enviar</a></button>
+        <button (click)="saveUnfinished()"> Guardar y terminar más tarde</button>
+        <h2>{{ error }}</h2>
     </body>  
 </html>

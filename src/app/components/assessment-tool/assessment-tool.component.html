@@ -1,11 +1,7 @@
-<div class="assessment-tool">Assessment Tools</div>
-
-<h3 *ngFor="let a of assessmentTools">
-    <div class="assessment-description" id="assessDescription">{{ a.description }}</div>
-    <form (ngSubmit)="onSubmit()" #assessToolForm="ngForm">
-        <label for="value">Value: {{ a.value }}</label>
-        <label for="totalStudents"> Students who presented the assessment </label>
-        <input type="number" onkeypress="return event.charCode >= 48" min="1" >
-        <app-performance-indicator [performanceIndicators]=a.performanceIndicators></app-performance-indicator>
-    </form>
-</h3>
+<div class="assessment-description" id="assessDescription">{{ assessmentTool.description + ": " + assessmentTool.value + "%" }}</div>
+<label for="totalStudents">How many students presented the assessment? </label>
+<input type="number" [(ngModel)]="sectionAssessmentTool.totalStudents" name="totalStudents" onkeypress="return event.charCode >= 48" min="1" ><br>
+<p><u>Performance indicators for the assessment tool</u></p>
+<div *ngFor="let pi of assessmentTool.performanceIndicators; let i=index">
+    <app-performance-indicator [performanceIndicator]="pi" [sectionPI]="sectionAssessmentTool.sectionPerformanceIndicators[i]"></app-performance-indicator>
+</div>
