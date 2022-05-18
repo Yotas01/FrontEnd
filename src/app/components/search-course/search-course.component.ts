@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchCourseService } from 'src/app/services/search/search-course.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-search-course',
@@ -15,7 +16,7 @@ export class SearchCourseComponent implements OnInit {
   response_has_error: boolean = true;
   error_response: string = "";
 
-  constructor(private searchService:SearchCourseService, private router:Router) { }
+  constructor(private searchService:SearchCourseService, private router:Router, private toastService: ToastService) { }
 
   ngOnInit(): void {
   }

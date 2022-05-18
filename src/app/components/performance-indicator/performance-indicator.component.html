@@ -1,9 +1,9 @@
 <p id="piDescription">{{performanceIndicator.description + ": " + performanceIndicator.percentage + "%"}}</p> 
 <table id="prueba">
     <tr>
-        <th>Exemplary</th>
-        <th>Competent</th>
-        <th>Below</th>
+        <th>Number of exemplary students (3.75-5.0) </th>
+        <th>Number of competent students (3.0-3.74)</th>
+        <th>Number of students below standard (0-2.9)</th>
     </tr>
     <tr>
         <td><input type="number" [(ngModel)]="sectionPI.exemplary" name="exemplary" onkeypress="return event.charCode >= 48" min="1" ></td>

@@ -9,7 +9,7 @@ import { CourseReviewComponent } from './components/course-review/course-review.
 const routes: Routes = [
   {path: 'search',component:SearchCourseComponent},
   {path: 'tables/:course/:section/:semester',component:CourseReviewComponent},
-  {path: 'report',component:ReportComponent},
+  {path: 'admin',component:ReportComponent},
   {path: 'review',component:ReviewComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'}];
 

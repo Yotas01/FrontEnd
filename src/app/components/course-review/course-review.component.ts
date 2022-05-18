@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Constants } from 'src/app/common/Constants';
 import { Mapper } from 'src/app/common/Mapper';
 import { CourseReview } from 'src/app/model/courseReview/course-review';
-import { RAE } from 'src/app/model/rae/RAE';
 import { SectionReview } from 'src/app/model/sectionReview/section-review';
 import { ReviewSectionService } from 'src/app/services/review/review-section.service';
 import { SearchCourseService } from 'src/app/services/search/search-course.service';
@@ -15,12 +14,14 @@ import { SearchCourseService } from 'src/app/services/search/search-course.servi
 })
 export class CourseReviewComponent implements OnInit {
 
+  @ViewChild("toast") toast!: ElementRef;
   title = 'Reportes ABET';
   courseReview: CourseReview = Constants.courseReviewBase;
   sectionReview!: SectionReview;
   error: string = "";
 
-  constructor(private route: ActivatedRoute, private searchService: SearchCourseService, private reviewService: ReviewSectionService) { }
+  constructor(private route: ActivatedRoute, private searchService: SearchCourseService,
+    private reviewService: ReviewSectionService, private router: Router) { }
 
   ngOnInit(): void {
     let courseNumber = parseInt(this.route.snapshot.paramMap.get('course') || "");
@@ -37,17 +38,52 @@ export class CourseReviewComponent implements OnInit {
       }
     })
   }
+
   onSubmit(){
-    console.log("FORM SUBBMITED");
-    console.log(this.sectionReview);
-    /*
-    this.reviewService.sendSectionReview(this.sectionReview).subscribe({
-      next: (response) => console.log(response),
-      error: (e) => this.error="Error " + e.status + " " + e.error
-    })
-    */
+    try {
+      this.validateData();
+      this.setDraftToFalse();
+      this.reviewService.sendSectionReview(this.sectionReview).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate(['/search']);
+        },
+        error: (e) => this.error="Error " + e.status + " " + e.error
+      });
+    } catch (e) {
+      if(e instanceof Error)
+        this.error = e.message;
+    }
   }
+
   saveUnfinished(){
-    console.log("FORM submited for later");
+    try {
+      this.validateData();
+      console.log(this.sectionReview);
+    } catch (e) {
+      if(e instanceof Error)
+        this.error = e.message;
+    }
+  }
+
+  validateData(){
+    let totalStudents = this.courseReview.section.totalStudents;
+    if(this.sectionReview.sectionAssessmentTools.some(sat => sat.totalStudents > totalStudents || sat.totalStudents ===0))
+      throw new Error("El total de estudiantes de los assessment tool debe ser menor o igual a la cantidad de estudiantes: " + totalStudents + " pero mayor que cero");
+      this.sectionReview.sectionAssessmentTools.forEach(sat => {
+        let satTotal = sat.totalStudents;
+        sat.sectionPerformanceIndicators.forEach(spi => {
+          let sum = spi.below + spi.competent + spi.exemplary;
+          if(sum != satTotal)
+            throw new Error("El total de estudiantes por PI: " + sum + " debe ser igual al total de estudiantes que presentaron el Assessment Tool: " + satTotal);
+        })
+      })
+  }
+
+  setDraftToFalse(){
+    this.sectionReview.sectionAssessmentTools.map(sat => {
+      sat.draft = false;
+      sat.sectionPerformanceIndicators.map(spi => spi.draft = false);
+    })
   }
 }
