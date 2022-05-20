@@ -14,7 +14,6 @@ import { SearchCourseService } from 'src/app/services/search/search-course.servi
 })
 export class CourseReviewComponent implements OnInit {
 
-  @ViewChild("toast") toast!: ElementRef;
   title = 'Reportes ABET';
   courseReview: CourseReview = Constants.courseReviewBase;
   sectionReview!: SectionReview;

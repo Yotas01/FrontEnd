@@ -1,5 +1,5 @@
 <h1> 
-    <h2>Reporte CDIO 2.1</h2>
+    <h2>Reporte {{ reportType + "-" + id }}</h2>
     <table id="review">
         <tr>
             <th></th>
@@ -42,9 +42,9 @@
         </tr>
         <tr>
             <td><label for="a">Desempeño promedio</label></td>
-            <td><label for="a">32.5%</label></td>
-            <td><label for="a">56%</label></td>
-            <td><label for="a">11.5%</label></td>
+            <td><label for="a">{{ report.exemplary }}%</label></td>
+            <td><label for="a">{{ report.competent }}%</label></td>
+            <td><label for="a">{{ report.below }}%</label></td>
         </tr>
     </table>
     <button><a routerLink="/report" routerLinkActive="active">Regresar</a></button>
