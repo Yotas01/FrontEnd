@@ -1,20 +1,22 @@
 <div class="report-header">
     <div class="report-id-name">
-        Reportes
+        Reports
     </div>
 </div><br><br>
 <div class="report-chooser">
-    <label id="reportType">Please choose what type of report you want to generate  
+    <label id="reportType">Please choose what type of report you want to generate
         <select id="reportType" [(ngModel)]="selected">
             <option disabled value="null">Select the type of report</option>
             <option [ngValue]="'outcome'">Outcome</option>
             <option [ngValue]="'cdio'">CDIO</option>
             <option [ngValue]="'course'">Course</option>
-    </select></label><br>
+        </select>
+    </label><br>
     <div [hidden]="selected !== 'outcome'">
         <label id="outcome">Choose the outcome for the report
             <select id="outcomeReport" [(ngModel)]="id">
                 <option disabled value="null">Select the outcome</option>
+                <option value="null"> </option>
                 <option *ngFor="let o of outcomes">{{ o.id }}</option>
             </select>
         </label>
@@ -46,7 +48,8 @@
             </select>
         </label> 
     </div>
-    <button id = "report" (click)="onSubmit()">Generar reporte</button><br>
-    <button><a routerLink="/search" routerLinkActive="active">Regresar</a></button>
+    <button id = "report" (click)="onSubmit()">Generate report</button><br>
+    <button (click)="updateInformation()">Update Information</button><br>
+    <button><a routerLink="/search" routerLinkActive="active">Log Out</a></button>
     <router-outlet></router-outlet>  
 </div>

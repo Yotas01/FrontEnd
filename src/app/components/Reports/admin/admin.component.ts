@@ -53,4 +53,8 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/report',this.selected,this.id,this.semester]);
   }
 
+  updateInformation(){
+    this.router.navigate(['admin/update']);
+  }
+
 }

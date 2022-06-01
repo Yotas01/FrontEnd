@@ -12,6 +12,7 @@ import { PerformanceIndicatorComponent } from './components/Course Reviews/perfo
 import { AssessmentToolComponent } from './components/Course Reviews/assessment-tool/assessment-tool.component';
 import { RaeComponent } from './components/Course Reviews/rae/rae.component';
 import { CourseReviewComponent } from './components/Course Reviews/course-review/course-review.component';
+import { CRUDComponent } from './components/CRUDs/crud/crud.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CourseReviewComponent } from './components/Course Reviews/course-review
     SearchCourseComponent,
     AdminComponent,
     ReportComponent,
-    CourseReviewComponent
+    CourseReviewComponent,
+    CRUDComponent
   ],
   imports: [
     BrowserModule,
