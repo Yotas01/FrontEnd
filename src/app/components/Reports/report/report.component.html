@@ -1,52 +1,51 @@
-<div class="report-header">
-    <div class="report-id-name">
-        Reportes
-    </div>
-</div><br><br>
-<div class="report-chooser">
-    <label id="reportType">Please choose what type of report you want to generate  
-        <select id="reportType" [(ngModel)]="selected">
-            <option disabled value="null">Select the type of report</option>
-            <option [ngValue]="'outcome'">Outcome</option>
-            <option [ngValue]="'cdio'">CDIO</option>
-            <option [ngValue]="'course'">Course</option>
-    </select></label><br>
-    <div [hidden]="selected !== 'outcome'">
-        <label id="outcome">Choose the outcome for the report
-            <select id="outcomeReport" [(ngModel)]="id">
-                <option disabled value="null">Select the outcome</option>
-                <option *ngFor="let o of outcomes">{{ o.id }}</option>
-            </select>
-        </label>
-    </div>
-    <div [hidden]="selected !== 'cdio'">
-        <label id="cdio">Choose the CDIO for the report
-            <select id="cdioReport" [(ngModel)]="id">
-                <option disabled value="null">Select the CDIO</option>
-                <option *ngFor="let c of cdios">{{ c.number }}</option>
-            </select>
-        </label>
-    </div>
-    <div [hidden]="selected !== 'course'">
-        <label id="course">Choose the course for the report
-            <select id="courseReport" [(ngModel)]="id">
-                <option disabled value="null">Select the course</option>
-                <option *ngFor="let course of courses">{{ course.number }}</option>
-            </select>
-        </label>
-    </div>
-    <div [hidden]="!id">
-        <label>Select the semester for the report
-            <select id="semester" [(ngModel)]="semester">
-                <option disabled value="null">Select the semester</option>
-                <option [ngValue]="'2010'">2010</option>
-                <option [ngValue]="'2030'">2030</option>
-                <option [ngValue]="'2110'">2110</option>
-                <option [ngValue]="'2130'">2130</option>
-            </select>
-        </label> 
-    </div>
-    <button id = "report" (click)="onSubmit()">Generar reporte</button><br>
-    <button><a routerLink="/search" routerLinkActive="active">Regresar</a></button>
-    <router-outlet></router-outlet>  
-</div>
+<h1> 
+    <h2>Reporte {{ reportType + "-" + id }}</h2>
+    <table id="review">
+        <tr>
+            <th></th>
+            <th>Exemplary</th>
+            <th>Competent</th>
+            <th>Below</th>
+        </tr>
+        <tr>
+            <td><label for="a">Introducción a la programación</label></td>
+            <td><label for="a">34%</label></td>
+            <td><label for="a">56%</label></td>
+            <td><label for="a">10%</label></td>
+        </tr>
+        <tr>
+            <td><label for="a">Estructuras de datos</label></td>
+            <td><label for="a">30%</label></td>
+            <td><label for="a">54%</label></td>
+            <td><label for="a">16%</label></td>
+        </tr>
+        <tr>
+            <td><label for="a">Computación movil</label></td>
+            <td><label for="a">42%</label></td>
+            <td><label for="a">57%</label></td>
+            <td><label for="a">1%</label></td>
+        </tr>
+        <tr>
+            <td><label for="a">Arquitectura de software</label></td>
+            <td><label for="a">24%</label></td>
+            <td><label for="a">57%</label></td>
+            <td><label for="a">19%</label></td>
+        </tr>
+        <br><br>
+    </table>
+    <table id="average">
+        <tr>
+            <th></th>
+            <th>Exemplary</th>
+            <th>Competent</th>
+            <th>Below</th>
+        </tr>
+        <tr>
+            <td><label for="a">Desempeño promedio</label></td>
+            <td><label for="a">{{ report.exemplary }}%</label></td>
+            <td><label for="a">{{ report.competent }}%</label></td>
+            <td><label for="a">{{ report.below }}%</label></td>
+        </tr>
+    </table>
+    <button><a routerLink="/report" routerLinkActive="active">Regresar</a></button>
+</h1>

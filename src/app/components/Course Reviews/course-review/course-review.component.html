@@ -1,7 +1,6 @@
 <html>
     <head>
         <meta charset="utf-8">
-            <title>{{title}}</title>
     </head>
     <body>
         <div class="course-header">
@@ -22,10 +21,10 @@
             <div *ngFor="let rae of courseReview.raes">
                 <app-rae [rae]="rae" [sectionReview]="sectionReview"></app-rae>
             </div>
+            <h2>{{ error }}</h2>
             <input type="submit" value="Enviar">
         </form>
         <button><a routerLink="/search" routerLinkActive="active">Regresar</a></button>
         <button (click)="saveUnfinished()"> Guardar y terminar más tarde</button>
-        <h2>{{ error }}</h2>
     </body>  
 </html>

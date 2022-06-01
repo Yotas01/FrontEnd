@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CDIO } from 'src/app/model/CDIO/cdio';
-import { Course } from 'src/app/model/course/course';
-import { Outcome } from 'src/app/model/outcome/outcome';
-import { CDIOService } from 'src/app/services/CRUD/CDIO/cdio.service';
-import { CourseService } from 'src/app/services/CRUD/Course/course.service';
-import { OutcomeService } from 'src/app/services/CRUD/Outcome/outcome.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Report } from 'src/app/model/report/report';
+import { ReportService } from 'src/app/services/report/report.service';
 
 @Component({
   selector: 'app-report',
@@ -14,43 +10,24 @@ import { OutcomeService } from 'src/app/services/CRUD/Outcome/outcome.service';
 })
 export class ReportComponent implements OnInit {
 
-  outcomes!: Outcome[];
-  cdios!: CDIO[];
-  courses!: Course[];
-  selected!: string;
-  semester!: string;
+  report!: Report;
+  reportType!: string;
   id!: number;
+  semester!: number;
 
-  constructor(private outcomeService: OutcomeService, private cdioService: CDIOService,
-    private courseService: CourseService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private reportService: ReportService) { }
 
   ngOnInit(): void {
-    this.outcomeService.getAll().subscribe({
+    this.reportType = this.route.snapshot.paramMap.get('reportType') || "";
+    this.id =  parseFloat(this.route.snapshot.paramMap.get('id') || "");
+    this.semester =  parseInt(this.route.snapshot.paramMap.get('semester') || "");
+    this.reportService.getReport(this.reportType, this.id, this.semester).subscribe({
       next: (response) => {
         if(response.body)
-          this.outcomes = response.body
+          this.report = response.body;
       },
       error: (e) => console.log(e)
-    });
-    this.cdioService.getAll().subscribe({
-      next: (response) => {
-        if(response.body)
-          this.cdios = response.body;
-      },
-      error: (e) => console.log(e)
-    });
-    this.courseService.getAll().subscribe({
-      next: (response) => {
-        if(response.body)
-          this.courses = response.body
-      },
-      error: (e) => console.log(e)
-    });
-  }
-
-  onSubmit(){
-    if(this.selected && this.id && this.semester)
-      this.router.navigate(['/report',this.selected,this.id,this.semester]);
+    })
   }
 
 }

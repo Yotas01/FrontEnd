@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Constants } from 'src/app/common/Constants';
 import { Mapper } from 'src/app/common/Mapper';
 import { CourseReview } from 'src/app/model/courseReview/course-review';
 import { SectionReview } from 'src/app/model/sectionReview/section-review';
@@ -14,8 +13,7 @@ import { SearchCourseService } from 'src/app/services/search/search-course.servi
 })
 export class CourseReviewComponent implements OnInit {
 
-  title = 'Reportes ABET';
-  courseReview: CourseReview = Constants.courseReviewBase;
+  courseReview!: CourseReview;
   sectionReview!: SectionReview;
   error: string = "";
 
