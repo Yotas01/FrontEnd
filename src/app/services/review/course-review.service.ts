@@ -7,7 +7,7 @@ import { CourseReview } from 'src/app/model/courseReview/course-review';
 @Injectable({
   providedIn: 'root'
 })
-export class SearchCourseService { 
+export class CourseReviewService { 
 
   private baseUrl:string = Constants.baseUrl + "/course-review";
 

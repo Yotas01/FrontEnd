@@ -5,4 +5,12 @@
     <option [ngValue]="'cdios'">CDIOs</option>
     <option [ngValue]="'courses'">Courses</option>
 </select>
-<button  (click)="onClick()">Confirm</button>
+<div [hidden]="selectedOption !== 'courses'">
+    <label id="course">Choose the course for the report
+        <select id="courseReport" [(ngModel)]="courseNumber">
+            <option value="null"></option>
+            <option [ngValue]="course.number" *ngFor="let course of courses">{{ course.name + " -- " + course.number }}</option>
+        </select>
+    </label>
+</div>
+<button (click)="onClick()">Confirm</button>

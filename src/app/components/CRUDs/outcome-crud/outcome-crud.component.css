@@ -13,6 +13,11 @@ h1{
     text-align: center;
 }
 
+input{
+    margin: 0 20px;
+    background-color: none;
+}
+
 .centered{
     text-align: center;
 }

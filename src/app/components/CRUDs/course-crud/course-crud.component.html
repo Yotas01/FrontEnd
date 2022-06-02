@@ -1,1 +1,19 @@
-<p>course-crud works!</p>
+<p>{{ course | json }}</p>
+<h2>Course: {{ course.name }} - {{ course.number }}</h2>
+<h2>Related CDIO competences</h2>
+<table>
+    <thead>
+        <th>CDIO</th>
+        <th>Bloom value</th>
+        <th>Operation <button>Add CDIO</button></th>
+    </thead>
+    <tbody *ngFor="let courseHasCDIO of cdiosWithValues | keyvalue">
+        <td>{{ courseHasCDIO.key }}</td>
+        <td>{{ courseHasCDIO.value }}</td>
+        <td><button>Edit</button><button>Delete</button></td>
+    </tbody>
+</table>
+<h2>RAEs (Resultados de Aprendizaje Esperados)</h2>
+<div *ngFor="let rae of course.raes| keyvalue">
+    <app-rae-crud [raeId]="rae.key" [courseNumber]="courseNumber"></app-rae-crud>
+</div>

@@ -8,11 +8,9 @@
         <th>Operation <button (click)="createOutcome()">Add Outcome</button></th>
     </thead>
     <tbody *ngFor="let outcome of outcomes">
-        <td class="centered">{{ outcome.id }}</td>
+        <td class="centered"><!--<input [(ngModel)]="outcome.id" type="number">-->{{ outcome.id }}</td>
         <td>{{ outcome.description }}</td>
         <td class="centered">{{ outcome.cdios }}</td>
         <td><button (click)="updateOutcome(outcome.id)">Edit</button><button (click)="deleteOutcome(outcome.id)">Delete</button></td>
     </tbody>
 </table>
-
-<h2>{{ operation }}</h2>

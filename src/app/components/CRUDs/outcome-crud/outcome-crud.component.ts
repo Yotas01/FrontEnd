@@ -13,7 +13,6 @@ export class OutcomeCRUDComponent implements OnInit {
   outcomes: Outcome[] = []
   managedOutcome!: Outcome;
   bool: boolean = false;
-  operation!: CRUDs;
 
   constructor(private outcomeService: OutcomeService) { }
 
@@ -28,17 +27,15 @@ export class OutcomeCRUDComponent implements OnInit {
   }
 
   createOutcome(){
-    this.operation = CRUDs.create;
-    this.managedOutcome = new Outcome(0,"",[]);
+    this.outcomes.push(new Outcome(0,"",[]));
   }
 
   updateOutcome(outcomeId: number){
-    this.operation = CRUDs.update;
-    this.managedOutcome = this.outcomes.find(out => out.id = outcomeId) || new Outcome(0,"",[]);;
+    this.managedOutcome = this.outcomes.find(out => out.id = outcomeId)!;
   }
 
   deleteOutcome(outcomeId: number){
-    this.operation = CRUDs.delete;
-    this.managedOutcome = this.outcomes.find(out => out.id = outcomeId) || new Outcome(0,"",[]);;
+    let index = this.outcomes.indexOf(this.outcomes.find(out => out.id = outcomeId)!);
+    this.outcomes.splice(index,1);
   }
 }

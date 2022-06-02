@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchCourseService } from 'src/app/services/search/search-course.service';
-import { ToastService } from 'src/app/services/toast/toast.service';
+import { CourseReviewService } from 'src/app/services/review/course-review.service';
 
 @Component({
   selector: 'app-search-course',
@@ -16,13 +15,13 @@ export class SearchCourseComponent implements OnInit {
   response_has_error: boolean = true;
   error_response: string = "";
 
-  constructor(private searchService:SearchCourseService, private router:Router, private toastService: ToastService) { }
+  constructor(private courseReviewService:CourseReviewService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    this.searchService.getCourseForReview(this.courseNumber,this.section,this.semester)
+    this.courseReviewService.getCourseForReview(this.courseNumber,this.section,this.semester)
     .subscribe({
       next: (course) => {
         this.router.navigate(['/tables',this.courseNumber, this.section, this.semester]);

@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Mapper } from 'src/app/common/Mapper';
 import { CourseReview } from 'src/app/model/courseReview/course-review';
 import { SectionReview } from 'src/app/model/sectionReview/section-review';
+import { CourseReviewService } from 'src/app/services/review/course-review.service';
 import { ReviewSectionService } from 'src/app/services/review/review-section.service';
-import { SearchCourseService } from 'src/app/services/search/search-course.service';
 
 @Component({
   selector: 'app-course-review',
@@ -17,7 +17,7 @@ export class CourseReviewComponent implements OnInit {
   sectionReview!: SectionReview;
   error: string = "";
 
-  constructor(private route: ActivatedRoute, private searchService: SearchCourseService,
+  constructor(private route: ActivatedRoute, private courseReviewService: CourseReviewService,
     private reviewService: ReviewSectionService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class CourseReviewComponent implements OnInit {
     let sectionNumber = parseInt(this.route.snapshot.paramMap.get('section') || "");
     let semester = parseInt(this.route.snapshot.paramMap.get('semester') || "");
     
-    this.searchService.getCourseForReview(courseNumber,sectionNumber,semester)
+    this.courseReviewService.getCourseForReview(courseNumber,sectionNumber,semester)
     .subscribe(response => {
       if(response.body){
         this.courseReview = response.body;

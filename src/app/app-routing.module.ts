@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'admin/management',component:CRUDComponent},
   {path: 'admin/management/outcomes',component:OutcomeCRUDComponent},
   {path: 'admin/management/cdios',component:CdioCRUDComponent},
-  {path: 'admin/management/courses',component:CourseCRUDComponent},
+  {path: 'admin/management/courses/:courseNumber',component:CourseCRUDComponent},
   {path: 'report/:reportType/:id/:semester',component:ReportComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'}];
 

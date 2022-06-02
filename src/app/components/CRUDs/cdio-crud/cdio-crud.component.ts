@@ -24,6 +24,8 @@ export class CdioCRUDComponent implements OnInit {
   }
 
   createCDIO(){
+    this.cdios.push(new CDIO("nuevo",0,[],[],[]));
+    console.log(this.cdios);
   }
 
   updateCDIO(cdioNumber: number){
@@ -31,7 +33,8 @@ export class CdioCRUDComponent implements OnInit {
   }
 
   deleteCDIO(cdioNumber: number){
-
+    let index = this.cdios.indexOf(this.cdios.find(cdio => cdio.number == cdioNumber)!);
+    this.cdios.splice(index,1);
   }
 
 }
