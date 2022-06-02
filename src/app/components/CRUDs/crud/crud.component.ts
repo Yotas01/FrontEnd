@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-crud',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CRUDComponent implements OnInit {
 
-  constructor() { }
+  selectedOption!: string;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onClick(){
+    if(this.selectedOption !== undefined)
+      this.router.navigate(['admin/management/'+this.selectedOption]);
   }
 
 }

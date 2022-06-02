@@ -1,0 +1,16 @@
+<h1>ABET Outcomes</h1>
+
+<table>
+    <thead>
+        <th>CDIO number</th>
+        <th>Description</th>
+        <th>Related Outcomes</th>
+        <th>Operation <button (click)="createCDIO()">Add CDIO</button></th>
+    </thead>
+    <tbody *ngFor="let cdio of cdios">
+        <td class="centered">{{ cdio.number }}</td>
+        <td>{{ cdio.description }}</td>
+        <td class="centered">{{ cdio.outcomes }}</td>
+        <td><button (click)="updateCDIO(cdio.number)">Edit</button><button (click)="deleteCDIO(cdio.number)">Delete</button></td>
+    </tbody>
+</table>

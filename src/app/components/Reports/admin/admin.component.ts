@@ -54,7 +54,7 @@ export class AdminComponent implements OnInit {
   }
 
   updateInformation(){
-    this.router.navigate(['admin/update']);
+    this.router.navigate(['admin/management']);
   }
 
 }

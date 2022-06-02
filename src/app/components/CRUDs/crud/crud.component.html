@@ -1,1 +1,8 @@
-<p>crud works!</p>
+<h1>Please choose what you want to update</h1>
+<select name="crudOption" id="options" [(ngModel)]="selectedOption">
+    <option disabled value = "null"></option>
+    <option [ngValue]="'outcomes'">Outcomes</option>
+    <option [ngValue]="'cdios'">CDIOs</option>
+    <option [ngValue]="'courses'">Courses</option>
+</select>
+<button  (click)="onClick()">Confirm</button>

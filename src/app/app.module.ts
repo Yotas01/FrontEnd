@@ -13,6 +13,9 @@ import { AssessmentToolComponent } from './components/Course Reviews/assessment-
 import { RaeComponent } from './components/Course Reviews/rae/rae.component';
 import { CourseReviewComponent } from './components/Course Reviews/course-review/course-review.component';
 import { CRUDComponent } from './components/CRUDs/crud/crud.component';
+import { OutcomeCRUDComponent } from './components/CRUDs/outcome-crud/outcome-crud.component';
+import { CdioCRUDComponent } from './components/CRUDs/cdio-crud/cdio-crud.component';
+import { CourseCRUDComponent } from './components/CRUDs/course-crud/course-crud.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { CRUDComponent } from './components/CRUDs/crud/crud.component';
     AdminComponent,
     ReportComponent,
     CourseReviewComponent,
-    CRUDComponent
+    CRUDComponent,
+    OutcomeCRUDComponent,
+    CdioCRUDComponent,
+    CourseCRUDComponent
   ],
   imports: [
     BrowserModule,
