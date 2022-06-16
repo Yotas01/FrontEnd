@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './components/Reports/admin/admin.component';
-import { ReportComponent } from './components/Reports/report/report.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchCourseComponent } from './components/search-course/search-course.component';
@@ -19,6 +18,9 @@ import { CourseCRUDComponent } from './components/CRUDs/course-crud/course-crud.
 import { RaeCRUDComponent } from './components/CRUDs/rae-crud/rae-crud.component';
 import { AssessmentToolCRUDComponent } from './components/CRUDs/assessmentTool-crud/assessment-tool-crud.component';
 import { PerformanceIndicatorCRUDComponent } from './components/CRUDs/performanceIndicator-crud/performance-indicator-crud.component';
+import { CourseReportComponent } from './components/Reports/course-report/course-report.component';
+import { CdioReportComponent } from './components/Reports/cdio-report/cdio-report.component';
+import { OutcomeReportComponent } from './components/Reports/outcome-report/outcome-report.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,6 @@ import { PerformanceIndicatorCRUDComponent } from './components/CRUDs/performanc
     RaeComponent,
     SearchCourseComponent,
     AdminComponent,
-    ReportComponent,
     CourseReviewComponent,
     CRUDComponent,
     OutcomeCRUDComponent,
@@ -37,6 +38,9 @@ import { PerformanceIndicatorCRUDComponent } from './components/CRUDs/performanc
     RaeCRUDComponent,
     AssessmentToolCRUDComponent,
     PerformanceIndicatorCRUDComponent,
+    CourseReportComponent,
+    CdioReportComponent,
+    OutcomeReportComponent,
   ],
   imports: [
     BrowserModule,

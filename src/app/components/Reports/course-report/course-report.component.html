@@ -1,0 +1,30 @@
+<h2>Report for course - {{ id }}</h2>
+<table id="review">
+    <thead>
+        <th>Sections</th>
+        <th>Exemplary</th>
+        <th>Competent</th>
+        <th>Below</th>
+    </thead>
+    <tbody *ngFor="let section of courseReport.sectionsReport; let i = index">
+        <td>{{ this.sections[i].professor + " - " + this.sections[i].number }}</td>
+        <td>{{ section.exemplary }}%</td>
+        <td>{{ section.competent }}%</td>
+        <td>{{ section.below }}%</td>
+    </tbody>
+</table>
+<table id="average">
+    <thead>
+        <th></th>
+        <th>Exemplary</th>
+        <th>Competent</th>
+        <th>Below</th>
+    </thead>
+    <tbody>
+        <td><label for="a"> Average performance </label></td>
+        <td><label for="a">{{ courseReport.courseReport.exemplary }}%</label></td>
+        <td><label for="a">{{ courseReport.courseReport.competent }}%</label></td>
+        <td><label for="a">{{ courseReport.courseReport.below }}%</label></td>
+    </tbody>
+</table>
+<button><a routerLink="/report" routerLinkActive="active">Regresar</a></button>

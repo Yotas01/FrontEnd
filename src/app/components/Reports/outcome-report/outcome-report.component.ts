@@ -1,33 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Report } from 'src/app/model/report/report';
+import { ActivatedRoute } from '@angular/router';
+import { OutcomeReportDTO } from 'src/app/model/report/OutcomeReportDTO/outcome-report-dto';
 import { ReportService } from 'src/app/services/report/report.service';
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  selector: 'app-outcome-report',
+  templateUrl: './outcome-report.component.html',
+  styleUrls: ['./outcome-report.component.css']
 })
-export class ReportComponent implements OnInit {
+export class OutcomeReportComponent implements OnInit {
 
-  report!: Report;
-  reportType!: string;
+  outcomeReport!: OutcomeReportDTO;
   id!: number;
   semester!: number;
 
   constructor(private route: ActivatedRoute, private reportService: ReportService) { }
 
   ngOnInit(): void {
-    this.reportType = this.route.snapshot.paramMap.get('reportType') || "";
     this.id =  parseFloat(this.route.snapshot.paramMap.get('id') || "");
     this.semester =  parseInt(this.route.snapshot.paramMap.get('semester') || "");
-    this.reportService.getReport(this.reportType, this.id, this.semester).subscribe({
+    this.reportService.getOutcomeReport(this.id, this.semester).subscribe({
       next: (response) => {
         if(response.body)
-          this.report = response.body;
+          this.outcomeReport = response.body;
       },
       error: (e) => console.log(e)
-    })
+    });
   }
 
 }

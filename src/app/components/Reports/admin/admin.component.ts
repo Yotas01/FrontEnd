@@ -50,7 +50,7 @@ export class AdminComponent implements OnInit {
 
   onSubmit(){
     if(this.selected && this.id && this.semester)
-      this.router.navigate(['/report',this.selected,this.id,this.semester]);
+      this.router.navigate([`/report/${this.selected}`,this.id,this.semester]);
   }
 
   updateInformation(){

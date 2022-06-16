@@ -1,0 +1,30 @@
+<h2>Report for course - {{ id }}</h2>
+<table id="review">
+    <thead>
+        <th>CDIOs</th>
+        <th>Exemplary</th>
+        <th>Competent</th>
+        <th>Below</th>
+    </thead>
+    <tbody *ngFor="let cdio of outcomeReport.cdioReports">
+        <td>{{ cdio.cdioNumber }}</td>
+        <td>{{ cdio.exemplary }}%</td>
+        <td>{{ cdio.competent }}%</td>
+        <td>{{ cdio.below }}%</td>
+    </tbody>
+</table>
+<table id="average">
+    <thead>
+        <th></th>
+        <th>Exemplary</th>
+        <th>Competent</th>
+        <th>Below</th>
+    </thead>
+    <tbody>
+        <td><label for="a"> Average performance </label></td>
+        <td><label for="a">{{ outcomeReport.outcomeReport.exemplary }}%</label></td>
+        <td><label for="a">{{ outcomeReport.outcomeReport.competent }}%</label></td>
+        <td><label for="a">{{ outcomeReport.outcomeReport.below }}%</label></td>
+    </tbody>
+</table>
+<button><a routerLink="/report" routerLinkActive="active">Regresar</a></button>
