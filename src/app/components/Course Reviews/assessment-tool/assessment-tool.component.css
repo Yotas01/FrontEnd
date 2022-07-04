@@ -1,17 +1,16 @@
 .assessment-description{
-  margin: -20px 0 10px 10px;
-  font-size: x-large;
+  font-size: 23px;
   font-weight: normal;
 }
 form{
     font-weight: lighter;
     position: relative;
 }
-
 input{
-    width: 5%;
+  text-align: center;
+  margin: 15px 0 0 10px;
+  width: 5%;
 }
-
 /*Quita las flechas para aumentar o disminuir el numero en los input*/
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

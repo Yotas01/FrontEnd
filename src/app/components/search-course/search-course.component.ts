@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ABETSystemError } from 'src/app/model/Error/ABETSystemError';
 import { CourseReviewService } from 'src/app/services/review/course-review.service';
 
 @Component({
@@ -9,9 +10,9 @@ import { CourseReviewService } from 'src/app/services/review/course-review.servi
 })
 export class SearchCourseComponent implements OnInit {
 
-  courseNumber:number = 33698;
-  semester:number = 2110;
-  section:number = 1;
+  courseNumber!:number;
+  semester!:number;
+  section!:number;
   response_has_error: boolean = true;
   error_response: string = "";
 
@@ -26,7 +27,11 @@ export class SearchCourseComponent implements OnInit {
       next: (course) => {
         this.router.navigate(['/tables',this.courseNumber, this.section, this.semester]);
       },
-      error: (e) => this.error_response = "Error " + e.status + " " + e.error
+      error: (e) => {
+        console.error("Caught error in component");
+        let error:ABETSystemError = e.error;
+        this.error_response = "Error " + error.status + " - " + error.issue;
+      }
     }); 
   }
 

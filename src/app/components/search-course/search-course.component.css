@@ -1,22 +1,6 @@
-h1{
-    text-align: center
-}
 label{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     text-align: center;
-    width: 400px;
-    line-height: 26px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    margin-left: 400px;
-}
-#semester{
-    margin-left: 465px;
-}
-#semesterSel{
-    margin-left: 10px;
+    color: white;
 }
 button{
     position:relative;
@@ -39,26 +23,55 @@ a,a:visited{
     color: black;
 }
 button:hover{
-    background-color: white;
+    background-color: rgb(180, 180, 180);
     color: black;
-    border: 2px solid #008CBA;
+    border: 2px solid #476f7cad;
+}
+
+select{
+    text-align: center;
+}
+.form_group{
+    padding: 20px 0;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form_group label{
+    color: black;
+    margin-right: 10px;
+    font-size: x-large;
+}
+.form_group input, select{
+    height: 20px;
+    font-size: medium;
+}
+.error{
+    font-size: larger;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+.button_group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button_group button{
+    margin: 0 5px;
+}
+.ng-valid[required],
+.ng-valid.required {
+    border: 1px solid #42a948;
+    border-radius: 5px;
+}
+.ng-invalid:not(form) {
+    border: 1px solid #a94442;
+    border-radius: 5px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
     -webkit-appearance: none;
     margin: 0;
-}
-input, label, select {
-    float:left;
-}
-select{
-    text-align: center;
-}
-.ng-valid[required],
-.ng-valid.required {
-  border: 1px solid #42a948;
-}
-
-.ng-invalid:not(form) {
-  border: 1px solid #a94442;
 }

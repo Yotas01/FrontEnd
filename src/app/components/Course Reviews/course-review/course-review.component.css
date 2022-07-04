@@ -11,6 +11,7 @@ button, input[type=button], input[type=submit]{
     font-size: 16px;
     transition-duration: 0.4s;
     margin-right: 1px;
+    justify-content: center;
 }
 a{
     text-decoration: none;

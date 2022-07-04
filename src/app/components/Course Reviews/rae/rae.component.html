@@ -1,7 +1,4 @@
-<body>
-    <div class="rae" id = "rae">{{ "RAE: " + rae.description}}</div>
-    <div *ngFor="let at of rae.assessmentTools; let i=index">
-        <div class="assessment-tool">Assessment Tools (Herramientas de evaluación)</div><br>
-        <app-assessment-tool [assessmentTool]="at" [sectionAssessmentTool]="sectionAssessmentTools[i]"></app-assessment-tool>
-    </div>
-</body>
+<div class="rae">{{ "RAE " + raeNumber + ": " + rae.description}}</div>
+<div *ngFor="let at of rae.assessmentTools; let i=index">
+    <app-assessment-tool class="assessmentTool" [assessmentTool]="at" [sectionAssessmentTool]="sectionAssessmentTools[i]"></app-assessment-tool>
+</div>

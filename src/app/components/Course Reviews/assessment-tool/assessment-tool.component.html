@@ -1,7 +1,6 @@
 <div class="assessment-description" id="assessDescription">{{ assessmentTool.description + ": " + assessmentTool.value + "%" }}</div>
-<label for="totalStudents">How many students presented the assessment? </label>
+<label for="totalStudents">How many students presented the assessment?</label>
 <input type="number" [(ngModel)]="sectionAssessmentTool.totalStudents" name="totalStudents" onkeypress="return event.charCode >= 48" min="1" ><br>
-<p><u>Performance indicators for the assessment tool</u></p>
 <div *ngFor="let pi of assessmentTool.performanceIndicators; let i=index">
     <app-performance-indicator [performanceIndicator]="pi" [sectionPI]="sectionAssessmentTool.sectionPerformanceIndicators[i]"></app-performance-indicator>
 </div>

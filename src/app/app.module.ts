@@ -21,6 +21,8 @@ import { PerformanceIndicatorCRUDComponent } from './components/CRUDs/performanc
 import { CourseReportComponent } from './components/Reports/course-report/course-report.component';
 import { CdioReportComponent } from './components/Reports/cdio-report/cdio-report.component';
 import { OutcomeReportComponent } from './components/Reports/outcome-report/outcome-report.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider'
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { OutcomeReportComponent } from './components/Reports/outcome-report/outc
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

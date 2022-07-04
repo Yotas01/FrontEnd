@@ -1,7 +1,4 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-    </head>
     <body>
         <div class="course-header">
             <div class="course-id-name">
@@ -15,16 +12,14 @@
             <div class="course-semester">
             </div>
         </div>
-        <h2>Resultados de Aprendizaje Esperados (RAEs)</h2>
-        <p>{{ sectionReview | json}}</p>
         <form (ngSubmit)="onSubmit()" #assessToolForm="ngForm">
-            <div *ngFor="let rae of courseReview.raes">
-                <app-rae [rae]="rae" [sectionReview]="sectionReview"></app-rae>
+            <div *ngFor="let rae of courseReview.raes;let i = index">
+                <app-rae [rae]="rae" [sectionReview]="sectionReview" [raeNumber]="i"></app-rae>
             </div>
             <h2>{{ error }}</h2>
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Send course review">
         </form>
-        <button><a routerLink="/search" routerLinkActive="active">Regresar</a></button>
-        <button (click)="saveUnfinished()"> Guardar y terminar más tarde</button>
+        <button><a routerLink="/search" routerLinkActive="active">Exit without saving</a></button>
+        <button (click)="saveUnfinished()">Save and finish later</button>
     </body>  
 </html>

@@ -1,32 +1,24 @@
-h5{
-    position: relative;
-    left: 10px;
-}
-
 form{
     font-weight: lighter;
     position: relative;
     left: 50px;
 }
-
 #piDescription{
-    color:rgb(39, 86, 124);
+    margin-left: 15px;
 }
-
 #prueba,th,td{
     border: 1px solid black;
     border-collapse: collapse;    
 }
-
 #prueba{
-    position: relative;
-    left: 50px;
+    margin-left: 15px;
 }
-
+#prueba input{
+    max-width: max-content;
+}
 th,td{
     padding: 5px;
 }
-
 input{
     border-top-style: hidden;
     border-right-style: hidden;
@@ -38,11 +30,11 @@ input{
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
