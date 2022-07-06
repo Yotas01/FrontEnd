@@ -1,6 +1,14 @@
+.buttons{
+    padding: 20px 0;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 button, input[type=button], input[type=submit]{
     position:relative;
-    left: -20px;
+    left: 0px;
     background-color: #008CBA; 
     border: 1px solid black;
     color: black;
@@ -25,10 +33,10 @@ button:hover, input[type=button]:hover, input[type=submit]:hover{
     border: 2px solid #008CBA;
 }
 .course-header{
-    background-color: rgb(21, 81, 160);
+    background-color: rgb(44, 86, 151);
     padding: 10px;
     margin: -8px -20px;
-    border-bottom: 5px solid rgba(56, 56, 56, 0.7);
+    border-bottom: 5px solid rgb(44, 86, 151);
     color: white;
     font-weight: normal;
     font-family: 'Times New Roman', Times, serif;

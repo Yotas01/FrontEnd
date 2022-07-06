@@ -1,3 +1,6 @@
+import { CourseDialogLeftComponent } from './../../../course-dialog-left/course-dialog-left.component';
+import { CourseDialogUnfinishedComponent } from './../../../course-dialog-unfinished/course-dialog-unfinished.component';
+import { CourseDialogComponent } from './../../../course-dialog/course-dialog.component';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mapper } from 'src/app/common/Mapper';
@@ -5,6 +8,7 @@ import { CourseReview } from 'src/app/model/courseReview/course-review';
 import { SectionReview } from 'src/app/model/sectionReview/section-review';
 import { CourseReviewService } from 'src/app/services/review/course-review.service';
 import { ReviewSectionService } from 'src/app/services/review/review-section.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-course-review',
@@ -18,7 +22,7 @@ export class CourseReviewComponent implements OnInit {
   error: string = "";
 
   constructor(private route: ActivatedRoute, private courseReviewService: CourseReviewService,
-    private reviewService: ReviewSectionService, private router: Router) { }
+    private reviewService: ReviewSectionService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     let courseNumber = parseInt(this.route.snapshot.paramMap.get('course') || "");
@@ -36,6 +40,21 @@ export class CourseReviewComponent implements OnInit {
     })
   }
 
+  openDialog(tipo:number){
+    if(tipo==0)
+      this.dialog.open(CourseDialogComponent);
+    else if(tipo==1)
+      this.dialog.open(CourseDialogUnfinishedComponent);
+    else{
+      let dialogRef = this.dialog.open(CourseDialogLeftComponent);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog result: ' + result);
+        if(result=="true")
+          this.router.navigate(['/search']);
+      });
+    }
+  }
+
   onSubmit(){
     try {
       this.validateData();
@@ -43,6 +62,7 @@ export class CourseReviewComponent implements OnInit {
       this.reviewService.sendSectionReview(this.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
+          this.openDialog(0);
           this.router.navigate(['/search']);
         },
         error: (e) => this.error="Error " + e.status + " " + e.error
@@ -55,18 +75,20 @@ export class CourseReviewComponent implements OnInit {
 
   saveUnfinished(){
     try {
-      this.validateData();
+    //this.validateData();
       console.log(this.sectionReview);
+      this.openDialog(1);
+      this.router.navigate(['/search']);
     } catch (e) {
-      if(e instanceof Error)
-        this.error = e.message;
+      //if(e instanceof Error)
+        //this.error = e.message;
     }
   }
 
   validateData(){
     let totalStudents = this.courseReview.section.totalStudents;
     if(this.sectionReview.sectionAssessmentTools.some(sat => sat.totalStudents > totalStudents || sat.totalStudents ===0))
-      throw new Error("El total de estudiantes de los assessment tool debe ser menor o igual a la cantidad de estudiantes: " + totalStudents + " pero mayor que cero");
+      throw new Error("El total de estudiantes de los assessment tool debe ser menor o igual a la cantidad de estudiantes: " + totalStudents + " pero mayor que 0");
       this.sectionReview.sectionAssessmentTools.forEach(sat => {
         let satTotal = sat.totalStudents;
         sat.sectionPerformanceIndicators.forEach(spi => {

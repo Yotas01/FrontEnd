@@ -1,3 +1,9 @@
+.panel-content{
+  padding: 30px;
+  background-color: rgb(248, 248, 248);
+  margin: -20px -20px;
+}
+
 .rae{
   margin: 10px 0;
   padding: 10px 0;
@@ -6,4 +12,21 @@
   text-align: center;
   border-bottom: 1px solid black;
   background-color: aliceblue;
+}
+
+.mat-expansion-panel-header{
+  background-color: rgb(211, 211, 211);
+  margin-bottom: 1px;
+}
+
+.test-align .mat-expansion-panel-header-title,
+.test-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.test-align .mat-expansion-panel-header-description {
+  justify-content: left;
+  align-items: left;
+  font-weight: bolder;
+  color:black;
 }

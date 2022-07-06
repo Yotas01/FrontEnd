@@ -22,7 +22,13 @@ import { CourseReportComponent } from './components/Reports/course-report/course
 import { CdioReportComponent } from './components/Reports/cdio-report/cdio-report.component';
 import { OutcomeReportComponent } from './components/Reports/outcome-report/outcome-report.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatButtonModule } from '@angular/material/button'
+import { MatDividerModule } from '@angular/material/divider'
+import { MatDialogModule } from '@angular/material/dialog';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+import { CourseDialogUnfinishedComponent } from './course-dialog-unfinished/course-dialog-unfinished.component';
+import { CourseDialogLeftComponent } from './course-dialog-left/course-dialog-left.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +49,9 @@ import { MatSliderModule } from '@angular/material/slider'
     CourseReportComponent,
     CdioReportComponent,
     OutcomeReportComponent,
+    CourseDialogComponent,
+    CourseDialogUnfinishedComponent,
+    CourseDialogLeftComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +59,13 @@ import { MatSliderModule } from '@angular/material/slider'
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatExpansionModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CourseDialogComponent,CourseDialogUnfinishedComponent,CourseDialogLeftComponent]
 })
 export class AppModule { }

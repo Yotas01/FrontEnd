@@ -1,4 +1,20 @@
-<div class="rae">{{ "RAE " + raeNumber + ": " + rae.description}}</div>
-<div *ngFor="let at of rae.assessmentTools; let i=index">
-    <app-assessment-tool class="assessmentTool" [assessmentTool]="at" [sectionAssessmentTool]="sectionAssessmentTools[i]"></app-assessment-tool>
+<div>
+    <mat-accordion class = "test-align" multi>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ "RAE " + raeNumber}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{rae.description}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="panel-content">
+                <div *ngFor="let at of rae.assessmentTools; let i=index">
+                    <br>
+                    <app-assessment-tool class="assessmentTool" [assessmentTool]="at" [sectionAssessmentTool]="sectionAssessmentTools[i]"></app-assessment-tool>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
