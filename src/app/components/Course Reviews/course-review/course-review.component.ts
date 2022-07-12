@@ -1,6 +1,4 @@
-import { CourseDialogLeftComponent } from './../../../course-dialog-left/course-dialog-left.component';
-import { CourseDialogUnfinishedComponent } from './../../../course-dialog-unfinished/course-dialog-unfinished.component';
-import { CourseDialogComponent } from './../../../course-dialog/course-dialog.component';
+import { CourseDialogComponent } from '../../Dialogs/course-dialog/course-dialog.component';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mapper } from 'src/app/common/Mapper';
@@ -9,6 +7,9 @@ import { SectionReview } from 'src/app/model/sectionReview/section-review';
 import { CourseReviewService } from 'src/app/services/review/course-review.service';
 import { ReviewSectionService } from 'src/app/services/review/review-section.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CourseDialogUnfinishedComponent } from '../../Dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
+import { CourseDialogLeftComponent } from '../../Dialogs/course-dialog-left/course-dialog-left.component';
+import { ABETSystemError } from 'src/app/model/Error/ABETSystemError';
 
 @Component({
   selector: 'app-course-review',
@@ -29,15 +30,33 @@ export class CourseReviewComponent implements OnInit {
     let sectionNumber = parseInt(this.route.snapshot.paramMap.get('section') || "");
     let semester = parseInt(this.route.snapshot.paramMap.get('semester') || "");
     
-    this.courseReviewService.getCourseForReview(courseNumber,sectionNumber,semester)
-    .subscribe(response => {
-      if(response.body){
-        this.courseReview = response.body;
-        console.log(this.courseReview);
-        this.sectionReview = Mapper.createFromCourseReview(this.courseReview);
-        console.log(this.sectionReview);
+    this.courseReviewService.getCourseForReview(courseNumber,sectionNumber,semester).subscribe({
+      next: (response) => {
+        if(response.body){
+          this.courseReview = response.body;
+          this.initializeSectionReview(courseNumber, sectionNumber, semester, this.courseReview);
+        }
       }
-    })
+    });
+  }
+
+  initializeSectionReview(courseNumber: number, sectionNumber: number, semester: number, courseReview: CourseReview) {
+    console.log("I am going to initialize");
+    this.courseReviewService.getSectionReview(courseNumber,sectionNumber,semester).subscribe({
+      next: (response) =>{
+        if(response.body){
+          this.sectionReview = response.body;
+          console.log("Request successful");
+          console.log(this.sectionReview);
+        }
+      },
+      error: (e) => {
+        console.log("There was an error with the request");
+        this.sectionReview = Mapper.createFromCourseReview(courseReview);
+        console.log(this.sectionReview);
+        console.log(this.courseReview);
+      }
+    });
   }
 
   openDialog(tipo:number){
@@ -74,15 +93,19 @@ export class CourseReviewComponent implements OnInit {
   }
 
   saveUnfinished(){
-    try {
-    //this.validateData();
       console.log(this.sectionReview);
-      this.openDialog(1);
-      this.router.navigate(['/search']);
-    } catch (e) {
-      //if(e instanceof Error)
-        //this.error = e.message;
-    }
+      
+      this.reviewService.sendSectionReview(this.sectionReview).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate(['/search']);
+        },
+        error: (e) => {
+          console.error("Caught error in component");
+          let errorResponse:ABETSystemError = e.error;
+          this.error = "Error " + errorResponse.status + " - " + errorResponse.issue;
+        }
+      })
   }
 
   validateData(){
@@ -106,3 +129,5 @@ export class CourseReviewComponent implements OnInit {
     })
   }
 }
+
+
