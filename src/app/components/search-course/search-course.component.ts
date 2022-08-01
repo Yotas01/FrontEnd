@@ -13,8 +13,9 @@ export class SearchCourseComponent implements OnInit {
   courseNumber!:number;
   semester!:number;
   section!:number;
-  response_has_error: boolean = true;
+  hasSelectedCourseAndSemenster: boolean = false;
   error_response: string = "";
+  sections: number[] = [1,2];
 
   constructor(private courseReviewService:CourseReviewService, private router:Router) { }
 
@@ -25,7 +26,7 @@ export class SearchCourseComponent implements OnInit {
     this.courseReviewService.getCourseForReview(this.courseNumber,this.section,this.semester)
     .subscribe({
       next: (course) => {
-        this.router.navigate(['/tables',this.courseNumber, this.section, this.semester]);
+        this.router.navigate(['/review',this.courseNumber, this.section, this.semester]);
       },
       error: (e) => {
         console.error("Caught error in component");
@@ -34,5 +35,4 @@ export class SearchCourseComponent implements OnInit {
       }
     }); 
   }
-
 }

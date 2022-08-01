@@ -14,7 +14,7 @@ import { OutcomeReportComponent } from './components/Reports/outcome-report/outc
 
 const routes: Routes = [
   {path: 'search',component:SearchCourseComponent},
-  {path: 'tables/:course/:section/:semester',component:CourseReviewComponent},
+  {path: 'review/:course/:section/:semester',component:CourseReviewComponent},
   {path: 'admin',component:AdminComponent},
   {path: 'admin/management',component:CRUDComponent},
   {path: 'admin/management/outcomes',component:OutcomeCRUDComponent},

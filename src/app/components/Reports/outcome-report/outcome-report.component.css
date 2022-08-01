@@ -1,0 +1,18 @@
+table{
+    margin: 0 30px;
+    font-size: x-large;
+}
+table thead{
+    background-color: rgb(103, 173, 194);
+}
+table tbody{
+    background-color: beige;
+}
+
+h1{
+    text-align: center;
+}
+
+.centered{
+    text-align: center;
+}

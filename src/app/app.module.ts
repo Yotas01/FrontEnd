@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './components/Reports/admin/admin.component';
@@ -22,13 +21,10 @@ import { CourseReportComponent } from './components/Reports/course-report/course
 import { CdioReportComponent } from './components/Reports/cdio-report/cdio-report.component';
 import { OutcomeReportComponent } from './components/Reports/outcome-report/outcome-report.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatExpansionModule } from '@angular/material/expansion'
-import { MatButtonModule } from '@angular/material/button'
-import { MatDividerModule } from '@angular/material/divider'
-import { MatDialogModule } from '@angular/material/dialog';
-import { CourseDialogComponent } from './course-dialog/course-dialog.component';
-import { CourseDialogUnfinishedComponent } from './course-dialog-unfinished/course-dialog-unfinished.component';
-import { CourseDialogLeftComponent } from './course-dialog-left/course-dialog-left.component'
+import { CourseDialogComponent } from './components/Dialogs/course-dialog/course-dialog.component';
+import { CourseDialogUnfinishedComponent } from './components/Dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
+import { CourseDialogLeftComponent } from './components/Dialogs/course-dialog-left/course-dialog-left.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -52,17 +48,14 @@ import { CourseDialogLeftComponent } from './course-dialog-left/course-dialog-le
     CourseDialogComponent,
     CourseDialogUnfinishedComponent,
     CourseDialogLeftComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatExpansionModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatDialogModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],

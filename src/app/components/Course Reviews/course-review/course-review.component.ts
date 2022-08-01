@@ -1,6 +1,4 @@
-import { CourseDialogLeftComponent } from './../../../course-dialog-left/course-dialog-left.component';
-import { CourseDialogUnfinishedComponent } from './../../../course-dialog-unfinished/course-dialog-unfinished.component';
-import { CourseDialogComponent } from './../../../course-dialog/course-dialog.component';
+import { CourseDialogComponent } from '../../Dialogs/course-dialog/course-dialog.component';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mapper } from 'src/app/common/Mapper';
@@ -9,6 +7,9 @@ import { SectionReview } from 'src/app/model/sectionReview/section-review';
 import { CourseReviewService } from 'src/app/services/review/course-review.service';
 import { ReviewSectionService } from 'src/app/services/review/review-section.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CourseDialogUnfinishedComponent } from '../../Dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
+import { CourseDialogLeftComponent } from '../../Dialogs/course-dialog-left/course-dialog-left.component';
+import { ABETSystemError } from 'src/app/model/Error/ABETSystemError';
 
 @Component({
   selector: 'app-course-review',
@@ -18,7 +19,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class CourseReviewComponent implements OnInit {
 
   courseReview!: CourseReview;
-  sectionReview!: SectionReview;
   error: string = "";
 
   constructor(private route: ActivatedRoute, private courseReviewService: CourseReviewService,
@@ -29,15 +29,14 @@ export class CourseReviewComponent implements OnInit {
     let sectionNumber = parseInt(this.route.snapshot.paramMap.get('section') || "");
     let semester = parseInt(this.route.snapshot.paramMap.get('semester') || "");
     
-    this.courseReviewService.getCourseForReview(courseNumber,sectionNumber,semester)
-    .subscribe(response => {
-      if(response.body){
-        this.courseReview = response.body;
-        console.log(this.courseReview);
-        this.sectionReview = Mapper.createFromCourseReview(this.courseReview);
-        console.log(this.sectionReview);
+    this.courseReviewService.getCourseForReview(courseNumber,sectionNumber,semester).subscribe({
+      next: (response) => {
+        if(response.body){
+          this.courseReview = response.body;
+          console.log(this.courseReview);
+        }
       }
-    })
+    });
   }
 
   openDialog(tipo:number){
@@ -59,10 +58,10 @@ export class CourseReviewComponent implements OnInit {
     try {
       this.validateData();
       this.setDraftToFalse();
-      this.reviewService.sendSectionReview(this.sectionReview).subscribe({
+      this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
-          this.openDialog(0);
+          this.openDialog(1);
           this.router.navigate(['/search']);
         },
         error: (e) => this.error="Error " + e.status + " " + e.error
@@ -74,22 +73,26 @@ export class CourseReviewComponent implements OnInit {
   }
 
   saveUnfinished(){
-    try {
-    //this.validateData();
-      console.log(this.sectionReview);
-      this.openDialog(1);
-      this.router.navigate(['/search']);
-    } catch (e) {
-      //if(e instanceof Error)
-        //this.error = e.message;
-    }
+      console.log(this.courseReview.sectionReview);
+      this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.openDialog
+          this.router.navigate(['/search']);
+        },
+        error: (e) => {
+          console.error("Caught error in component");
+          let errorResponse:ABETSystemError = e.error;
+          this.error = "Error " + errorResponse.status + " - " + errorResponse.issue;
+        }
+      })
   }
 
   validateData(){
     let totalStudents = this.courseReview.section.totalStudents;
-    if(this.sectionReview.sectionAssessmentTools.some(sat => sat.totalStudents > totalStudents || sat.totalStudents ===0))
+    if(this.courseReview.sectionReview.sectionAssessmentTools.some(sat => sat.totalStudents > totalStudents || sat.totalStudents ===0))
       throw new Error("El total de estudiantes de los assessment tool debe ser menor o igual a la cantidad de estudiantes: " + totalStudents + " pero mayor que 0");
-      this.sectionReview.sectionAssessmentTools.forEach(sat => {
+      this.courseReview.sectionReview.sectionAssessmentTools.forEach(sat => {
         let satTotal = sat.totalStudents;
         sat.sectionPerformanceIndicators.forEach(spi => {
           let sum = spi.below + spi.competent + spi.exemplary;
@@ -100,9 +103,11 @@ export class CourseReviewComponent implements OnInit {
   }
 
   setDraftToFalse(){
-    this.sectionReview.sectionAssessmentTools.map(sat => {
+    this.courseReview.sectionReview.sectionAssessmentTools.map(sat => {
       sat.draft = false;
       sat.sectionPerformanceIndicators.map(spi => spi.draft = false);
     })
   }
 }
+
+

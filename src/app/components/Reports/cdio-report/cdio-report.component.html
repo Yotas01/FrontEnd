@@ -6,12 +6,21 @@
         <th>Competent</th>
         <th>Below</th>
     </thead>
+    <tbody>
+        <tr>
+            <td>Theory of computation</td>
+            <td>84.10%</td>
+            <td>12.95%</td>
+            <td>2.94%</td>
+        </tr>
+    </tbody>
+    <!--
     <tbody *ngFor="let course of cdioReport.courseReports">
         <td>{{ course.courseId }}</td>
         <td>{{ course.exemplary }}%</td>
         <td>{{ course.competent }}%</td>
         <td>{{ course.below }}%</td>
-    </tbody>
+    </tbody>-->
 </table>
 <table id="average">
     <thead>
@@ -21,10 +30,19 @@
         <th>Below</th>
     </thead>
     <tbody>
+        <tr>
+            <td>CDIO 1.0</td>
+            <td>84.10%</td>
+            <td>12.95%</td>
+            <td>2.94%</td>
+        </tr>
+    </tbody>
+    <!--
+    <tbody>
         <td><label for="a"> Average performance </label></td>
         <td><label for="a">{{ cdioReport.cdioReport.exemplary }}%</label></td>
         <td><label for="a">{{ cdioReport.cdioReport.competent }}%</label></td>
         <td><label for="a">{{ cdioReport.cdioReport.below }}%</label></td>
-    </tbody>
+    </tbody>-->
 </table>
 <button><a routerLink="/report" routerLinkActive="active">Regresar</a></button>
