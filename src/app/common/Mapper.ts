@@ -7,6 +7,7 @@ import { SectionPerformanceIndicator } from "../model/sectionReview/section-perf
 import { SectionReview } from "../model/sectionReview/section-review";
 
 export class Mapper{
+  /*
     public static createFromCourseReview(courseReview: CourseReview) : SectionReview{
         var sectionReview = new SectionReview(0,0,0,[]);
         sectionReview.courseNumber = courseReview.number;
@@ -30,4 +31,5 @@ export class Mapper{
         sectionReview.sectionAssessmentTools = sectionAssessmentTools;
         return sectionReview;
       }
+      */
 }

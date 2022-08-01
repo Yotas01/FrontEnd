@@ -16,7 +16,7 @@
         <div>
             <form (ngSubmit)="onSubmit()" #assessToolForm="ngForm">
                 <div *ngFor="let rae of courseReview.raes;let i = index">
-                    <app-rae [rae]="rae" [sectionReview]="sectionReview" [raeNumber]="i"></app-rae>
+                    <app-rae [rae]="rae" [sectionReview]="courseReview.sectionReview" [raeNumber]="i"></app-rae>
                 </div>
                 <h2>{{ error }}</h2>
                 <div class="buttons">

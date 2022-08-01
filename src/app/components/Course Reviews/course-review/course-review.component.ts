@@ -19,7 +19,6 @@ import { ABETSystemError } from 'src/app/model/Error/ABETSystemError';
 export class CourseReviewComponent implements OnInit {
 
   courseReview!: CourseReview;
-  sectionReview!: SectionReview;
   error: string = "";
 
   constructor(private route: ActivatedRoute, private courseReviewService: CourseReviewService,
@@ -34,27 +33,8 @@ export class CourseReviewComponent implements OnInit {
       next: (response) => {
         if(response.body){
           this.courseReview = response.body;
-          this.initializeSectionReview(courseNumber, sectionNumber, semester, this.courseReview);
+          console.log(this.courseReview);
         }
-      }
-    });
-  }
-
-  initializeSectionReview(courseNumber: number, sectionNumber: number, semester: number, courseReview: CourseReview) {
-    console.log("I am going to initialize");
-    this.courseReviewService.getSectionReview(courseNumber,sectionNumber,semester).subscribe({
-      next: (response) =>{
-        if(response.body){
-          this.sectionReview = response.body;
-          console.log("Request successful");
-          console.log(this.sectionReview);
-        }
-      },
-      error: (e) => {
-        console.log("There was an error with the request");
-        this.sectionReview = Mapper.createFromCourseReview(courseReview);
-        console.log(this.sectionReview);
-        console.log(this.courseReview);
       }
     });
   }
@@ -78,10 +58,10 @@ export class CourseReviewComponent implements OnInit {
     try {
       this.validateData();
       this.setDraftToFalse();
-      this.reviewService.sendSectionReview(this.sectionReview).subscribe({
+      this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
-          this.openDialog(0);
+          this.openDialog(1);
           this.router.navigate(['/search']);
         },
         error: (e) => this.error="Error " + e.status + " " + e.error
@@ -93,11 +73,11 @@ export class CourseReviewComponent implements OnInit {
   }
 
   saveUnfinished(){
-      console.log(this.sectionReview);
-      
-      this.reviewService.sendSectionReview(this.sectionReview).subscribe({
+      console.log(this.courseReview.sectionReview);
+      this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
+          this.openDialog
           this.router.navigate(['/search']);
         },
         error: (e) => {
@@ -110,9 +90,9 @@ export class CourseReviewComponent implements OnInit {
 
   validateData(){
     let totalStudents = this.courseReview.section.totalStudents;
-    if(this.sectionReview.sectionAssessmentTools.some(sat => sat.totalStudents > totalStudents || sat.totalStudents ===0))
+    if(this.courseReview.sectionReview.sectionAssessmentTools.some(sat => sat.totalStudents > totalStudents || sat.totalStudents ===0))
       throw new Error("El total de estudiantes de los assessment tool debe ser menor o igual a la cantidad de estudiantes: " + totalStudents + " pero mayor que 0");
-      this.sectionReview.sectionAssessmentTools.forEach(sat => {
+      this.courseReview.sectionReview.sectionAssessmentTools.forEach(sat => {
         let satTotal = sat.totalStudents;
         sat.sectionPerformanceIndicators.forEach(spi => {
           let sum = spi.below + spi.competent + spi.exemplary;
@@ -123,7 +103,7 @@ export class CourseReviewComponent implements OnInit {
   }
 
   setDraftToFalse(){
-    this.sectionReview.sectionAssessmentTools.map(sat => {
+    this.courseReview.sectionReview.sectionAssessmentTools.map(sat => {
       sat.draft = false;
       sat.sectionPerformanceIndicators.map(spi => spi.draft = false);
     })

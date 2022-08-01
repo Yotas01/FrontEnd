@@ -18,7 +18,9 @@ export class RaeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.sectionAssessmentTools = this.sectionReview.sectionAssessmentTools.filter(at => at.raeId == this.rae.raeid);
+    this.sectionAssessmentTools = this.sectionReview.sectionAssessmentTools.filter(at => at.raeId == this.rae.raeId);
+    console.log(this.rae.raeId);
+    //console.log(this.sectionReview.sectionAssessmentTools);
     this.raeNumber++;
   }
 
