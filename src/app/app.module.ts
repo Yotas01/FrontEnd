@@ -25,6 +25,7 @@ import { CourseDialogComponent } from './components/Dialogs/course-dialog/course
 import { CourseDialogUnfinishedComponent } from './components/Dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
 import { CourseDialogLeftComponent } from './components/Dialogs/course-dialog-left/course-dialog-left.component';
 import { MaterialModule } from './material/material.module';
+import { SectionReviewCommentComponent } from './components/Course Reviews/section-review-comment/section-review-comment.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MaterialModule } from './material/material.module';
     OutcomeReportComponent,
     CourseDialogComponent,
     CourseDialogUnfinishedComponent,
-    CourseDialogLeftComponent
+    CourseDialogLeftComponent,
+    SectionReviewCommentComponent
     ],
   imports: [
     BrowserModule,
