@@ -1,43 +1,34 @@
 <h2>Report for course - {{ id }}</h2>
+<p>Report for each RAE</p>
 <table id="review">
     <thead>
-        <th>Sections</th>
+        <th>RAE</th>
+        <th>Assessment Tools</th>
         <th>Exemplary</th>
         <th>Competent</th>
         <th>Below</th>
     </thead>
-    <tbody>
-        <tr>
-            <td>1 - Daniel Monsalve</td>
-            <td>85%</td>
-            <td>10%</td>
-            <td>5%</td>
-        </tr>
-            <td>2 - José Guaracao</td>
-            <td>83%</td>
-            <td>15%</td>
-            <td>2%</td>
+    <tbody *ngFor="let raeSummary of courseReport.raeSummaries; let i = index">
+        <td>RAE {{i+1 + ":" + raeSummary.raeDescription }}</td>
+        <td>{{ raeSummary.assessmentTools }}</td>
+        <td>{{ raeSummary.exemplary }}%</td>
+        <td>{{ raeSummary.competent }}%</td>
+        <td>{{ raeSummary.below }}%</td>
     </tbody>
-    <!--
-    <tbody *ngFor="let section of courseReport.sectionsReport; let i = index">
-        <td>{{ this.sections[i].professor + " - " + this.sections[i].number }}</td>
-        <td>{{ section.exemplary }}%</td>
-        <td>{{ section.competent }}%</td>
-        <td>{{ section.below }}%</td>
-    </tbody>-->
 </table>
+<p>CDIO Summary for this course</p>
 <table id="average">
     <thead>
-        <th></th>
+        <th>CDIO</th>
         <th>Exemplary</th>
         <th>Competent</th>
         <th>Below</th>
     </thead>
-    <tbody>
-        <td><label for="a"> Average performance </label></td>
-        <td><label for="a">{{ courseReport.courseReport.exemplary }}%</label></td>
-        <td><label for="a">{{ courseReport.courseReport.competent }}%</label></td>
-        <td><label for="a">{{ courseReport.courseReport.below }}%</label></td>
+    <tbody *ngFor="let summary of courseReport.cdioSummary">
+        <td>{{summary.cdioNumber}}</td>
+        <td>{{ summary.exemplary }}%</td>
+        <td>{{ summary.competent }}%</td>
+        <td>{{ summary.below }}%</td>
     </tbody>
 </table>
 <button><a routerLink="/report" routerLinkActive="active">Regresar</a></button>
