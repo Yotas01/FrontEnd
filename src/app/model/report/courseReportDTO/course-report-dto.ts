@@ -1,9 +1,9 @@
-import { CourseReport } from "../courseReport/course-report";
-import { SectionReport } from "../sectionReport/section-report";
+import { CDIOSummaryForCourse } from "../CDIOSummaryForCourse/cdiosummary-for-course";
+import { RAESummaryDTO } from "../RAESummaryDTO/raesummary-dto";
 
 export class CourseReportDTO {
-    constructor(public courseReport: CourseReport, public sectionsReport: SectionReport[]){
-        this.courseReport = courseReport;
-        this.sectionsReport = sectionsReport;
+    constructor(public raeSummaries: RAESummaryDTO[], public cdioSummary: CDIOSummaryForCourse[]){
+        this.raeSummaries = raeSummaries;
+        this.cdioSummary = cdioSummary;
     }
 }
