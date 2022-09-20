@@ -1,10 +1,10 @@
-export class CdioReport {
-    constructor(public cdioNumber: number, public semester: number, public exemplary: number,
+export class OutcomeSummary {
+    constructor(public outcomeId: number, public semester: number, public exemplary: number,
         public competent: number, public below: number){
-    this.cdioNumber = cdioNumber;
+    this.outcomeId = outcomeId;
     this.semester = semester;
     this.exemplary = exemplary;
     this.competent = competent;
     this.below = below;
-    }
+}
 }

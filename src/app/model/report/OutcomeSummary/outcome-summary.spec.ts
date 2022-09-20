@@ -1,4 +1,4 @@
-import { OutcomeReport } from './outcome-report';
+import { OutcomeReport } from './outcome-summary';
 
 describe('OutcomeReport', () => {
   it('should create an instance', () => {
