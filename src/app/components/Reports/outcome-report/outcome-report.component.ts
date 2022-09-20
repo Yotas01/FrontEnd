@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OutcomeReportDTO } from 'src/app/model/report/OutcomeReportDTO/outcome-report-dto';
+import { OutcomeSummary } from 'src/app/model/report/OutcomeSummary/outcome-summary';
 import { ReportService } from 'src/app/services/report/report.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ReportService } from 'src/app/services/report/report.service';
 })
 export class OutcomeReportComponent implements OnInit {
 
-  outcomeReport!: OutcomeReportDTO;
+  outcomeSummary!: OutcomeSummary;
   id!: number;
   semester!: number;
 
@@ -22,7 +22,7 @@ export class OutcomeReportComponent implements OnInit {
     this.reportService.getOutcomeReport(this.id, this.semester).subscribe({
       next: (response) => {
         if(response.body)
-          this.outcomeReport = response.body;
+          this.outcomeSummary = response.body;
       },
       error: (e) => console.log(e)
     });
