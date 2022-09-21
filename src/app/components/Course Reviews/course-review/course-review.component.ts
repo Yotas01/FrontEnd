@@ -56,6 +56,7 @@ export class CourseReviewComponent implements OnInit {
     try {
       this.validateData();
       this.setDraftToFalse();
+      console.log(this.courseReview.sectionReview);
       this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
@@ -71,7 +72,7 @@ export class CourseReviewComponent implements OnInit {
   }
 
   saveUnfinished(){
-      console.log(this.courseReview.sectionReview);
+    console.log(this.courseReview.sectionReview);
       this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
@@ -83,7 +84,7 @@ export class CourseReviewComponent implements OnInit {
           let errorResponse:ABETSystemError = e.error;
           this.error = "Error " + errorResponse.status + " - " + errorResponse.issue;
         }
-      })
+      });
   }
 
   validateData(){
