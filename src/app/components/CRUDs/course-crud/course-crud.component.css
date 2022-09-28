@@ -1,12 +1,21 @@
 table{
-    margin: 0 30px;
+    width: 18%;
     font-size: x-large;
 }
-table thead{
-    background-color: rgb(103, 173, 194);
+
+.mat-column-CDIO{
+    border-right: 1px solid currentColor;
+    padding-right: 10px;
 }
-table tbody{
-    background-color: beige;
+
+.mat-column-Bloom{
+    border-right: 1px solid currentColor;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.mat-column-action{
+    padding-left: 5px;
 }
 
 h1{
@@ -15,4 +24,19 @@ h1{
 
 .centered{
     text-align: center;
+}
+
+.function-button {
+    margin-left: 8px;
+    background-color: rgb(44, 86, 151);
+    color: white;
+}
+
+.function-button2 {
+    margin-left: 8px;
+    background-color: rgb(44, 86, 151);
+    color: white;
+    font-size: small;
+    height: 30px;
+    width: 20px;
 }

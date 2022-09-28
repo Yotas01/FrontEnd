@@ -10,7 +10,7 @@ import { CourseCRUDComponent } from './components/CRUDs/course-crud/course-crud.
 import { CourseReportComponent } from './components/Reports/course-report/course-report.component';
 import { CdioReportComponent } from './components/Reports/cdio-report/cdio-report.component';
 import { OutcomeReportComponent } from './components/Reports/outcome-report/outcome-report.component';
-
+import { SectionCrudComponent } from './components/CRUDs/section-crud/section-crud.component';
 
 const routes: Routes = [
   {path: 'search',component:SearchCourseComponent},
@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: 'admin/management/outcomes',component:OutcomeCRUDComponent},
   {path: 'admin/management/cdios',component:CdioCRUDComponent},
   {path: 'admin/management/courses/:courseNumber',component:CourseCRUDComponent},
+  {path: 'admin/management/sections/:courseNumber',component:SectionCrudComponent},
   {path: 'report/course/:id/:semester',component:CourseReportComponent},
   {path: 'report/cdio/:id/:semester',component:CdioReportComponent},
   {path: 'report/outcome/:id/:semester',component:OutcomeReportComponent},

@@ -1,0 +1,22 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+    <div *ngIf="action != 'Delete'; else elseTemplate">
+        <mat-form-field style="width:100%" >
+            <input placeholder="{{action}} Description" matInput [(ngModel)]="local.description"><br>
+        </mat-form-field>
+        <p>CDIOs</p>
+        <div *ngFor="let n of options" >
+           <mat-checkbox [(ngModel)]="n.select">
+              {{n.name+"   "}}
+         </mat-checkbox>
+        </div>
+    </div>
+  <ng-template #elseTemplate>
+    Are you sure you wish to delete outcome <b>{{local.id}}</b>?
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">{{action}}</button>
+  <button mat-button (click)="onNoClick()" mat-flat-button color="warn">Cancel</button>
+</div>
+{{options|json}}

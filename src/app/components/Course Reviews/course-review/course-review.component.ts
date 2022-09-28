@@ -1,12 +1,14 @@
-import { CourseDialogComponent } from '../../Dialogs/course-dialog/course-dialog.component';
-import { Component, OnInit } from '@angular/core';
+import { CourseDialogComponent } from '../../Dialogs/course-dialogs/course-dialog/course-dialog.component';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Mapper } from 'src/app/common/Mapper';
 import { CourseReview } from 'src/app/model/courseReview/course-review';
+import { SectionReview } from 'src/app/model/sectionReview/section-review';
 import { CourseReviewService } from 'src/app/services/review/course-review.service';
 import { ReviewSectionService } from 'src/app/services/review/review-section.service';
-import { MatDialog } from '@angular/material/dialog';
-import { CourseDialogUnfinishedComponent } from '../../Dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
-import { CourseDialogLeftComponent } from '../../Dialogs/course-dialog-left/course-dialog-left.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CourseDialogUnfinishedComponent } from '../../Dialogs/course-dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
+import { CourseDialogLeftComponent } from '../../Dialogs/course-dialogs/course-dialog-left/course-dialog-left.component';
 import { ABETSystemError } from 'src/app/model/Error/ABETSystemError';
 
 @Component({
@@ -17,6 +19,7 @@ import { ABETSystemError } from 'src/app/model/Error/ABETSystemError';
 export class CourseReviewComponent implements OnInit {
 
   courseReview!: CourseReview;
+  sectionReview!: SectionReview;
   error: string = "";
 
   constructor(private route: ActivatedRoute, private courseReviewService: CourseReviewService,
@@ -108,5 +111,3 @@ export class CourseReviewComponent implements OnInit {
     })
   }
 }
-
-

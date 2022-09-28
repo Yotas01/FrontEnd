@@ -4,9 +4,18 @@
     <option [ngValue]="'outcomes'">Outcomes</option>
     <option [ngValue]="'cdios'">CDIOs</option>
     <option [ngValue]="'courses'">Courses</option>
+    <option [ngValue]="'sections'">Sections</option>
 </select>
 <div [hidden]="selectedOption !== 'courses'">
-    <label id="course">Choose the course for the report
+    <label id="course">Choose the course to update
+        <select id="courseReport" [(ngModel)]="courseNumber">
+            <option value="null"></option>
+            <option [ngValue]="course.number" *ngFor="let course of courses">{{ course.name + " -- " + course.number }}</option>
+        </select>
+    </label>
+</div>
+<div [hidden]="selectedOption !== 'sections'">
+    <label id="course">Choose the course which sections to update
         <select id="courseReport" [(ngModel)]="courseNumber">
             <option value="null"></option>
             <option [ngValue]="course.number" *ngFor="let course of courses">{{ course.name + " -- " + course.number }}</option>

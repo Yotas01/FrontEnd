@@ -1,19 +1,27 @@
 <p>{{ course | json }}</p>
 <h2>Course: {{ course.name }} - {{ course.number }}</h2>
 <h2>Related CDIO competences</h2>
-<table>
-    <thead>
-        <th>CDIO</th>
-        <th>Bloom value</th>
-        <th>Operation <button>Add CDIO</button></th>
-    </thead>
-    <tbody *ngFor="let courseHasCDIO of cdiosWithValues | keyvalue">
-        <td>{{ courseHasCDIO.key }}</td>
-        <td>{{ courseHasCDIO.value }}</td>
-        <td><button>Edit</button><button>Delete</button></td>
-    </tbody>
+<table mat-table [dataSource]="cdiosBloom" #mytable class="mat-elevation-z8">
+    <ng-container matColumnDef="CDIO">
+        <th mat-header-cell *matHeaderCellDef> CDIO </th>
+        <td mat-cell *matCellDef="let course"> {{course.cdio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Bloom">
+        <th mat-header-cell *matHeaderCellDef> Bloom value </th>
+        <td mat-cell *matCellDef="let course"> {{course.bloom}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element" class="action-link"> 
+            <button mat-raised-button (click)="openDialog(1,element)" class="function-button2">Edit</button>  
+            <button mat-raised-button (click)="openDialog(2,element)" class="function-button2">Delete</button>  
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
 <h2>RAEs (Resultados de Aprendizaje Esperados)</h2>
 <div *ngFor="let rae of course.raes| keyvalue">
     <app-rae-crud [raeId]="rae.key" [courseNumber]="courseNumber"></app-rae-crud>
-</div>
+</div> 

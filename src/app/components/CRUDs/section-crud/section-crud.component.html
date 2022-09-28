@@ -1,0 +1,41 @@
+<h2>Course: {{ course.name }} - {{ course.number }}</h2>
+<h2>Sections</h2>
+<table mat-table [dataSource]="sections" #mytable class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let section"> {{section.sectionId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef> Section number </th>
+        <td mat-cell *matCellDef="let section"> {{section.number}} </td>
+    </ng-container>
+    <ng-container matColumnDef="professor">
+        <th mat-header-cell *matHeaderCellDef> Professor </th>
+        <td mat-cell *matCellDef="let section"> {{section.professor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="totalStudents">
+        <th mat-header-cell *matHeaderCellDef> Total students </th>
+        <td mat-cell *matCellDef="let section"> {{section.totalStudents}} </td>
+    </ng-container>
+    <ng-container matColumnDef="semester">
+        <th mat-header-cell *matHeaderCellDef> Semester </th>
+        <td mat-cell *matCellDef="let section"> {{section.semester}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element" class="action-link"> 
+            <button mat-raised-button (click)="openDialog(1,element)" class="function-button2">Edit</button>  
+            <button mat-raised-button (click)="openDialog(2,element)" class="function-button2">Delete</button>  
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<div class="button-container">
+    <button mat-raised-button (click)="createSection()" class="function-button">
+      Add Section
+    </button>
+    <button mat-raised-button (click)="onClick()" class="function-button">
+        Return
+    </button>
+</div>
