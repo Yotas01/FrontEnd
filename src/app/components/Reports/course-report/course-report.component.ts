@@ -10,6 +10,8 @@ import { ReportService } from 'src/app/services/report/report.service';
 })
 export class CourseReportComponent implements OnInit {
 
+  displayedColumns: string[] = ['rae','assessmentTools','Exemplary','Competent','Below']
+  displayedColumnsCDIO: string[] = ['cdio','Exemplary','Competent','Below']
   courseReport!: CourseReportDTO;
   id!: number;
   semester!: number;

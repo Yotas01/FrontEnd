@@ -10,7 +10,9 @@ import { ReportService } from 'src/app/services/report/report.service';
 })
 export class CdioReportComponent implements OnInit {
 
+  displayedColumns: string[] = ['Exemplary','Competent','Below']
   cdioSummary!: CDIOSummary;
+  cdioUtil:CDIOSummary[] = []
   id!: number;
   semester!: number;
 
@@ -23,6 +25,7 @@ export class CdioReportComponent implements OnInit {
       next: (response) => {
         if(response.body)
           this.cdioSummary = response.body;
+          this.cdioUtil.push(this.cdioSummary)
       },
       error: (e) => console.log(e)
     });
