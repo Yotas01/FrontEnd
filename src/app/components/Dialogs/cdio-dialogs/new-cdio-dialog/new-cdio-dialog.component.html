@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+    <p>Description</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="created.description" required>
+    </mat-form-field>
+    <p>Number</p>
+    <mat-form-field appearance="fill" type="number" min=0>
+        <mat-label>Number</mat-label>
+        <input matInput [(ngModel)]="created.number" required>
+        <mat-error *ngIf="valid">isValid()</mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button (click)="onClick()" cdkFocusInitial>Ok</button>
+</div>
+

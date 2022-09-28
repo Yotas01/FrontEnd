@@ -1,16 +1,31 @@
 <h1>ABET Outcomes</h1>
 
-<table>
-    <thead>
-        <th>Outcome Id</th>
-        <th>Description</th>
-        <th>Related CDIOs</th>
-        <th>Operation <button (click)="createOutcome()">Add Outcome</button></th>
-    </thead>
-    <tbody *ngFor="let outcome of outcomes">
-        <td class="centered"><!--<input [(ngModel)]="outcome.id" type="number">-->{{ outcome.id }}</td>
-        <td>{{ outcome.description }}</td>
-        <td class="centered">{{ outcome.cdios }}</td>
-        <td><button (click)="updateOutcome(outcome.id)">Edit</button><button (click)="deleteOutcome(outcome.id)">Delete</button></td>
-    </tbody>
+<table mat-table [dataSource]="outcomes" #mytable class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Outcome ID </th>
+        <td mat-cell *matCellDef="let outcome"> {{outcome.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let outcome"> {{outcome.description}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cdios">
+        <th mat-header-cell *matHeaderCellDef> Related CDIOs </th>
+        <td mat-cell *matCellDef="let outcome"> {{outcome.cdios}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element" class="action-link"> 
+            <button mat-raised-button (click)="openDialog(1,element)" class="function-button2">Edit</button>  
+            <button mat-raised-button (click)="openDialog(2,element)" class="function-button2">Delete</button>  
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<div class="button-container">
+    <button mat-raised-button (click)="createOutcome()" class="function-button">
+      Add Outcome
+    </button>
+  </div>

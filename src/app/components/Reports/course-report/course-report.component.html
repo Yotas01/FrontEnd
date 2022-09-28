@@ -1,34 +1,49 @@
 <h2>Report for course - {{ id }}</h2>
 <p>Report for each RAE</p>
-<table id="review">
-    <thead>
-        <th>RAE</th>
-        <th>Assessment Tools</th>
-        <th>Exemplary</th>
-        <th>Competent</th>
-        <th>Below</th>
-    </thead>
-    <tbody *ngFor="let raeSummary of courseReport.raeSummaries; let i = index">
-        <td>RAE {{i+1 + ":" + raeSummary.raeDescription }}</td>
-        <td>{{ raeSummary.assessmentTools }}</td>
-        <td>{{ raeSummary.exemplary }}%</td>
-        <td>{{ raeSummary.competent }}%</td>
-        <td>{{ raeSummary.below }}%</td>
-    </tbody>
+<table mat-table [dataSource]="courseReport.raeSummaries" #mytable class="mat-elevation-z8">
+    <ng-container matColumnDef="rae">
+        <th mat-header-cell *matHeaderCellDef>RAE</th>
+        <td mat-cell *matCellDef="let raeSumm; let i = index">RAE {{i+1 +":"+raeSumm.raeDescription}}</td>
+    </ng-container>
+    <ng-container matColumnDef="assessmentTools">
+        <th mat-header-cell *matHeaderCellDef>Assessment Tools</th>
+        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.assessmentTools}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Exemplary">
+        <th mat-header-cell *matHeaderCellDef>Exemplary</th>
+        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.exemplary}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Competent">
+        <th mat-header-cell *matHeaderCellDef>Competent</th>
+        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.competent}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Below">
+        <th mat-header-cell *matHeaderCellDef>Below</th>
+        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.below}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<br>
 <p>CDIO Summary for this course</p>
-<table id="average">
-    <thead>
-        <th>CDIO</th>
-        <th>Exemplary</th>
-        <th>Competent</th>
-        <th>Below</th>
-    </thead>
-    <tbody *ngFor="let summary of courseReport.cdioSummary">
-        <td>{{summary.cdioNumber}}</td>
-        <td>{{ summary.exemplary }}%</td>
-        <td>{{ summary.competent }}%</td>
-        <td>{{ summary.below }}%</td>
-    </tbody>
+<table mat-table [dataSource]="courseReport.cdioSummary" #mytable class="mat-elevation-z9">
+    <ng-container matColumnDef="cdio">
+        <th mat-header-cell *matHeaderCellDef>CDIO</th>
+        <td mat-cell *matCellDef="let cdioSumm">{{cdioSumm.cdioNumber}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Exemplary">
+        <th mat-header-cell *matHeaderCellDef>Exemplary</th>
+        <td mat-cell *matCellDef="let cdioSumm">{{cdioSumm.exemplary}}%</td>
+    </ng-container>
+    <ng-container matColumnDef="Competent">
+        <th mat-header-cell *matHeaderCellDef>Competent</th>
+        <td mat-cell *matCellDef="let cdioSumm">{{cdioSumm.competent}}%</td>
+    </ng-container>
+    <ng-container matColumnDef="Below">
+        <th mat-header-cell *matHeaderCellDef>Below</th>
+        <td mat-cell *matCellDef="let cdioSumm">{{cdioSumm.below}}%</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsCDIO"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsCDIO;"></tr>
 </table>
-<button><a routerLink="/report" routerLinkActive="active">Regresar</a></button>
+<button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>

@@ -5,6 +5,11 @@ import { CourseHasCDIO } from 'src/app/model/CourseHasCDIO/course-has-cdio';
 import { CourseService } from 'src/app/services/CRUD/Course/course.service';
 import { CourseHasCDIOService } from 'src/app/services/CRUD/Relations/Course-CDIO/course-has-cdio.service';
 
+export interface cdioBloom{
+  cdio:number,
+  bloom:number
+}
+
 @Component({
   selector: 'app-course-crud',
   templateUrl: './course-crud.component.html',
@@ -12,9 +17,10 @@ import { CourseHasCDIOService } from 'src/app/services/CRUD/Relations/Course-CDI
 })
 export class CourseCRUDComponent implements OnInit {
 
+  displayedColumns: string[] = ['CDIO','Bloom','action']
   courseNumber!: number;
   course!: Course; 
-  cdiosWithValues: Map<number,number> = new Map();
+  cdiosBloom:cdioBloom[]=[]
 
   constructor(private route: ActivatedRoute, private courseService: CourseService, private relationService: CourseHasCDIOService) { }
 
@@ -24,7 +30,7 @@ export class CourseCRUDComponent implements OnInit {
       next: (response) => {
         if(response.body){
           this.course = response.body;
-          this.course.cdioList.forEach(cdio => this.getBloomValue(cdio));
+          console.log(this.course.cdioList.forEach(cdio => this.getBloomValue(cdio)));
         }
       },
       error: (e) => console.log(e)
@@ -36,10 +42,18 @@ export class CourseCRUDComponent implements OnInit {
       next: (response) => {
         if(response.body){
           let courseHasCdio = response.body;
-          this.cdiosWithValues.set(courseHasCdio.cdio,courseHasCdio.value);
+          let temp:cdioBloom = {cdio:0,bloom:0}
+          temp.cdio = courseHasCdio.cdio
+          temp.bloom = courseHasCdio.value
+          console.log(this.cdiosBloom)
+          this.cdiosBloom.push(temp)
         }
       }
     })
+  }
+
+  openDialog(action:number,element:any){
+
   }
 
 }

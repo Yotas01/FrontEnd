@@ -10,7 +10,9 @@ import { ReportService } from 'src/app/services/report/report.service';
 })
 export class OutcomeReportComponent implements OnInit {
 
+  displayedColumns: string[] = ['Exemplary','Competent','Below']
   outcomeSummary!: OutcomeSummary;
+  outcomeUtil:OutcomeSummary[] = [];
   id!: number;
   semester!: number;
 
@@ -23,6 +25,7 @@ export class OutcomeReportComponent implements OnInit {
       next: (response) => {
         if(response.body)
           this.outcomeSummary = response.body;
+          this.outcomeUtil.push(this.outcomeSummary)
       },
       error: (e) => console.log(e)
     });

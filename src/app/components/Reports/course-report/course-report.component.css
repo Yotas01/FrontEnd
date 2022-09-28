@@ -1,18 +1,80 @@
 table{
-    margin: 0 30px;
+    width: 98%;
     font-size: x-large;
+    margin-left: auto;
+    margin-right: auto;
 }
-table thead{
-    background-color: rgb(103, 173, 194);
+
+.mat-elevation-z9{
+    width: 80%;
 }
-table tbody{
-    background-color: beige;
+
+.mat-column-rae,.mat-column-cdio{
+    border-right: 1px solid currentColor;
+    padding-right: 5px;
+}
+
+.mat-column-assessmentTools{
+    border-right: 1px solid currentColor;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+.mat-column-Exemplary{
+    border-right: 1px solid currentColor;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+.mat-column-Competent{
+    border-right: 1px solid currentColor;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+.mat-column-Below{
+    padding-left: 5px;
 }
 
 h1{
     text-align: center;
 }
 
+p{
+    font-size: larger;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
 .centered{
     text-align: center;
+}
+
+
+button{
+    position:relative;
+    left: 10px;
+    background-color: #008CBA; 
+    border: 1px solid black;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    margin-right: 1px;
+    margin-top: 1px;
+    width: 200px;
+}
+a{
+    text-decoration: none;
+}
+a,a:visited{
+    color: black;
+}
+button:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
 }
