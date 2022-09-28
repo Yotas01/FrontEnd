@@ -1,3 +1,4 @@
+import { SectionReviewCommentComponent } from './components/Course Reviews/section-review-comment/section-review-comment.component';
 import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -62,13 +63,15 @@ import { NewSectionDialogComponent } from './components/Dialogs/section-dialogs/
     SectionCrudComponent,
     ModifySectionDialogComponent,
     NewSectionDialogComponent,
+    SectionReviewCommentComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

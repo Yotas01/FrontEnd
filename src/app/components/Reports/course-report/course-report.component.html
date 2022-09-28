@@ -1,3 +1,4 @@
+<div *ngIf="courseReport">
 <h2>Report for course - {{ id }}</h2>
 <p>Report for each RAE</p>
 <table mat-table [dataSource]="courseReport.raeSummaries" #mytable class="mat-elevation-z8">
@@ -47,3 +48,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumnsCDIO;"></tr>
 </table>
 <button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>
+</div>

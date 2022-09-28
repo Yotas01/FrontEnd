@@ -1,6 +1,5 @@
-<html>
-    <body>
-        <div class="course-header">
+<div *ngIf="courseReview">
+    <div class="course-header">
             <div class="course-id-name">
                 Course: {{courseReview.number + " - " + courseReview.name}}
             </div>
@@ -19,7 +18,7 @@
                     <app-rae [rae]="rae" [sectionReview]="courseReview.sectionReview" [raeNumber]="i"></app-rae>
                 </div>
                 <div>
-                  <!-- <app-section-review-comment [sectionReview]="courseReview.sectionReview"></app-section-review-comment>--> 
+                  <app-section-review-comment [sectionReview]="courseReview.sectionReview"></app-section-review-comment>
                 </div>
                 <h2>{{ error }}</h2>
                 <div class="buttons">
@@ -31,5 +30,4 @@
                 <button (click)="saveUnfinished()">Save and finish later</button>
             </div>
         </div>
-    </body>  
-</html>
+</div> 

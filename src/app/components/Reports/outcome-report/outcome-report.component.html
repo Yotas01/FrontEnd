@@ -1,3 +1,4 @@
+<div *ngIf="outcomeSummary">
 <h2>Report for Outcome - {{ id }}</h2>
 <table id="average" hidden>
     <thead>
@@ -27,4 +28,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<br>
 <button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>
+</div>
