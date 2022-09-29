@@ -1,3 +1,4 @@
+<div *ngIf="outcomes && cdios && courses">
 <div class="report-header">
     <div class="report-id-name">
         Reports
@@ -52,4 +53,5 @@
     <button (click)="updateInformation()">Update Information</button><br>
     <button><a routerLink="/search" routerLinkActive="active">Log Out</a></button>
     <router-outlet></router-outlet>  
+</div>
 </div>

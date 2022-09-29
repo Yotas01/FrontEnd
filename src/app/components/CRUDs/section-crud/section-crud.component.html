@@ -1,3 +1,4 @@
+<div *ngIf="course">
 <h2>Course: {{ course.name }} - {{ course.number }}</h2>
 <h2>Sections</h2>
 <table mat-table [dataSource]="sections" #mytable class="mat-elevation-z8">
@@ -38,4 +39,5 @@
     <button mat-raised-button (click)="onClick()" class="function-button">
         Return
     </button>
+</div>
 </div>

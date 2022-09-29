@@ -1,5 +1,5 @@
 <h1>ABET Outcomes</h1>
-
+<div *ngIf="cdios">
 <table mat-table [dataSource]="cdios" #mytable class="mat-elevation-z8">
     <ng-container matColumnDef="number">
         <th mat-header-cell *matHeaderCellDef> CDIO number </th>
@@ -28,4 +28,5 @@
     <button mat-raised-button (click)="createCDIO()" class="function-button">
       Add CDIO
     </button>
+</div>
 </div>
