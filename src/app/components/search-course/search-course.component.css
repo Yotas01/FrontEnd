@@ -43,6 +43,10 @@ select{
     margin-right: 10px;
     font-size: x-large;
 }
+.form_group button{
+    margin-left: 50px;
+    font-size: small;
+}
 .form_group input, select{
     height: 20px;
     font-size: medium;

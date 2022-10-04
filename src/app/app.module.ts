@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './components/Reports/admin/admin.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchCourseComponent } from './components/search-course/search-course.component';
 import { PerformanceIndicatorComponent } from './components/Course Reviews/performance-indicator/performance-indicator.component';
@@ -69,6 +69,7 @@ import { NewSectionDialogComponent } from './components/Dialogs/section-dialogs/
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule

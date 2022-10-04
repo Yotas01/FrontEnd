@@ -1,24 +1,35 @@
-<form (ngSubmit)="onSubmit()" #cursoForm="ngForm">
+<form #cursoForm="ngForm">
     <div class="form_group">
         <label for="course">Course Id</label>
         <input id="course" type="number" min=0 required [(ngModel)]="courseNumber" name="curso" />
     </div>
     <div class="form_group">
-        <label for="section">Class number</label>
-        <input id="section" type="number" min=0 required [(ngModel)]="section" name="seccion" />
-    </div>
-    <div class="form_group">
         <label for="section">Semester</label>
         <select id="semesterSel" required [(ngModel)]="semester" name="semestre">
-            <option [ngValue]="'2010'">2010</option>
-            <option [ngValue]="'2030'">2030</option>
-            <option [ngValue]="'2110'">2110</option>
-            <option [ngValue]="'2130'">2130</option>
+            <option [ngValue]="2010">2010</option>
+            <option [ngValue]="2030">2030</option>
+            <option [ngValue]="2110">2110</option>
+            <option [ngValue]="2130">2130</option>
         </select>
     </div>
     <div class="button_group">
-        <button type="submit" class="btn" [disabled]="!cursoForm.form.valid">Search</button>
-        <button id="report"><a routerLink="/admin" routerLinkActive="active">Reports</a></button>
+        <button mat-raised-button color="primary" (click)="getSections()">Search course</button>
+    </div>
+    <div class="form_group" *ngIf="gotSections">
+        <label for="section">Select your class</label>
+        <mat-form-field appearance="fill">
+            <mat-select [(value)]="section">
+                <mat-option *ngFor="let selected_section of sections" [value]="selected_section">
+                    {{ selected_section.number + "-" + selected_section.professor }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="button_group">
+        <div *ngIf="gotSections">
+            <button type="submit" class="btn" [disabled]="!cursoForm.form.valid" (click)="onSubmit()">Search</button>
+        </div>
+        <button mat-raised-button color="primary" (click)="goToReports()">Reports</button>
     </div>
 </form>
 <div class="error">{{ error_response }}</div>
