@@ -41,6 +41,9 @@ export class CdioCRUDComponent implements OnInit {
       this.newCdio.description = result.desc;
       this.newCdio.number = result.num;
       this.cdios.push(this.newCdio)
+      this.cdioService.createCDIO(this.newCdio).subscribe({
+        error: (e) => console.error(e)
+      })
       console.log(this.newCdio)
       this.table.renderRows();
     })
@@ -59,9 +62,15 @@ export class CdioCRUDComponent implements OnInit {
         let index = this.cdios.indexOf(this.cdios.find(cdio => cdio.number == element.number)!);
         this.cdios[index].description = result.desc;
         this.cdios[index].number = result.num;
+        this.cdioService.updateCDIO(this.cdios[index], this.cdios[index].number).subscribe({
+          error: (e) => console.error(e)
+        })
       }
       else{
         let index = this.cdios.indexOf(this.cdios.find(cdio => cdio.number == result.num)!);
+        this.cdioService.deleteCDIO(this.cdios[index].number).subscribe({
+          error: (e) => console.error(e)
+        });
         this.cdios.splice(index,1)
         console.log(this.cdios)
         this.table.renderRows()

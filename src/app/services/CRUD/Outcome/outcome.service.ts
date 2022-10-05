@@ -20,4 +20,16 @@ export class OutcomeService {
   getAll(): Observable<HttpResponse<Outcome[]>>{
     return this.http.get<Outcome[]>(this.baseURL, { observe:'response'});
   }
+
+  createOutcome(outcome: Outcome): Observable<HttpResponse<Outcome>>{
+    return this.http.post<Outcome>(this.baseURL,outcome, { observe: 'response'});
+  }
+
+  deleteOutcome(outcomeId: number): Observable<HttpResponse<Outcome>>{
+    return this.http.delete<Outcome>(this.baseURL+"/"+outcomeId, { observe: 'response'});
+  }
+
+  updateOutcome(outcome: Outcome): Observable<HttpResponse<Outcome>>{
+    return this.http.put<Outcome>(this.baseURL+"/"+outcome.id,outcome, { observe: 'response'});
+  }
 }

@@ -16,7 +16,6 @@ export class OutcomeCRUDComponent implements OnInit {
   displayedColumns: string[] = ['id','description','cdios','action']
   outcomes: Outcome[] = []
   managedOutcome!: Outcome;
-  bool: boolean = false;
   newOutcome!:Outcome;
 
   @ViewChild(MatTable,{static:true}) table!: MatTable<any>;
@@ -43,6 +42,9 @@ export class OutcomeCRUDComponent implements OnInit {
       this.newOutcome.description = result.desc;
       this.newOutcome.cdios = result.data;
       this.newOutcome.id = this.outcomes.length+1;
+      this.outcomeService.createOutcome(this.newOutcome).subscribe({
+        error: (e) => console.error(e)
+      })
       this.outcomes.push(this.newOutcome)
       console.log(this.newOutcome)
       this.table.renderRows();
@@ -62,6 +64,9 @@ export class OutcomeCRUDComponent implements OnInit {
           if(this.outcomes[i].id==result.id){
             this.outcomes[i].cdios=result.data;
             this.outcomes[i].description=result.desc;
+            this.outcomeService.updateOutcome(this.outcomes[i]).subscribe({
+              error: (e) => console.error(e)
+            })
             break
           }
         }
@@ -70,6 +75,9 @@ export class OutcomeCRUDComponent implements OnInit {
         console.log(this.outcomes)
         for(let i=0;i<this.outcomes.length;i++)
           if(this.outcomes[i].id==result.id){
+            this.outcomeService.deleteOutcome(this.outcomes[i].id).subscribe({
+              error: (e) => console.error(e)
+            })
             this.outcomes.splice(i,1)
           }
         console.log(this.outcomes)
