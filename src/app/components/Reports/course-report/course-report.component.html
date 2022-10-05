@@ -47,5 +47,10 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumnsCDIO"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsCDIO;"></tr>
 </table>
+
+<h2>These are the comment written for this course</h2>
+<mat-list role="comments">
+    <p mat-list-item *ngFor="let comment of courseReport.comments">- {{ comment }}</p>
+</mat-list>
 <button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>
 </div>

@@ -2,8 +2,5 @@ import { CDIOSummaryForCourse } from "../CDIOSummaryForCourse/cdiosummary-for-co
 import { RAESummaryDTO } from "../RAESummaryDTO/raesummary-dto";
 
 export class CourseReportDTO {
-    constructor(public raeSummaries: RAESummaryDTO[], public cdioSummary: CDIOSummaryForCourse[]){
-        this.raeSummaries = raeSummaries;
-        this.cdioSummary = cdioSummary;
-    }
+    constructor(public raeSummaries: RAESummaryDTO[], public cdioSummary: CDIOSummaryForCourse[], public comments: string){}
 }

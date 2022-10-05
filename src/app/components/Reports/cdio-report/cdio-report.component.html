@@ -1,20 +1,30 @@
-<div *ngIf="cdioSummary">
+<div *ngIf="cdioReport">
 <h2>Report for cdio - {{ id }}</h2>
-<table id="average" hidden>
-    <thead>
-        <th>Exemplary</th>
-        <th>Competent</th>
-        <th>Below</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ this.cdioSummary.exemplary }}%</td>
-            <td>{{ this.cdioSummary.competent }}%</td>
-            <td>{{ this.cdioSummary.below }}%</td>
-        </tr>
-    </tbody>
+<h2>Courses that report to this CDIO</h2>
+
+<table mat-table [dataSource]="cdioCourseData" class="mat-elevation-z9">
+    <ng-container matColumnDef="courseId">
+        <th mat-header-cell *matHeaderCellDef>Course Id</th>
+        <td mat-cell *matCellDef="let summary">{{summary.courseId}}</td>
+    </ng-container>
+    <ng-container matColumnDef="exemplary">
+        <th mat-header-cell *matHeaderCellDef>Exemplary</th>
+        <td mat-cell *matCellDef="let summary">{{summary.exemplary}}%</td>
+    </ng-container>
+    <ng-container matColumnDef="competent">
+        <th mat-header-cell *matHeaderCellDef>Competent</th>
+        <td mat-cell *matCellDef="let summary">{{summary.competent}}%</td>
+    </ng-container>
+    <ng-container matColumnDef="below">
+        <th mat-header-cell *matHeaderCellDef>Below</th>
+        <td mat-cell *matCellDef="let summary">{{summary.below}}%</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsCourses"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsCourses;"></tr>
 </table>
-<table mat-table [dataSource]="cdioUtil" #mytable class="mat-elevation-z9">
+
+<h2>Summary for this CDIO</h2>
+<table mat-table [dataSource]="cdioSummaryData" #mytable class="mat-elevation-z9">
     <ng-container matColumnDef="Exemplary">
         <th mat-header-cell *matHeaderCellDef>Exemplary</th>
         <td mat-cell *matCellDef="let cdio">{{cdio.exemplary}}%</td>
@@ -27,8 +37,8 @@
         <th mat-header-cell *matHeaderCellDef>Below</th>
         <td mat-cell *matCellDef="let cdio">{{cdio.below}}%</td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsSummary"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsSummary;"></tr>
 </table>
 <br>
 <button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>

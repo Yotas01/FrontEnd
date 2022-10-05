@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CDIOSummary } from 'src/app/model/report/cdioSummary/cdio-summary';
+import { OutcomeReportDTO } from 'src/app/model/report/OutcomeReportDTO/outcome-report-dto';
 import { OutcomeSummary } from 'src/app/model/report/OutcomeSummary/outcome-summary';
 import { ReportService } from 'src/app/services/report/report.service';
 
@@ -10,9 +12,11 @@ import { ReportService } from 'src/app/services/report/report.service';
 })
 export class OutcomeReportComponent implements OnInit {
 
-  displayedColumns: string[] = ['Exemplary','Competent','Below']
-  outcomeSummary!: OutcomeSummary;
-  outcomeUtil:OutcomeSummary[] = [];
+  displayedColumnsSummary: string[] = ['Exemplary','Competent','Below']
+  displayedColumnsCDIOSummary: string[] = ['cdioNumber','exemplary','competent','below']
+  outcomeReport!: OutcomeReportDTO;
+  outcomeSummaryData:OutcomeSummary[] = [];
+  outcomeCDIOData: CDIOSummary[] =[];
   id!: number;
   semester!: number;
 
@@ -24,8 +28,9 @@ export class OutcomeReportComponent implements OnInit {
     this.reportService.getOutcomeReport(this.id, this.semester).subscribe({
       next: (response) => {
         if(response.body)
-          this.outcomeSummary = response.body;
-          this.outcomeUtil.push(this.outcomeSummary)
+          this.outcomeReport = response.body;
+          this.outcomeSummaryData.push(this.outcomeReport.outcomeSummary);
+          this.outcomeCDIOData = this.outcomeReport.cdioSummaries;
       },
       error: (e) => console.log(e)
     });

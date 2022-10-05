@@ -29,6 +29,13 @@ h1{
     text-align: center;
 }
 
+.full-width{
+    min-width: 600px;
+    min-height: 200px;
+    width: max-content;
+    align-self: center;
+}
+
 button{
     position:relative;
     left: 10px;
@@ -44,6 +51,10 @@ button{
     margin-right: 1px;
     margin-top: 1px;
     width: 200px;
+}
+
+mat-form-field{
+    margin-left: 30px;
 }
 a{
     text-decoration: none;

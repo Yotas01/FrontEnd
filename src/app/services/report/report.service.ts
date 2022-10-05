@@ -2,9 +2,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/common/Constants';
-import { CDIOSummary } from 'src/app/model/report/cdioSummary/cdio-summary';
+import { CDIOReportDTO } from 'src/app/model/report/cdioReportDTO/cdioreport-dto';
 import { CourseReportDTO } from 'src/app/model/report/courseReportDTO/course-report-dto';
-import { OutcomeSummary } from 'src/app/model/report/OutcomeSummary/outcome-summary';
+import { OutcomeReportDTO } from 'src/app/model/report/OutcomeReportDTO/outcome-report-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +19,12 @@ export class ReportService {
     let url = this.baseURL+`/course/${id}/semester/${semester}`;
     return this.http.get<CourseReportDTO>(url, {observe: 'response'});
   }
-  getCDIOReport(id: number, semester: number): Observable<HttpResponse<CDIOSummary>>{
+  getCDIOReport(id: number, semester: number): Observable<HttpResponse<CDIOReportDTO>>{
     let url = this.baseURL+`/cdio/${id}/semester/${semester}`;
-    return this.http.get<CDIOSummary>(url, {observe: 'response'});
+    return this.http.get<CDIOReportDTO>(url, {observe: 'response'});
   }
-  getOutcomeReport(id: number, semester: number): Observable<HttpResponse<OutcomeSummary>>{
+  getOutcomeReport(id: number, semester: number): Observable<HttpResponse<OutcomeReportDTO>>{
     let url = this.baseURL+`/outcome/${id}/semester/${semester}`;
-    return this.http.get<OutcomeSummary>(url, {observe: 'response'});
+    return this.http.get<OutcomeReportDTO>(url, {observe: 'response'});
   }
 }

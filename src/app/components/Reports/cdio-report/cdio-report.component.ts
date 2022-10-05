@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CDIOReportDTO } from 'src/app/model/report/cdioReportDTO/cdioreport-dto';
 import { CDIOSummary } from 'src/app/model/report/cdioSummary/cdio-summary';
+import { CDIOSummaryForCourse } from 'src/app/model/report/CDIOSummaryForCourse/cdiosummary-for-course';
 import { ReportService } from 'src/app/services/report/report.service';
 
 @Component({
@@ -10,9 +12,11 @@ import { ReportService } from 'src/app/services/report/report.service';
 })
 export class CdioReportComponent implements OnInit {
 
-  displayedColumns: string[] = ['Exemplary','Competent','Below']
-  cdioSummary!: CDIOSummary;
-  cdioUtil:CDIOSummary[] = []
+  displayedColumnsSummary: string[] = ['Exemplary','Competent','Below'];
+  displayedColumnsCourses: string[] = ['courseId','exemplary','competent','below'];
+  cdioReport!: CDIOReportDTO;
+  cdioSummaryData: CDIOSummary[] = [];
+  cdioCourseData: CDIOSummaryForCourse[] = [];
   id!: number;
   semester!: number;
 
@@ -24,8 +28,9 @@ export class CdioReportComponent implements OnInit {
     this.reportService.getCDIOReport(this.id,this.semester).subscribe({
       next: (response) => {
         if(response.body)
-          this.cdioSummary = response.body;
-          this.cdioUtil.push(this.cdioSummary)
+          this.cdioReport = response.body;
+          this.cdioSummaryData.push(this.cdioReport.cdioSummary);
+          this.cdioCourseData = this.cdioReport.cdioSummaryForCourseList;
       },
       error: (e) => console.log(e)
     });

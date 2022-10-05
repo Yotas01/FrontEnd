@@ -1,18 +1,29 @@
-<div *ngIf="outcomeSummary">
+<div *ngIf="outcomeReport">
 <h2>Report for Outcome - {{ id }}</h2>
-<table id="average" hidden>
-    <thead>
-        <th>Exemplary</th>
-        <th>Competent</th>
-        <th>Below</th>
-    </thead>
-    <tbody>
-        <td>{{ outcomeSummary.exemplary }}%</td>
-        <td>{{ outcomeSummary.competent }}%</td>
-        <td>{{ outcomeSummary.below }}%</td>
-    </tbody>
+<h2>CDIO's that report to this outcome</h2>
+<table mat-table [dataSource]="outcomeCDIOData" class="mat-elevation-z9">
+    <ng-container matColumnDef="cdioNumber">
+        <th mat-header-cell *matHeaderCellDef>CDIO number</th>
+        <td mat-cell *matCellDef="let cdio">{{cdio.cdioNumber}}</td>
+    </ng-container>
+    <ng-container matColumnDef="exemplary">
+        <th mat-header-cell *matHeaderCellDef>Exemplary</th>
+        <td mat-cell *matCellDef="let cdio">{{cdio.exemplary}}%</td>
+    </ng-container>
+    <ng-container matColumnDef="competent">
+        <th mat-header-cell *matHeaderCellDef>Competent</th>
+        <td mat-cell *matCellDef="let cdio">{{cdio.competent}}%</td>
+    </ng-container>
+    <ng-container matColumnDef="below">
+        <th mat-header-cell *matHeaderCellDef>Below</th>
+        <td mat-cell *matCellDef="let cdio">{{cdio.below}}%</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsCDIOSummary"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsCDIOSummary;"></tr>
 </table>
-<table mat-table [dataSource]="outcomeUtil" #mytable class="mat-elevation-z9">
+
+<h2>Summary for this CDIO</h2>
+<table mat-table [dataSource]="outcomeSummaryData" class="mat-elevation-z9">
     <ng-container matColumnDef="Exemplary">
         <th mat-header-cell *matHeaderCellDef>Exemplary</th>
         <td mat-cell *matCellDef="let outcome">{{outcome.exemplary}}%</td>
@@ -25,9 +36,20 @@
         <th mat-header-cell *matHeaderCellDef>Below</th>
         <td mat-cell *matCellDef="let outcome">{{outcome.below}}%</td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsSummary"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsSummary;"></tr>
 </table>
 <br>
+
+<form>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Write a summary for the performance of this semester</mat-label>
+        <textarea matInput placeholder="Ex. This semester was good because ..."></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Write the improvements that need to be made</mat-label>
+        <textarea matInput placeholder="Ex. Next semester will be better because ..."></textarea>
+    </mat-form-field>
+</form>
 <button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>
 </div>
