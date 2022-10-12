@@ -1,1 +1,16 @@
-<p>new-assessmenttool-dialog works!</p>
+<div mat-dialog-content>
+    <p>Description</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="created.description" required>
+    </mat-form-field>
+    <p>Value</p>
+    <mat-form-field appearance="fill" type="number" min=0>
+        <mat-label>Value</mat-label>
+        <input matInput [(ngModel)]="created.value" required>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button (click)="onClick()" cdkFocusInitial>Ok</button>
+</div>

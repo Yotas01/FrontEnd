@@ -1,4 +1,10 @@
+import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+
+export interface newData{
+  description:string;
+  value:number
+}
 
 @Component({
   selector: 'app-new-assessmenttool-dialog',
@@ -7,9 +13,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewAssessmenttoolDialogComponent implements OnInit {
 
-  constructor() { }
+  created:newData={description:'',value:0}
+
+  constructor(public dialogRef:MatDialogRef<NewAssessmenttoolDialogComponent>) { }
 
   ngOnInit(): void {
   }
 
+  onClick(): void{
+    this.dialogRef.close({desc:this.created.description,val:this.created.value})
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

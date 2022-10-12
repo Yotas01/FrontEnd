@@ -49,7 +49,12 @@ export class ModifyRaeDialogComponent implements OnInit {
   }
 
   createAssess(){
-
+    let dialogRef = this.dialog.open(NewAssessmenttoolDialogComponent, {
+      width:'70%'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      
+    })
   }
 
   openDialog(action:number,element:any){
