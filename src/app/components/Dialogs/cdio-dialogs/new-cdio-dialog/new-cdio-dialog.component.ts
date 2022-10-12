@@ -42,9 +42,7 @@ export class NewCdioDialogComponent implements OnInit {
 
   isValid(): void{
     let index = this.cdios.indexOf(this.cdios.find(cdio => cdio.number == this.created.number)!);
-    console.log(index)
     if(index!=-1)
       this.valid = false
-    console.log(this.valid)
   }
 }

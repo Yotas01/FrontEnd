@@ -1,0 +1,44 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+    <div *ngIf="action != 'Delete'; else elseTemplate">
+        <mat-form-field style="width:100%">
+            <input placeholder="{{action}} Description" matInput [(ngModel)]="local.description"><br>
+        </mat-form-field>
+        <table mat-table [dataSource]="local.assessmentTools" #mytable class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let ast"> {{ast.assessmentToolId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <td mat-cell *matCellDef="let ast"> {{ast.description}} </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+                <th mat-header-cell *matHeaderCellDef> Value </th>
+                <td mat-cell *matCellDef="let ast"> {{ast.value}} </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-link">
+                    <button mat-raised-button (click)="openDialog(1,element)" class="function-button">Edit</button>
+                    <button mat-raised-button (click)="openDialog(2,element)" class="function-button">Delete</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <br>
+       <!-- <div class="button-container">
+            <button mat-raised-button (click)="createAssess()" class="function-button">
+              Add Assessment Tool
+            </button>
+        </div>-->
+    </div>
+    <ng-template #elseTemplate>
+        Are you sure you wish to delete RAE <b>{{local.raeId}}</b>?
+    </ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onClick()">{{action}}</button>
+    <button mat-button (click)="onNoClick()" mat-flat-button color="warn">Cancel</button>
+</div>
