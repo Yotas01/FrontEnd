@@ -66,7 +66,7 @@ export class CdioCRUDComponent implements OnInit {
           error: (e) => console.error(e)
         })
       }
-      else{
+      else if(result.event=="Delete"){
         let index = this.cdios.indexOf(this.cdios.find(cdio => cdio.number == result.num)!);
         this.cdioService.deleteCDIO(this.cdios[index].number).subscribe({
           error: (e) => console.error(e)

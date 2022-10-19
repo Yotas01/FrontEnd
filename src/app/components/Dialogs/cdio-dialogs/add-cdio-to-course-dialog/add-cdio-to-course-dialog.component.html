@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+    <p>Choose CDIO</p>
+    <mat-radio-group class="available-cdios" [(ngModel)]="newCdio">
+        <mat-radio-button class="available-cdio-button" *ngFor="let o of options" [value]="o">
+            {{o}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <p>Assign bloom value</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Bloom value</mat-label>
+        <input type="number" min="0" required matInput [(ngModel)]="bloom">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button (click)="onClick()" cdkFocusInitial>Ok</button>
+</div>
+

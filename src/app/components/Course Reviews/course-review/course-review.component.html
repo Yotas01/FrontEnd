@@ -22,12 +22,12 @@
                 </div>
                 <h2>{{ error }}</h2>
                 <div class="buttons">
-                    <button>Send course review</button>
+                    <button mat-raised-button color="primary">Send course review</button>
                 </div>
             </form>
             <div class="button">
-                <button (click)="openDialog(3)">Exit without saving</button>
-                <button (click)="saveUnfinished()">Save and finish later</button>
+                <button mat-raised-button color="primary" (click)="openDialog(3)">Exit without saving</button>
+                <button mat-raised-button color="primary" (click)="saveUnfinished()">Save and finish later</button>
             </div>
         </div>
 </div> 

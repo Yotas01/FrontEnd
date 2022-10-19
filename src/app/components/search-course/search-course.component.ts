@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Course } from 'src/app/model/course/course';
 import { ABETSystemError } from 'src/app/model/Error/ABETSystemError';
 import { Section } from 'src/app/model/section/section';
+import { CourseService } from 'src/app/services/CRUD/Course/course.service';
 import { SectionService } from 'src/app/services/CRUD/Section/section.service';
 import { CourseReviewService } from 'src/app/services/review/course-review.service';
 
@@ -12,7 +14,8 @@ import { CourseReviewService } from 'src/app/services/review/course-review.servi
 })
 export class SearchCourseComponent implements OnInit {
 
-  courseNumber!:number;
+  course!:Course;
+  courses: Course[] = [];
   semester!:number;
   section!: Section;
   hasSelectedCourseAndSemenster: boolean = false;
@@ -20,13 +23,23 @@ export class SearchCourseComponent implements OnInit {
   sections: Section[] = [];
   gotSections: boolean = false;
 
-  constructor(private courseReviewService:CourseReviewService, private router:Router, private sectionService: SectionService) { }
+  constructor(private courseReviewService:CourseReviewService, private router:Router, private courseService: CourseService, private sectionService: SectionService) { }
 
   ngOnInit(): void {
+    this.getAllCourses();
+  }
+
+  getAllCourses(): void{
+    this.courseService.getAll().subscribe({
+      next: (respone) =>{
+        if(respone.body)
+          this.courses = respone.body;
+      }
+    });
   }
 
   getSections(): void{
-    this.sectionService.getAllCourseSections(this.courseNumber, this.semester)
+    this.sectionService.getAllCourseSections(this.course.number, this.semester)
     .subscribe({
       next: (response) => {
         if(response.body){
@@ -40,10 +53,10 @@ export class SearchCourseComponent implements OnInit {
 
   onSubmit(){
     console.log(this.section);
-    this.courseReviewService.getCourseForReview(this.courseNumber,this.section.number,this.semester)
+    this.courseReviewService.getCourseForReview(this.course.number,this.section.number,this.semester)
     .subscribe({
       next: (course) => {
-        this.router.navigate(['/review',this.courseNumber, this.section.number, this.semester]);
+        this.router.navigate(['/review',this.course.number, this.section.number, this.semester]);
       },
       error: (e) => {
         console.error("Caught error in component");

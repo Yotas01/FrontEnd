@@ -1,0 +1,15 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+    <div *ngIf="action != 'Delete'; else elseTemplate">
+        <mat-form-field style="width:100%" >
+            <input placeholder="{{action}} Bloom value" matInput [(ngModel)]="local.bloom"><br>
+        </mat-form-field>
+    </div>
+  <ng-template #elseTemplate>
+    Are you sure you wish to delete CDIO <b>{{local.cdio}}</b>?
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">{{action}}</button>
+  <button mat-button (click)="onNoClick()" mat-flat-button color="warn">Cancel</button>
+</div>

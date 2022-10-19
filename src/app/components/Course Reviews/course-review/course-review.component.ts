@@ -63,7 +63,7 @@ export class CourseReviewComponent implements OnInit {
       this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
-          this.openDialog(1);
+          this.openDialog(0);
           this.router.navigate(['/search']);
         },
         error: (e) => this.error="Error " + e.status + " " + e.error
@@ -79,7 +79,7 @@ export class CourseReviewComponent implements OnInit {
       this.reviewService.sendSectionReview(this.courseReview.sectionReview).subscribe({
         next: (response) => {
           console.log(response);
-          this.openDialog
+          this.openDialog(1);
           this.router.navigate(['/search']);
         },
         error: (e) => {
@@ -93,13 +93,13 @@ export class CourseReviewComponent implements OnInit {
   validateData(){
     let totalStudents = this.courseReview.section.totalStudents;
     if(this.courseReview.sectionReview.sectionAssessmentTools.some(sat => sat.totalStudents > totalStudents || sat.totalStudents ===0))
-      throw new Error("El total de estudiantes de los assessment tool debe ser menor o igual a la cantidad de estudiantes: " + totalStudents + " pero mayor que 0");
+      throw new Error("The total students of the assessment tool must less or equal to the ammount of students: " + totalStudents + " and greater that zero");
       this.courseReview.sectionReview.sectionAssessmentTools.forEach(sat => {
         let satTotal = sat.totalStudents;
         sat.sectionPerformanceIndicators.forEach(spi => {
           let sum = spi.below + spi.competent + spi.exemplary;
           if(sum != satTotal)
-            throw new Error("El total de estudiantes por PI: " + sum + " debe ser igual al total de estudiantes que presentaron el Assessment Tool: " + satTotal);
+            throw new Error("The total students of the Performance Indicator: " + sum + " must be equal to the ammount of students that presented the Assessment Tool with: " + satTotal + " students");
         })
       })
   }

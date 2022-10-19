@@ -33,6 +33,12 @@ import { ModifyCdioDialogComponent } from './components/Dialogs/cdio-dialogs/mod
 import { SectionCrudComponent } from './components/CRUDs/section-crud/section-crud.component';
 import { ModifySectionDialogComponent } from './components/Dialogs/section-dialogs/modify-section-dialog/modify-section-dialog.component';
 import { NewSectionDialogComponent } from './components/Dialogs/section-dialogs/new-section-dialog/new-section-dialog.component';
+import { ModifyRaeDialogComponent } from './components/Dialogs/rae-dialogs/modify-rae-dialog/modify-rae-dialog.component';
+import { NewRaeDialogComponent } from './components/Dialogs/rae-dialogs/new-rae-dialog/new-rae-dialog.component';
+import { ModifyAssessmenttoolDialogComponent } from './components/Dialogs/assessmentTool-dialogs/modify-assessmenttool-dialog/modify-assessmenttool-dialog.component';
+import { NewAssessmenttoolDialogComponent } from './components/Dialogs/assessmentTool-dialogs/new-assessmenttool-dialog/new-assessmenttool-dialog.component';
+import { CdioBloomDialogComponent } from './components/Dialogs/cdio-dialogs/cdio-bloom-dialog/cdio-bloom-dialog.component';
+import { AddCdioToCourseDialogComponent } from './components/Dialogs/cdio-dialogs/add-cdio-to-course-dialog/add-cdio-to-course-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +69,13 @@ import { NewSectionDialogComponent } from './components/Dialogs/section-dialogs/
     SectionCrudComponent,
     ModifySectionDialogComponent,
     NewSectionDialogComponent,
-    SectionReviewCommentComponent
+    SectionReviewCommentComponent,
+    ModifyRaeDialogComponent,
+    NewRaeDialogComponent,
+    ModifyAssessmenttoolDialogComponent,
+    NewAssessmenttoolDialogComponent,
+    CdioBloomDialogComponent,
+    AddCdioToCourseDialogComponent
     ],
   imports: [
     BrowserModule,

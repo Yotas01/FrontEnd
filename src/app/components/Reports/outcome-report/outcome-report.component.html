@@ -44,11 +44,19 @@
 <form>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Write a summary for the performance of this semester</mat-label>
-        <textarea matInput placeholder="Ex. This semester was good because ..."></textarea>
+        <textarea matInput placeholder="Ex. This semester was good because ..."
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="5"
+        cdkAutosizeMaxRows="20"></textarea>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Write the improvements that need to be made</mat-label>
-        <textarea matInput placeholder="Ex. Next semester will be better because ..."></textarea>
+        <textarea matInput placeholder="Ex. Next semester will be better because ..."
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="5"
+        cdkAutosizeMaxRows="20"></textarea>
     </mat-form-field>
 </form>
 <button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>

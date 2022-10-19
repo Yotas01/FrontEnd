@@ -1,57 +1,56 @@
 <div *ngIf="outcomes && cdios && courses">
 <div class="report-header">
-    <div class="report-id-name">
-        Reports
-    </div>
+    <div class="report-id-name">Reports</div>
 </div><br><br>
 <div class="report-chooser">
-    <label id="reportType">Please choose what type of report you want to generate
-        <select id="reportType" [(ngModel)]="selected">
-            <option disabled value="null">Select the type of report</option>
-            <option [ngValue]="'outcome'">Outcome</option>
-            <option [ngValue]="'cdio'">CDIO</option>
-            <option [ngValue]="'course'">Course</option>
-        </select>
-    </label><br>
-    <div [hidden]="selected !== 'outcome'">
-        <label id="outcome">Choose the outcome for the report
-            <select id="outcomeReport" [(ngModel)]="id">
-                <option disabled value="null">Select the outcome</option>
-                <option value="null"> </option>
-                <option *ngFor="let o of outcomes">{{ o.id }}</option>
-            </select>
-        </label>
-    </div>
-    <div [hidden]="selected !== 'cdio'">
-        <label id="cdio">Choose the CDIO for the report
-            <select id="cdioReport" [(ngModel)]="id">
-                <option disabled value="null">Select the CDIO</option>
-                <option *ngFor="let c of cdios">{{ c.number }}</option>
-            </select>
-        </label>
-    </div>
-    <div [hidden]="selected !== 'course'">
-        <label id="course">Choose the course for the report
-            <select id="courseReport" [(ngModel)]="id">
-                <option disabled value="null">Select the course</option>
-                <option *ngFor="let course of courses">{{ course.number }}</option>
-            </select>
-        </label>
-    </div>
+    <mat-form-field class="form-group">
+        <mat-label>Please choose what type of report you want to generate</mat-label>
+        <mat-select [(value)]="selected" [disabled]="">
+            <mat-option [value]="'outcome'">Outcome</mat-option>
+            <mat-option [value]="'cdio'">CDIO</mat-option>
+            <mat-option [value]="'course'">Course</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-group" [ngClass]="{'hidden': selected !== 'outcome'}">
+        <mat-label>Choose the outcome for the report</mat-label>
+        <mat-select [(value)]="id">
+            <mat-option *ngFor="let outcome of outcomes" [value]="outcome.id">
+                {{ outcome.id + " - " + outcome.description }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-group" [ngClass]="{'hidden': selected !== 'cdio'}">
+        <mat-label>Choose the CDIO for the report</mat-label>
+        <mat-select [(value)]="id">
+            <mat-option *ngFor="let cdio of cdios" [value]="cdio.number">
+                {{ cdio.number + " - " + cdio.description }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-group" [ngClass]="{'hidden': selected !== 'course'}">
+        <mat-label>Choose the course for the report</mat-label>
+        <mat-select [(value)]="id">
+            <mat-option *ngFor="let course of courses" [value]="course.number">
+                {{ course.number + " - " + course.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
     <div [hidden]="!id">
-        <label>Select the semester for the report
-            <select id="semester" [(ngModel)]="semester">
-                <option disabled value="null">Select the semester</option>
-                <option [ngValue]="'2010'">2010</option>
-                <option [ngValue]="'2030'">2030</option>
-                <option [ngValue]="'2110'">2110</option>
-                <option [ngValue]="'2130'">2130</option>
-            </select>
-        </label> 
+        <mat-form-field appearance="fill" class="form-group">
+            <mat-label>Select the semester</mat-label>
+            <mat-select [(value)]="semester">
+                <mat-option [value]="2110">2110</mat-option>
+                <mat-option [value]="2130">2130</mat-option>
+                <mat-option [value]="2210">2210</mat-option>
+                <mat-option [value]="2210">2230</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
-    <button id = "report" (click)="onSubmit()">Generate report</button><br>
-    <button (click)="updateInformation()">Update Information</button><br>
-    <button><a routerLink="/search" routerLinkActive="active">Log Out</a></button>
-    <router-outlet></router-outlet>  
+    <div class="form-group">
+        <button mat-raised-button color="primary" id = "report" (click)="onSubmit()">Generate report</button><br>
+        <button mat-raised-button color="primary" (click)="updateInformation()">Update Information</button><br>
+        <button mat-raised-button color="primary"><a routerLink="/search" routerLinkActive="active">Return</a></button>
+        <router-outlet></router-outlet> 
+    </div>
 </div>
 </div>

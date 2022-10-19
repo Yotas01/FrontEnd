@@ -1,17 +1,33 @@
 table{
-    width: 18%;
+    width: 80%;
     font-size: x-large;
+    padding-left: 1%;
 }
 
-.mat-column-CDIO{
-    border-right: 1px solid currentColor;
+.cdioTable{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.raeTable{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-column-CDIO, .mat-column-id{
+    border-right: 1px solid grey;
     padding-right: 10px;
 }
 
-.mat-column-Bloom{
-    border-right: 1px solid currentColor;
+.mat-column-description,.mat-column-Bloom {
+    border-right: 1px solid grey;
     padding-left: 5px;
     padding-right: 10px;
+}
+
+.mat-column-description {
+    width: 85%;
 }
 
 .mat-column-action{
@@ -24,6 +40,12 @@ h1{
 
 .centered{
     text-align: center;
+}
+
+.button-container {
+    padding-top: 16px;
+    padding-left: 40px;
+    padding-bottom: 50px;
 }
 
 .function-button {
