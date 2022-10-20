@@ -22,7 +22,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumnsCDIOSummary;"></tr>
 </table>
 
-<h2>Summary for this CDIO</h2>
+<h2>Summary for this Outcome</h2>
 <table mat-table [dataSource]="outcomeSummaryData" class="mat-elevation-z9">
     <ng-container matColumnDef="Exemplary">
         <th mat-header-cell *matHeaderCellDef>Exemplary</th>
@@ -41,10 +41,10 @@
 </table>
 <br>
 
-<form>
+<div class="centered">
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Write a summary for the performance of this semester</mat-label>
-        <textarea matInput placeholder="Ex. This semester was good because ..."
+        <textarea [(ngModel)]="semesterReport.performance" matInput placeholder="Ex. This semester was good because ..."
         matInput
         cdkTextareaAutosize
         cdkAutosizeMinRows="5"
@@ -52,12 +52,14 @@
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Write the improvements that need to be made</mat-label>
-        <textarea matInput placeholder="Ex. Next semester will be better because ..."
+        <textarea [(ngModel)]="semesterReport.improvementActions" matInput placeholder="Ex. Next semester will be better because ..."
         matInput
         cdkTextareaAutosize
         cdkAutosizeMinRows="5"
         cdkAutosizeMaxRows="20"></textarea>
     </mat-form-field>
-</form>
+    <button mat-raised-button color="primary" (click)="saveSemesterReport()">Save report</button>
+</div>
+
 <button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>
 </div>

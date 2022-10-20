@@ -5,6 +5,7 @@ import { Constants } from 'src/app/common/Constants';
 import { CDIOReportDTO } from 'src/app/model/report/cdioReportDTO/cdioreport-dto';
 import { CourseReportDTO } from 'src/app/model/report/courseReportDTO/course-report-dto';
 import { OutcomeReportDTO } from 'src/app/model/report/OutcomeReportDTO/outcome-report-dto';
+import { SemesterReport } from 'src/app/model/SemesterReport/semester-report';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,13 @@ export class ReportService {
   getOutcomeReport(id: number, semester: number): Observable<HttpResponse<OutcomeReportDTO>>{
     let url = this.baseURL+`/outcome/${id}/semester/${semester}`;
     return this.http.get<OutcomeReportDTO>(url, {observe: 'response'});
+  }
+  saveSemesterReport(semesterReport: SemesterReport): Observable<HttpResponse<void>>{
+    let url = this.baseURL+'/semester-report';
+    return this.http.post<void>(url, semesterReport, {observe: 'response'});
+  }
+  getSemesterReport(semester: number): Observable<HttpResponse<SemesterReport>>{
+    let url = this.baseURL+'/semester-report/'+ semester;
+    return this.http.get<SemesterReport>(url, {observe: 'response'});
   }
 }
