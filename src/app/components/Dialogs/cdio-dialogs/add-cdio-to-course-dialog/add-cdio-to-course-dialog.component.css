@@ -1,0 +1,10 @@
+.available-cdios{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.available-cdio-button{
+    padding-bottom: 5px;
+}

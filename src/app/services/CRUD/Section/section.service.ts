@@ -22,4 +22,16 @@ export class SectionService {
     return this.http
     .get<Section[]>(`${this.baseURL}/${courseNumber}/sections/semester/${semester}`, {observe: 'response'});
   }
+
+  createSection(courseNumber:number,section:Section): Observable<HttpResponse<Section>>{
+    return this.http.post<Section>(this.baseURL+"/"+courseNumber+"/section",section,{observe:'response'})
+  }
+
+  deleteSection(courseNumber:number,sectionId:number): Observable<HttpResponse<Section>>{
+    return this.http.delete<Section>(this.baseURL+"/"+courseNumber+"/section/"+sectionId, {observe: 'response'})
+  }
+
+  updateSection(courseNumber:number,section:Section): Observable<HttpResponse<Section>>{
+    return this.http.put<Section>(this.baseURL+"/"+courseNumber+"/section/"+section.number,section,{ observe: 'response'});
+  }
 }

@@ -7,7 +7,7 @@
         <p>CDIOs</p>
         <div *ngFor="let n of options" >
            <mat-checkbox [(ngModel)]="n.select">
-              {{n.name+"   "}}
+              {{n.name+" "+n.desc}}
          </mat-checkbox>
         </div>
     </div>

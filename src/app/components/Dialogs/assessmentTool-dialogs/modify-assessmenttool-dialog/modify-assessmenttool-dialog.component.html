@@ -5,8 +5,36 @@
             <input placeholder="{{action}} Description" matInput [(ngModel)]="local.description"><br>
         </mat-form-field>
         <mat-form-field style="width:100%">
-            <input placeholder="{{action}} Description" matInput [(ngModel)]="local.value"><br>
+            <input placeholder="{{action}} Value" matInput [(ngModel)]="local.value"><br>
         </mat-form-field>
+        <table mat-table [dataSource]="local.performanceIndicators" #mytable class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let perfIndicator"> {{perfIndicator.performanceIndicatorId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <td mat-cell *matCellDef="let perfIndicator"> {{perfIndicator.description}} </td>
+            </ng-container>
+            <ng-container matColumnDef="percentage">
+                <th mat-header-cell *matHeaderCellDef> Percentage </th>
+                <td mat-cell *matCellDef="let perfIndicator"> {{perfIndicator.percentage}} </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-link">
+                    <button mat-raised-button (click)="openDialog(1,element)" class="function-button">Edit</button>
+                    <button mat-raised-button (click)="openDialog(2,element)" class="function-button">Delete</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div class="button-container">
+            <button mat-raised-button (click)="createPI()" class="function-button">
+              Add Performance Indicator
+            </button>
+        </div>
     </div>
     <ng-template #elseTemplate>
         Are you sure you wish to delete Assessment Tool <b>{{local.assessmentToolId}}</b>?

@@ -21,6 +21,7 @@ export class AddCdioToCourseDialogComponent implements OnInit {
   listOfCdios!:CDIO[]
   local!:any[]
   options:number[]=[]
+  descs:string[]=[]
   newCdio!:number
 
   constructor(private cdioService:CDIOService,public dialogRef:MatDialogRef<AddCdioToCourseDialogComponent>,
@@ -37,8 +38,10 @@ export class AddCdioToCourseDialogComponent implements OnInit {
         if(response.body){
           this.cdios = response.body
           for(let i = 0; i<this.cdios.length;i++){
-            if(!numbers.includes(this.cdios[i].number))
+            if(!numbers.includes(this.cdios[i].number)){
               this.options.push(this.cdios[i].number)
+              this.descs.push(this.cdios[i].description)
+            }
           }
         }
       },

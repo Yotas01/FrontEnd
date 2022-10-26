@@ -1,0 +1,19 @@
+table{
+    width: 80%;
+    font-size: x-large;
+    padding-left: 1%;
+}
+
+.mat-column-description{
+    padding-left: 5px;
+}
+
+.mat-column-action{
+    padding-left: 5px;
+}
+
+.function-button {
+    margin-left: 8px;
+    background-color: rgb(44, 86, 151);
+    color: white;
+}
