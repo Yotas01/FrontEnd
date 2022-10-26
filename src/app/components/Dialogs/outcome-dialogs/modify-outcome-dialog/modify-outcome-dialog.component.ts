@@ -12,6 +12,7 @@ export interface forCheck{
   id:number;
   select:boolean;
   name:number;
+  desc:string
 }
 
 @Component({
@@ -42,9 +43,10 @@ export class ModifyOutcomeDialogComponent implements OnInit {
         if(response.body){
           this.cdios = response.body
           for(let i = 0; i<this.cdios.length;i++){
-            let t:forCheck = {id:0,select:false,name:0};
+            let t:forCheck = {id:0,select:false,name:0,desc:""};
             t.id=i;
             t.name=this.cdios[i].number;
+            t.desc=this.cdios[i].description
             if(this.local.cdios.includes(t.name))
               t.select=true;
             else

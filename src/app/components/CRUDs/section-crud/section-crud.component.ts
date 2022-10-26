@@ -43,7 +43,9 @@ export class SectionCrudComponent implements OnInit {
     })
   } 
 
-  createSection(){} 
+  createSection(){
+    //this.newSection = {sectionId:0,number:0,professor:'',semester:0,totalStudents:0}
+  } 
 
   openDialog(action:number,element:any){
     element.action = action
@@ -58,6 +60,9 @@ export class SectionCrudComponent implements OnInit {
         this.sections[index].number = result.num
         this.sections[index].professor = result.prof
         this.sections[index].totalStudents = result.total
+        this.sectionService.updateSection(this.courseNumber,this.sections[index]).subscribe({
+          error: (e) => console.error(e)
+        })
       }
       else{
         let index = this.sections.indexOf(this.sections.find(section => section.number == result.num)!)

@@ -1,6 +1,5 @@
 import { AddCdioToCourseDialogComponent } from './../../Dialogs/cdio-dialogs/add-cdio-to-course-dialog/add-cdio-to-course-dialog.component';
 import { CdioBloomDialogComponent } from './../../Dialogs/cdio-dialogs/cdio-bloom-dialog/cdio-bloom-dialog.component';
-import { CourseDialogUnfinishedComponent } from './../../Dialogs/course-dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
 import { NewRaeDialogComponent } from './../../Dialogs/rae-dialogs/new-rae-dialog/new-rae-dialog.component';
 import { MatTable } from '@angular/material/table';
 import { ModifyRaeDialogComponent } from './../../Dialogs/rae-dialogs/modify-rae-dialog/modify-rae-dialog.component';
@@ -67,6 +66,8 @@ export class CourseCRUDComponent implements OnInit {
           let temp:cdioBloom = {cdio:0,bloom:0}
           temp.cdio = courseHasCdio.cdio
           temp.bloom = courseHasCdio.value
+          if(temp.bloom == null)
+            temp.bloom = 0
           console.log(this.cdiosBloom)
           this.cdiosBloom.push(temp)
         }
@@ -76,7 +77,6 @@ export class CourseCRUDComponent implements OnInit {
 
   openDialogCDIO(action:number,element?:any){
     element.action = action
-    console.log(element)
     let dialogRef = this.dialog.open(CdioBloomDialogComponent,{
       width:'80%',
       data:element
@@ -85,9 +85,18 @@ export class CourseCRUDComponent implements OnInit {
       if(result.event=='Edit'){
         let index = this.cdiosBloom.indexOf(this.cdiosBloom.find(cdio => cdio.cdio == result.cdio)!)
         this.cdiosBloom[index].bloom = result.bloom
+        this.courseService.updateBloomValue(this.courseNumber,this.cdiosBloom[index].cdio, result.bloom).subscribe({
+          error: (e) => console.error(e)
+        })
       }
       else if(result.event=='Delete'){
         let index = this.cdiosBloom.indexOf(this.cdiosBloom.find(cdio => cdio.cdio == result.cdio)!)
+        this.courseService.deleteCDIOFromCourse(this.courseNumber,this.cdiosBloom[index].cdio,this.course).subscribe({
+          next: response => {
+            if(response.body)
+              console.log(response.body)
+          }
+        })
         this.cdiosBloom.splice(index,1)
         this.table.first.renderRows()
       }
@@ -96,6 +105,7 @@ export class CourseCRUDComponent implements OnInit {
 
   openDialogRAE(action:number,element:any){
     element.action = action
+    element.courseNumber = this.courseNumber
     let dialogRef = this.dialog.open(ModifyRaeDialogComponent,{
       width:'80%',
       data:element
@@ -108,6 +118,9 @@ export class CourseCRUDComponent implements OnInit {
       }
       else if(result.event=="Delete"){
         let index = this.raes.indexOf(this.raes.find(rae => rae.raeId == result.id)!)
+        this.raeService.deleteRAE(this.courseNumber,this.raes[index].raeId).subscribe({
+          error: (e) => console.error(e)
+        })
         this.raes.splice(index,1)
         console.log(this.raes)
         this.table.last.renderRows()
@@ -125,6 +138,9 @@ export class CourseCRUDComponent implements OnInit {
       if(result.event == 'ok'){
         this.newCdio.cdio = result.cdioNumber
         this.newCdio.bloom = result.newBloom
+        this.courseService.addCdio(this.courseNumber,this.newCdio.cdio,this.newCdio.bloom).subscribe({
+          error: (e) => console.error(e)
+        })
         this.cdiosBloom.push(this.newCdio)
         this.table.first.renderRows()
       }
@@ -140,6 +156,19 @@ export class CourseCRUDComponent implements OnInit {
       console.log('Dialog result: '+result.data+result.desc)
       this.newRae.description = result.desc
       this.newRae.cdioList = result.data
+      this.raeService.createRAE(this.courseNumber,this.newRae).subscribe({
+        next: (response) => {
+          if(response.body){
+            console.log(response.body)
+            this.newRae.raeId = response.body.raeId
+            this.newRae.cdioList.forEach(cdio => {
+            this.raeService.addCDIOToRAE(cdio,this.newRae.raeId).subscribe({
+              error: (e) => console.error(e)
+             })
+            })
+          }
+        }
+      })
       this.raes.push(this.newRae)
       this.table.last.renderRows()
     })

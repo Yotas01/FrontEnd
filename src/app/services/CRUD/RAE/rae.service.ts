@@ -1,3 +1,4 @@
+import { Description } from './../../../model/rae/description/Description';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -10,6 +11,7 @@ import { RAE } from 'src/app/model/rae/RAE';
 export class RAEService {
 
   private baseURL: string = Constants.baseUrl+"/admin/course/"
+  private baseURLCDIO: string = Constants.baseUrl+"/admin/cdio/"
 
   constructor(private http: HttpClient) { }
 
@@ -20,4 +22,18 @@ export class RAEService {
   getRAESFromCourse(courseNumber:number): Observable<HttpResponse<RAE[]>>{
     return this.http.get<RAE[]>(this.baseURL+`${courseNumber}/rae`,{ observe: 'response'})
   }
+
+  createRAE(courseNumber:number,rae:RAE): Observable<HttpResponse<RAE>>{
+    let d:Description = new Description(rae.description)
+    return this.http.post<RAE>(this.baseURL+courseNumber+"/rae",d,{observe: 'response'})
+  }
+
+  addCDIOToRAE(cdio:number,raeId:number): Observable<HttpResponse<RAE>>{
+    return this.http.post<RAE>(this.baseURLCDIO+cdio+"/rae/"+raeId,"",{observe:'response'})
+  }
+
+  deleteRAE(courseNumber:number,raeId:number): Observable<HttpResponse<RAE>>{
+    return this.http.delete<RAE>(this.baseURL+courseNumber+"/rae/"+raeId,{observe:'response'})
+  }
+
 }

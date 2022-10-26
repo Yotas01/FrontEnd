@@ -12,6 +12,7 @@ export interface forCheck{
   id:number;
   select:boolean;
   name:number;
+  desc:string
 }
 
 @Component({
@@ -33,10 +34,11 @@ export class NewOutcomeDialogComponent implements OnInit {
         if(response.body){
           this.listOfCdios = response.body
           for(let i = 0; i<this.listOfCdios.length;i++){
-            let t:forCheck = {id:0,select:false,name:0};
+            let t:forCheck = {id:0,select:false,name:0,desc:""};
             t.id=i;
             t.select=false;
             t.name=this.listOfCdios[i].number;
+            t.desc=this.listOfCdios[i].description
             this.options.push(t);
           }
         }

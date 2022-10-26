@@ -13,6 +13,7 @@ export interface assessData{
 })
 export class ModifyAssessmenttoolDialogComponent implements OnInit {
 
+  displayedColumns:string[]=['id','description','percentage','action']
   action!:string
   local!:any
 
@@ -34,6 +35,12 @@ export class ModifyAssessmenttoolDialogComponent implements OnInit {
 
   onNoClick(){
     this.dialogRef.close({event:'cancel'});
+  }
+
+  openDialog(action:number,element:any){}
+
+  createPI(){
+    
   }
 
 }
