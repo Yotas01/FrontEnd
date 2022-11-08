@@ -36,4 +36,15 @@ export class CdioReportComponent implements OnInit {
     });
   }
 
+  getCumulative(option:number):number{
+    let cumulative = 0
+    if(option == 1)
+      cumulative = this.cdioSummaryData[0].exemplary
+    else if(option == 2)
+      cumulative = this.cdioSummaryData[0].exemplary+this.cdioSummaryData[0].competent
+    else(option == 3)
+      cumulative = this.cdioSummaryData[0].exemplary+this.cdioSummaryData[0].competent+this.cdioSummaryData[0].below
+    return cumulative
+  }
+
 }

@@ -1,10 +1,14 @@
+import { PerformanceIndicator } from './../../../../model/performanceIndicator/performance-indicator';
+import { ModifyPerformanceIndicatorDialogComponent } from './../../performanceIndicator-dialogs/modify-performance-indicator-dialog/modify-performance-indicator-dialog.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional, QueryList, ViewChildren } from '@angular/core';
 import { NewAssessmenttoolDialogComponent } from '../new-assessmenttool-dialog/new-assessmenttool-dialog.component';
+import { MatTable } from '@angular/material/table';
 
 export interface assessData{
   description:string,
-  value:number
+  value:number,
+  performanceIndicators:PerformanceIndicator[]
 }
 
 @Component({
@@ -18,9 +22,12 @@ export class ModifyAssessmenttoolDialogComponent implements OnInit {
   action!:string
   local!:any
 
+  @ViewChildren(MatTable) table!: QueryList<MatTable<any>>;
+
   constructor(public dialogRef: MatDialogRef<ModifyAssessmenttoolDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data:assessData, private dialog:MatDialog) {
       this.local = {...data}
+      console.log(this.local)
       if(this.local.action==1)
         this.action = 'Edit'
       else
@@ -40,7 +47,24 @@ export class ModifyAssessmenttoolDialogComponent implements OnInit {
 
   openDialog(action:number,element:any){
     element.action = action
-    //let dialogRef = this.dialog.open()
+    console.log(this.local)
+    let dialogRef = this.dialog.open(ModifyPerformanceIndicatorDialogComponent,{
+      width:'60%',
+      data:element
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result: '+result.event)
+      if(result.event == 'Edit'){
+        let index = this.data.performanceIndicators.indexOf(this.data.performanceIndicators.find( pi => pi.performanceIndicatorId == result.id)!)
+        this.local.performanceIndicators[index].description = result.desc 
+        this.local.performanceIndicators[index].percentage = result.perc
+      }
+      else if(result.event == 'Delete'){
+        let index = this.data.performanceIndicators.indexOf(this.data.performanceIndicators.find( pi => pi.performanceIndicatorId == result.id)!)
+        this.local.performanceIndicators.splice(index,1)
+        this.table.last.renderRows()
+      }
+    })
   }
 
   createPI(){
