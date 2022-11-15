@@ -29,6 +29,12 @@ h1{
     text-align: center;
 }
 
+.function-button {
+    margin-left: 8px;
+    background-color: rgb(44, 86, 151);
+    color: white;
+}
+
 button{
     position:relative;
     left: 10px;

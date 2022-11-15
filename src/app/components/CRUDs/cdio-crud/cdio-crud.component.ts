@@ -5,6 +5,7 @@ import { CDIO } from 'src/app/model/CDIO/cdio';
 import { CDIOService } from 'src/app/services/CRUD/CDIO/cdio.service';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cdio-crud',
@@ -19,7 +20,7 @@ export class CdioCRUDComponent implements OnInit {
 
   @ViewChild(MatTable,{static:true}) table!: MatTable<any>;
 
-  constructor(private cdioService: CDIOService, private dialog:MatDialog) { }
+  constructor(private router:Router, private cdioService: CDIOService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.cdioService.getAll().subscribe({
@@ -76,6 +77,10 @@ export class CdioCRUDComponent implements OnInit {
         this.table.renderRows()
       }
     })
+  }
+
+  onClick(){
+    this.router.navigate(['admin/management'])
   }
 
 }

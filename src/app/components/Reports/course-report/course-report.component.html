@@ -52,5 +52,9 @@
 <mat-list role="comments">
     <p mat-list-item *ngFor="let comment of courseReport.comments">- {{ comment }}</p>
 </mat-list>
-<button><a routerLink="/admin" routerLinkActive="active">Regresar</a></button>
+<div class="button-container">
+    <button mat-raised-button (click)="onClick()" class="function-button">
+        Return
+    </button>
+</div>
 </div>

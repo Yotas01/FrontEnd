@@ -26,13 +26,15 @@ export class CRUDComponent implements OnInit {
     });
   }
 
-  onClick(){
+  onClick(option:number){
     if(this.selectedOption === "courses")
       this.router.navigate(['admin/management/courses',this.courseNumber]);
     else if(this.selectedOption === "sections")
       this.router.navigate(['admin/management/sections',this.courseNumber]);
     else
       this.router.navigate(['admin/management/'+this.selectedOption]);
+    if(option==1)
+      this.router.navigate(['admin'])  
   }
 
 }

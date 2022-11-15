@@ -1,6 +1,5 @@
 import { AssessmentToolService } from './../../../../services/CRUD/AssessmentTool/assessment-tool.service';
 import { NewAssessmenttoolDialogComponent } from './../../assessmentTool-dialogs/new-assessmenttool-dialog/new-assessmenttool-dialog.component';
-import { CourseDialogUnfinishedComponent } from './../../course-dialogs/course-dialog-unfinished/course-dialog-unfinished.component';
 import { ModifyAssessmenttoolDialogComponent } from './../../assessmentTool-dialogs/modify-assessmenttool-dialog/modify-assessmenttool-dialog.component';
 import { AssessmentTool } from './../../../../model/assessmentTool/assessment-tool';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -71,6 +70,8 @@ export class ModifyRaeDialogComponent implements OnInit {
 
   openDialog(action:number,element:any){
     element.action = action
+    element.courseNumber = this.local.courseNumber
+    element.raeId = this.local.raeId
     let dialogRef = this.dialog.open(ModifyAssessmenttoolDialogComponent, {
       width:'70%',
       data:element

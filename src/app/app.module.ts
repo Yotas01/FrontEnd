@@ -39,6 +39,7 @@ import { ModifyAssessmenttoolDialogComponent } from './components/Dialogs/assess
 import { NewAssessmenttoolDialogComponent } from './components/Dialogs/assessmentTool-dialogs/new-assessmenttool-dialog/new-assessmenttool-dialog.component';
 import { CdioBloomDialogComponent } from './components/Dialogs/cdio-dialogs/cdio-bloom-dialog/cdio-bloom-dialog.component';
 import { AddCdioToCourseDialogComponent } from './components/Dialogs/cdio-dialogs/add-cdio-to-course-dialog/add-cdio-to-course-dialog.component';
+import { ModifyPerformanceIndicatorDialogComponent } from './components/Dialogs/performanceIndicator-dialogs/modify-performance-indicator-dialog/modify-performance-indicator-dialog.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { AddCdioToCourseDialogComponent } from './components/Dialogs/cdio-dialog
     ModifyAssessmenttoolDialogComponent,
     NewAssessmenttoolDialogComponent,
     CdioBloomDialogComponent,
-    AddCdioToCourseDialogComponent
+    AddCdioToCourseDialogComponent,
+    ModifyPerformanceIndicatorDialogComponent
     ],
   imports: [
     BrowserModule,
