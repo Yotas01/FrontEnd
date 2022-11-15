@@ -51,6 +51,9 @@
             Add RAE
         </button>
     </div>
+    <button mat-raised-button (click)="onClick()" class="function-button">
+            Return
+    </button>
     <div *ngFor="let rae of course.raes| keyvalue; let i = index" hidden>
         <app-rae-crud [raeId]="rae.key" [courseNumber]="courseNumber"></app-rae-crud>
     </div>

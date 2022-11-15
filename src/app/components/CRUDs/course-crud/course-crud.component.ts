@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RAE } from './../../../model/rae/RAE';
 import { RAEService } from './../../../services/CRUD/RAE/rae.service';
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/model/course/course';
 import { CourseService } from 'src/app/services/CRUD/Course/course.service';
 import { CourseHasCDIOService } from 'src/app/services/CRUD/Relations/Course-CDIO/course-has-cdio.service';
@@ -35,7 +35,7 @@ export class CourseCRUDComponent implements OnInit {
 
   @ViewChildren(MatTable) table!: QueryList<MatTable<any>>;
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService, private relationService: CourseHasCDIOService, private raeService:RAEService, private dialog:MatDialog) { }
+  constructor(private router:Router, private route: ActivatedRoute, private courseService: CourseService, private relationService: CourseHasCDIOService, private raeService:RAEService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.courseNumber = parseInt(this.route.snapshot.paramMap.get('courseNumber')!);
@@ -172,6 +172,10 @@ export class CourseCRUDComponent implements OnInit {
       this.raes.push(this.newRae)
       this.table.last.renderRows()
     })
+  }
+
+  onClick(){
+    this.router.navigate(['admin/management'])
   }
 
 }

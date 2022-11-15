@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CDIOSummary } from 'src/app/model/report/cdioSummary/cdio-summary';
 import { OutcomeReportDTO } from 'src/app/model/report/OutcomeReportDTO/outcome-report-dto';
 import { OutcomeSummary } from 'src/app/model/report/OutcomeSummary/outcome-summary';
@@ -22,7 +22,7 @@ export class OutcomeReportComponent implements OnInit {
   semester!: number;
   semesterReport!: SemesterReport;
 
-  constructor(private route: ActivatedRoute, private reportService: ReportService) { }
+  constructor(private router:Router, private route: ActivatedRoute, private reportService: ReportService) { }
 
   ngOnInit(): void {
     this.id =  parseFloat(this.route.snapshot.paramMap.get('id') || "");
@@ -70,5 +70,9 @@ export class OutcomeReportComponent implements OnInit {
       cumulative = this.outcomeSummaryData[0].exemplary+this.outcomeSummaryData[0].competent+this.outcomeSummaryData[0].below
     return cumulative
   }
+
+  onClick(){
+    this.router.navigate(['admin'])  
+}
 
 }

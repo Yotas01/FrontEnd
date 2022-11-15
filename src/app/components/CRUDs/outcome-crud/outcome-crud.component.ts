@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Outcome } from 'src/app/model/outcome/outcome';
 import { OutcomeService } from 'src/app/services/CRUD/Outcome/outcome.service';
 import { NewOutcomeDialogComponent } from '../../Dialogs/outcome-dialogs/new-outcome-dialog/new-outcome-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-outcome-crud',
@@ -20,7 +21,7 @@ export class OutcomeCRUDComponent implements OnInit {
 
   @ViewChild(MatTable,{static:true}) table!: MatTable<any>;
 
-  constructor(private outcomeService: OutcomeService, private dialog:MatDialog) { }
+  constructor(private router:Router, private outcomeService: OutcomeService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.outcomeService.getAll().subscribe({
@@ -84,5 +85,9 @@ export class OutcomeCRUDComponent implements OnInit {
         this.table.renderRows();
       }
     });
+  }
+
+  onClick(){
+    this.router.navigate(['admin/management'])
   }
 }

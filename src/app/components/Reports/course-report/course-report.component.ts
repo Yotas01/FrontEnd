@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseReportDTO } from 'src/app/model/report/courseReportDTO/course-report-dto';
 import { ReportService } from 'src/app/services/report/report.service';
 
@@ -16,7 +16,7 @@ export class CourseReportComponent implements OnInit {
   id!: number;
   semester!: number;
 
-  constructor(private route: ActivatedRoute, private reportService: ReportService) { }
+  constructor(private router:Router, private route: ActivatedRoute, private reportService: ReportService) { }
 
   ngOnInit(): void {
     this.id =  parseFloat(this.route.snapshot.paramMap.get('id') || "");
@@ -28,6 +28,10 @@ export class CourseReportComponent implements OnInit {
       },
       error: (e) => console.log(e)
     });
+  }
+
+  onClick(){
+    this.router.navigate(['admin'])  
   }
 
 }

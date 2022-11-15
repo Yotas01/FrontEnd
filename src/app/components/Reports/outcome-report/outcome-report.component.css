@@ -5,6 +5,12 @@ table{
     margin-right: auto;
 }
 
+.function-button {
+    margin-left: 8px;
+    background-color: rgb(44, 86, 151);
+    color: white;
+}
+
 .mat-column-Exemplary{
     border-right: 1px solid currentColor;
     padding-right: 10px;

@@ -1,25 +1,41 @@
+<div class="report-header">
+    <div class="report-id-name">Update Information</div>
+</div><br><br>
 <h1>Please choose what you want to update</h1>
-<select name="crudOption" id="options" [(ngModel)]="selectedOption">
-    <option disabled value = "null"></option>
-    <option [ngValue]="'outcomes'">Outcomes</option>
-    <option [ngValue]="'cdios'">CDIOs</option>
-    <option [ngValue]="'courses'">Courses</option>
-    <option [ngValue]="'sections'">Sections</option>
-</select>
+<mat-form-field appearance="fill">
+    <mat-select [(value)]="selectedOption">
+        <mat-option [value]="'outcomes'">Outcomes</mat-option>
+        <mat-option [value]="'cdios'">CDIOs</mat-option>
+        <mat-option [value]="'courses'">Courses</mat-option>
+        <mat-option [value]="'sections'">Sections</mat-option>
+    </mat-select>
+</mat-form-field>
 <div [hidden]="selectedOption !== 'courses'">
-    <label id="course">Choose the course to update
-        <select id="courseReport" [(ngModel)]="courseNumber">
-            <option value="null"></option>
-            <option [ngValue]="course.number" *ngFor="let course of courses">{{ course.name + " -- " + course.number }}</option>
-        </select>
-    </label>
+    <mat-form-field appearance="fill" class="course-select">
+        <mat-label>Choose the course to update</mat-label>
+        <mat-select [(value)]="courseNumber">
+            <mat-option *ngFor="let course of courses" [value]="course.number">
+                {{ course.name + " -- " + course.number }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>
 <div [hidden]="selectedOption !== 'sections'">
-    <label id="course">Choose the course which sections to update
-        <select id="courseReport" [(ngModel)]="courseNumber">
-            <option value="null"></option>
-            <option [ngValue]="course.number" *ngFor="let course of courses">{{ course.name + " -- " + course.number }}</option>
-        </select>
-    </label>
+    <mat-form-field appearance="fill" class="course-select">
+        <mat-label>Choose the course which sections to update</mat-label>
+        <mat-select [(value)]="courseNumber">
+            <mat-option *ngFor="let course of courses" [value]="course.number">
+                {{ course.name + " -- " + course.number }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>
-<button (click)="onClick()">Confirm</button>
+<br>
+<div class="button-container">
+    <button mat-raised-button (click)="onClick(0)" class="function-button">
+        Confirm
+    </button>
+    <button mat-raised-button (click)="onClick(1)" class="function-button">
+        Return
+    </button>
+</div>
