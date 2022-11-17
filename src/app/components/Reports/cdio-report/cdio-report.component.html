@@ -3,9 +3,13 @@
 <h2>Courses that report to this CDIO</h2>
 
 <table mat-table [dataSource]="cdioCourseData" class="mat-elevation-z9">
-    <ng-container matColumnDef="courseId">
-        <th mat-header-cell *matHeaderCellDef>Course Id</th>
-        <td mat-cell *matCellDef="let summary">{{summary.courseId}}</td>
+    <ng-container matColumnDef="courseNumber">
+        <th mat-header-cell *matHeaderCellDef>Course Number</th>
+        <td mat-cell *matCellDef="let summary">{{summary.courseNumber}}</td>
+    </ng-container>
+    <ng-container matColumnDef="courseName">
+        <th mat-header-cell *matHeaderCellDef>Course Name</th>
+        <td mat-cell *matCellDef="let summary">{{summary.courseName}}</td>
     </ng-container>
     <ng-container matColumnDef="exemplary">
         <th mat-header-cell *matHeaderCellDef>Exemplary</th>

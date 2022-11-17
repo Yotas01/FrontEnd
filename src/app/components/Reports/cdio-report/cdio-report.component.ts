@@ -13,7 +13,7 @@ import { ReportService } from 'src/app/services/report/report.service';
 export class CdioReportComponent implements OnInit {
 
   displayedColumnsSummary: string[] = ['Exemplary','Competent','Below'];
-  displayedColumnsCourses: string[] = ['courseId','exemplary','competent','below'];
+  displayedColumnsCourses: string[] = ['courseNumber','courseName','exemplary','competent','below'];
   cdioReport!: CDIOReportDTO;
   cdioSummaryData: CDIOSummary[] = [];
   cdioCourseData: CDIOSummaryForCourse[] = [];
