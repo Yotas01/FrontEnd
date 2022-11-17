@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Constants } from 'src/app/common/Constants';
+import { environment } from 'src/environments/environment';
 import { Outcome } from 'src/app/model/outcome/outcome';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Outcome } from 'src/app/model/outcome/outcome';
 })
 export class OutcomeService {
 
-  baseURL = Constants.baseUrl + "/admin/outcome";
+  baseURL = environment.baseUrl + "/admin/outcome";
 
   constructor(private http: HttpClient) { }
 

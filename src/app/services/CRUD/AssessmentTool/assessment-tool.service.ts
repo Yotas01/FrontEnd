@@ -1,16 +1,16 @@
 import { BodyCreateAssessmentTool } from './../../../model/assessmentTool/BodyCreateAssessmentTool/BodyCreateAssessmentTool';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Constants } from './../../../common/Constants';
 import { Injectable } from '@angular/core';
 import { AssessmentTool } from 'src/app/model/assessmentTool/assessment-tool';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssessmentToolService {
 
-  baseURL = Constants.baseUrl + "/admin/course/"
+  baseURL = environment.baseUrl + "/admin/course/"
 
   constructor(private http: HttpClient) { }
 

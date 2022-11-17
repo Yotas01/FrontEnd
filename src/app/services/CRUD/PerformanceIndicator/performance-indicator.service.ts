@@ -1,7 +1,7 @@
 import { BodyCreatePerformanceIndicator } from './../../../model/performanceIndicator/BodyCreatePerformanceIndicator/BodyCreatePerformanceIndicator';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Constants } from './../../../common/Constants';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { PerformanceIndicator } from 'src/app/model/performanceIndicator/performance-indicator';
 
@@ -10,7 +10,7 @@ import { PerformanceIndicator } from 'src/app/model/performanceIndicator/perform
 })
 export class PerformanceIndicatorService {
 
-  baseURL = Constants.baseUrl + "/admin/course"
+  baseURL = environment.baseUrl + "/admin/course"
 
   constructor(private http:HttpClient) { }
 

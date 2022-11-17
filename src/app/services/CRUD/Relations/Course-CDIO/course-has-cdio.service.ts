@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Constants } from 'src/app/common/Constants';
+import { environment } from 'src/environments/environment';
 import { CourseHasCDIO } from 'src/app/model/CourseHasCDIO/course-has-cdio';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { CourseHasCDIO } from 'src/app/model/CourseHasCDIO/course-has-cdio';
 })
 export class CourseHasCDIOService {
 
-  private baseURL: string = Constants.baseUrl+"/admin";
+  private baseURL: string = environment.baseUrl+"/admin";
 
   constructor(private http: HttpClient) { }
 

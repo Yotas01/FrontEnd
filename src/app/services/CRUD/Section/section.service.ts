@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Constants } from 'src/app/common/Constants';
+import { environment } from 'src/environments/environment';
 import { Section } from 'src/app/model/section/section';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Section } from 'src/app/model/section/section';
 })
 export class SectionService {
 
-  private baseURL: string = Constants.baseUrl+"/admin/course";
+  private baseURL: string = environment.baseUrl+"/admin/course";
 
   constructor(private http: HttpClient) { }
 

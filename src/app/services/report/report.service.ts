@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Constants } from 'src/app/common/Constants';
+import { environment } from 'src/environments/environment';
 import { CDIOReportDTO } from 'src/app/model/report/cdioReportDTO/cdioreport-dto';
 import { CourseReportDTO } from 'src/app/model/report/courseReportDTO/course-report-dto';
 import { OutcomeReportDTO } from 'src/app/model/report/OutcomeReportDTO/outcome-report-dto';
@@ -12,7 +12,7 @@ import { SemesterReport } from 'src/app/model/SemesterReport/semester-report';
 })
 export class ReportService {
 
-  private baseURL = Constants.baseUrl + "/admin/report";
+  private baseURL = environment.baseUrl + "/admin/report";
 
   constructor(private http: HttpClient) { }
 

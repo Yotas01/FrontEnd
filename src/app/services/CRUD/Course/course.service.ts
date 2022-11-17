@@ -3,7 +3,7 @@ import { Value } from './../../../model/Value/Value';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Constants } from 'src/app/common/Constants';
+import { environment } from 'src/environments/environment';
 import { Course } from 'src/app/model/course/course';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { Course } from 'src/app/model/course/course';
 })
 export class CourseService {
 
-  baseURL = Constants.baseUrl + "/admin/course"
+  baseURL = environment.baseUrl + "/admin/course"
 
   constructor(private http: HttpClient) { }
 

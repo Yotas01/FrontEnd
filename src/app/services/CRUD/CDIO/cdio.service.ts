@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Constants } from 'src/app/common/Constants';
+import { environment } from 'src/environments/environment';
 import { CDIO } from 'src/app/model/CDIO/cdio';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { CDIO } from 'src/app/model/CDIO/cdio';
 })
 export class CDIOService {
 
-  baseURL = Constants.baseUrl + "/admin/cdio";
+  baseURL = environment.baseUrl + "/admin/cdio";
 
   constructor(private http: HttpClient) { }
 
