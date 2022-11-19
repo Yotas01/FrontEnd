@@ -12,15 +12,15 @@
     </ng-container>
     <ng-container matColumnDef="Exemplary">
         <th mat-header-cell *matHeaderCellDef>Exemplary</th>
-        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.exemplary}}</td>
+        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.exemplary}}%</td>
     </ng-container>
     <ng-container matColumnDef="Competent">
         <th mat-header-cell *matHeaderCellDef>Competent</th>
-        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.competent}}</td>
+        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.competent}}%</td>
     </ng-container>
     <ng-container matColumnDef="Below">
         <th mat-header-cell *matHeaderCellDef>Below</th>
-        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.below}}</td>
+        <td mat-cell *matCellDef="let raeSumm">{{raeSumm.below}}%</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

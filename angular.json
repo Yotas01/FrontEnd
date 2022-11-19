@@ -60,7 +60,7 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.local.ts"
                 }
-            ]
+              ]
             },
             "development": {
               "buildOptimizer": false,
@@ -83,7 +83,7 @@
               "browserTarget": "FrontEnd:build:production"
             },
             "development": {
-              "browserTarget": "FrontEnd:build:development"
+              "browserTarget": "FrontEnd:build:local"
             }
           },
           "defaultConfiguration": "development"
